@@ -1,25 +1,25 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/vsLight');
+const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Swift pt-BR',
+  tagline: 'Swift é uma linguagem de programação consistente e intuitiva, desenvolvida pela Apple para a criação de apps para iOS, Mac, Apple TV e Apple Watch.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://swift.zo.glass/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'zo_glass', // Usually your GitHub org/user name.
+  projectName: 'swift-ptbr', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -28,8 +28,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'br',
+    locales: ['br'],
   },
 
   presets: [
@@ -42,14 +42,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/zo-glass/swift-ptbr/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -62,76 +55,97 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/swift-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Swift pt-BR',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Swift Logo',
+          src: 'img/swift.png',
         },
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'bem-vindo-ao-swift/um-passeio-pelo-swift',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Um passeio pelo Swift',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            type: 'doc',
+            docId: 'guia-da-linguagem/o-basico',
+            position: 'left',
+            label: 'Guia da linguagem',
+          },
+          {
+            type: 'doc',
+            docId: 'referencia-da-linguagem/sobre-a-referencia-da-linguagem',
+            position: 'left',
+            label: 'Referência da Linguagem',
+          },
+          {
+            href: 'https://github.com/zo-glass/swift-ptbr',
             label: 'GitHub',
             position: 'right',
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentação',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Um passeio pelo Swift',
+                to: '/docs/bem-vindo-ao-swift/um-passeio-pelo-swift',
+              },
+              {
+                label: 'Guia da Linguagem',
+                to: '/docs/guia-da-linguagem/o-basico',
+              },
+              {
+                label: 'Referência da Linguagem',
+                to: '/docs/referencia-da-linguagem/sobre-a-referencia-da-linguagem',
               },
             ],
           },
           {
-            title: 'Community',
+            title: 'Comunidade',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Swift.org',
+                href: 'https://swift.org/',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Swift Forums',
+                href: 'https://forums.swift.org/',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Saiba mais',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Desenvolvedor Apple',
+                href: 'https://developer.apple.com/',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Código fonte',
+                href: 'https://github.com/apple',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `© ${new Date().getFullYear()} Swift pt-BR from zo_glass`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['swift'],
+      },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
       },
     }),
 };
