@@ -4,46 +4,56 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'The Definitive Book',
+    image_icon: 'https://www.apple.com/v/swift/c/images/overview/icon_ibooks_large.png',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Baixe The Swift Programming Language de graça na Apple Books Store. Aprenda como a linguagem Swift deixa a programação mais fácil, flexível e divertida.
       </>
     ),
+    more: {
+      text: 'Baixar o livro grátis >',
+      link: 'https://itunes.apple.com/br/book-series/swift-programming-series/id888896989?mt=11',
+    }
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Xcode',
+    image_icon: 'https://developer.apple.com/assets/elements/icons/xcode/xcode-128x128_2x.png',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Xcode é o app do Mac usado para criar vários apps para Mac e iOS. Ele tem todas as ferramentas que você precisa para criar um app fantástico e pode ser baixado de graça na Mac App Store.
       </>
     ),
+    more: {
+      text: 'Baixar Xcode da Mac App Store >',
+      link: 'https://itunes.apple.com/br/app/xcode/id497799835?ls=1&mt=12',
+    }
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Site para desenvolvedores',
+    image_icon: 'https://developer.apple.com/assets/elements/icons/swift-playgrounds-mac/swift-playgrounds-mac-96x96_2x.png',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Obtenha informações detalhadas e veja um panorama avançado sobre a plataforma Swift. Confira o blog dos desenvolvedores e fique em dia com as últimas notícias. E tenha acesso gratuito a excelentes recursos como guias, vídeos e código de amostra.
       </>
     ),
+    more: {
+      text: 'Saiba mais >',
+      link: 'https://developer.apple.com/swift/',
+    }
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({image_icon, title, description, more}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img src={image_icon} className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
         <p>{description}</p>
+        <a href={more.link} target="_blank" rel="noopener noreferrer" >{more.text}</a>
       </div>
     </div>
   );
