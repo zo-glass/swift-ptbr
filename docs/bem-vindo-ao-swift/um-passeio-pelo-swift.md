@@ -109,3 +109,140 @@ Se você estiver atribuindo um array ou dicionário vazio a uma nova variável, 
 let arrayVazio: [String] = []
 let dicionarioVazio: [String: Float] = [:]
 ```
+
+### Controle de fluxo
+
+Use `if` e `switch` para criar condicionais e use `for-in`, `while` e `repeat-while` para criar *loops*. Parênteses ao redor da condição ou variável de *loop* são opcionais. Colchetes ao redor do escopo são obrigatórios.
+
+```swift
+let pontuacoesIndividuais = [75, 43, 103, 87, 12]
+var pontuacaoTime = 0
+for ponto in pontuacoesIndividuais {
+    if ponto > 50 {
+        pontuacaoTime += 3
+    } else {
+        pontuacaoTime += 1
+    }
+}
+print(pontuacaoTime)
+// Imprime "11"
+```
+
+Em uma instrução `if`, a condicional deve ser uma expressão Booleana — isso significa que o código como `if ponto { ... }` é um erro, não uma comparação implícita com zero.
+
+Você pode usar `if` e `let` junto para trabalhar com valores que podem conter nada. Esses valores são representados como opcionais. Um valor opcional contém um valor ou contém `nil` para indicar que um valor está vazio. Escreva um ponto de interrogação (`?`) após o tipo de valor para marcar o valor como opcional.
+
+```swift
+var stringOpcional: String? = "Olá"
+print(stringOpcional == nil)
+// Imprime "false"
+
+var nomeOpcional: String? = "John Appleseed"
+var saudacao = "Olá!"
+if let nome = nomeOpcional {
+    saudacao = "Olá, \(nome)"
+}
+```
+
+> **Experimento**
+>
+> Mude `nomeOpcional` para `nil`. Que saudação você recebe? Adicione uma cláusula `else` que defina uma saudação diferente se `nomeOpcional` for `nil`.
+
+Se o valor opcional for `nil`, o condicional será `false` e o código entre chaves será pulado. Caso contrário, o valor opcional é desembrulhado e atribuído à constante após `let`, o que torna o valor desembrulhado disponível dentro do bloco de código.
+
+Outra maneira de lidar com valores opcionais é fornecer um valor padrão usando o operador `??`. Se o valor opcional estiver nulo, o valor padrão será usado.
+
+```swift
+let apelido: String? = nil
+let nomeCompleto: String = "John Appleseed"
+let saudacaoInformal = "Oi \(apelido ?? nomeCompleto)"
+```
+
+Você pode usar uma escrita mais curta para desembrulhar um valor, usando o mesmo nome para esse valor desembrulhado.
+
+```swift
+if let apelido {
+    print("Eai, \(apelido)")
+}
+// Não imprime nada, porque o apelido é nulo.
+```
+
+As instruções *switch* suportam qualquer tipo de dados e uma ampla variedade de operações de comparação — eles não estão limitados a inteiros e testes de igualdade.
+
+```swift
+let vegetal = "pimentão vermelho"
+switch vegetal {
+case "salsão":
+    print("Adicione algumas passas e crie formigas em um tronco.")
+case "pepino", "agrião":
+    print("Isso daria um bom sanduíche de chá.")
+case let x where x.hasSuffix("pimentão"):
+    print("É um \(x) picante?")
+default:
+    print("Tudo fica gostoso na sopa.")
+}
+// Imprime "É um pimentão vermelho picante?"
+```
+
+> **Experimento**
+>
+> Tente remover o caso *default*. Que erro você recebe?
+
+Observe como `let` pode ser usado em um padrão para atribuir o valor que corresponde ao padrão a uma constante.
+
+Depois de executar o código dentro do *switch case* correspondente, o programa sai da instrução *switch*. A execução não continua para o próximo caso, portanto, você não precisa encerrar explicitamente o *switch* no final do código de cada caso.
+
+Você usa `for-in` para iterar sobre itens em um dicionário, fornecendo um par de nomes para usar para cada par chave-valor. Os dicionários são uma coleção não ordenada, portanto, suas chaves e valores são iterados em uma ordem arbitrária.
+
+```swift
+let numerosInteressantes = [
+    "Primos": [2, 3, 5, 7, 11, 13],
+    "Fibonacci": [1, 1, 2, 3, 5, 8],
+    "Quadrados": [1, 4, 9, 16, 25],
+]
+var maior = 0
+for (_, numeros) in numerosInteressantes {
+    for numero in numeros {
+        if numero > maior {
+            maior = numero
+        }
+    }
+}
+print(maior)
+// Imprime "25"
+```
+
+> **Experimento**
+>
+> Substitua o `_` por um nome de variável e acompanhe qual tipo de número era o maior.
+
+Use `while` para repetir um bloco de código até que uma condição mude. A condição de um loop pode estar no final, garantindo que o loop seja executado pelo menos uma vez.
+
+```swift
+var n = 2
+while n < 100 {
+    n *= 2
+}
+print(n)
+// Imprime "128"
+
+var m = 2
+repeat {
+    m *= 2
+} while m < 100
+print(m)
+// Imprime "128"
+```
+
+Você pode manter um índice em um *loop* usando `..<` para criar um intervalo de índices.
+
+```swift
+var total = 0
+for i in 0..<4 {
+    total += i
+}
+print(total)
+// Imprime "6"
+```
+
+Use `..<` para criar um intervalo que omita seu valor superior e use `...` para criar um intervalo que inclua ambos os valores.
