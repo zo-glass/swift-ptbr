@@ -246,3 +246,127 @@ print(total)
 ```
 
 Use `..<` para criar um intervalo que omita seu valor superior e use `...` para criar um intervalo que inclua ambos os valores.
+
+### Funções e Closures
+
+Use  `func` para declarar uma função. Chame uma função usando seu nome com uma lista de argumentos entre parênteses. Use `->` para separar os nomes e tipos de parâmetros do tipo de retorno da função.
+
+```swift
+func saudar(pessoa: String, dia: String) -> String {
+    return "Olá \(pessoa), hoje é \(dia)."
+}
+saudar(pessoa: "Bob", dia: "Terça-feira")
+```
+
+> **Experimento**
+>
+> Remova o parâmetro `dia`. Adicione um parâmetro para incluir o almoço especial de hoje na saudação.
+
+Por padrão, as funções usam seus nomes de parâmetro como rótulos para seus argumentos. Escreva um rótulo de argumento personalizado antes do nome do parâmetro ou escreva `_` para não usar nenhum rótulo de argumento.
+
+```swift
+func saudar(_ pessoa: String, no dia: String) -> String {
+    return "Olá \(pessoa), hoje é \(dia)."
+}
+saudar("John", no: "Sábado")
+```
+
+Use uma tupla para criar um valor composto — por exemplo, para retornar vários valores de uma função. Os elementos de uma tupla podem ser referênciados por nome ou por número.
+
+```swift
+func calculaEstatisticas(pontuacoes: [Int]) -> (menor: Int, maior: Int, soma: Int) {
+    var menor = pontuacoes[0]
+    var maior = pontuacoes[0]
+    var soma = 0
+
+    for ponto in pontuacoes {
+        if ponto > maior {
+            maior = ponto
+        } else if ponto < menor {
+            menor = ponto
+        }
+        soma += ponto
+    }
+
+    return (menor, maior, soma)
+}
+let estatisticas = calculaEstatisticas(pontuacoes: [5, 3, 100, 3, 9])
+print(estatisticas.soma)
+// Imprime "120"
+print(estatisticas.2)
+// Imprime "120"
+```
+
+As funções podem ser aninhadas. Funções aninhadas (*Nested functions*) têm acesso a variáveis ​​que foram declaradas na função externa. Você pode usar funções aninhadas para organizar o código em uma função longa ou complexa.
+
+```swift
+func retornaQuinze() -> Int {
+    var y = 10
+    func adiciona() {
+        y += 5
+    }
+    adiciona()
+    return y
+}
+retornaQuinze()
+```
+
+Funções são um tipo de primeira classe (*first-class type*). Isso significa que uma função pode retornar outra função como seu valor.
+
+```swift
+func criarIncrementador() -> ((Int) -> Int) {
+    func adicionaUm(numero: Int) -> Int {
+        return 1 + numero
+    }
+    return adicionaUm
+}
+var incremento = criarIncrementador()
+incremento(7)
+```
+
+Uma função pode receber outra função como um de seus argumentos.
+
+```swift
+func possuiQualquerCorrespondencia(lista: [Int], condicao: (Int) -> Bool) -> Bool {
+    for item in lista { 
+        if condicao(item) {
+            return true 
+        }
+    }
+    return false
+}
+func menorQueDez(numero: Int) -> Bool {
+    return numero < 10
+}
+var numeros = [20, 19, 7, 12]
+possuiQualquerCorrespondencia(lista: numeros, condicao: menorQueDez)
+```
+
+As funções são, na verdade, um caso especial de *closures*: blocos de código que podem ser chamados posteriormente. O código em uma *closure* tem acesso a coisas como variáveis ​​e funções que estavam disponíveis no escopo onde a *closure* foi criada, mesmo que a *closure* esteja em um escopo diferente quando for executado — você já viu um exemplo disso com funções aninhadas (*nested functions*). Você pode escrever uma *closure* sem um nome colocando o código entre chaves (`{}`). Use `in` para separar os argumentos e o tipo de retorno do corpo.
+
+```swift
+numeros.map({ (numero: Int) -> Int in
+    let resultado = 3 * numero
+    return resultado
+})
+```
+
+> **Experimento**
+>
+> Reescreva a *closure* para retornar zero para todos os números ímpares.
+
+Você possui várias opções para escrever *closures* de forma mais concisa. Quando o tipo de uma *closures* já é conhecido, como o *callback* para um *delegate*, você pode omitir o tipo de seus parâmetros, seu tipo de retorno ou ambos. *Closures* de instrução única retornam implicitamente o valor de sua única instrução.
+
+```swift
+let numerosMapeados = numeros.map({ numero in 3 * numero })
+print(numerosMapeados)
+// Imprime "[60, 57, 21, 36]"
+```
+
+Você pode se referir a parâmetros por número em vez de por nome — essa abordagem é especialmente útil em *closures* muito curtas. Uma *closure* passada como o último argumento para uma função pode aparecer imediatamente após os parênteses. Quando a *closure* é o único argumento para uma função, você pode omitir totalmente os parênteses.
+
+```swift
+let numerosOrdenados = nunmeros.sorted { $0 > $1 }
+print(numerosOrdenados)
+// Imprime "[20, 19, 12, 7]"
+```
