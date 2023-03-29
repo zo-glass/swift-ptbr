@@ -642,3 +642,48 @@ let descricaoDoTresDeEspadas = tresDeEspadas.descricaoSimples()
 > **Experimento**
 >
 > Escreva uma função que retorne um *array* contendo um baralho completo de cartas, com uma carta de cada combinação de valor e naipe.
+
+### Concorrência
+
+Use `async` para marcar uma função que é executada de forma assíncrona.
+
+```swift
+func busqueIDUsuario(do servidor: String) async -> Int {
+    if servidor == "primário" {
+        return 97
+    }
+    return 501
+}
+```
+
+Você marca uma chamada para uma função assíncrona escrevendo `await` na frente dela.
+
+```swift
+func busqueNomeUsuario(do servidor: String) async -> String {
+    let idUsuario = await busqueIDUsuario(do: servidor)
+    if idUsuario == 501 {
+        return "John Appleseed"
+    }
+    return "Convidado"
+}
+```
+
+Use `async let` para chamar uma função assíncrona, permitindo que ela seja executada em paralelo com outro código assíncrono. Ao usar o valor que ele retorna, escreva `await`.
+
+```swift
+func conectarUsuario(ao servidor: String) async {
+    async let idUsuario = busqueIDUsuario(do: servidor)
+    async let nomeUsuario = busqueNomeUsuario(do: servidor)
+    let saudacao = await "Olá \(nomeUsuario), ID de usuário \(idUsuario)"
+    print(saudacao)
+}
+```
+
+Use `Task` para chamar funções assíncronas do código síncrono, sem esperar que elas retornem.
+
+```swift
+Task {
+    await conectarUsuario(ao: "primário")
+}
+// Imprime "Olá Convidadeo, ID de usuário 97"
+```
