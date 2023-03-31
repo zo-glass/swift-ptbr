@@ -759,3 +759,89 @@ print(valorProtoclo.descricaoSimples)
 ```
 
 Mesmo que a variável `valorProtoclo` tenha um tipo em *runtime* de `ClasseSimples`, o compilador a trata como o tipo fornecido de `ProtocoloExemplo`. Isso significa que você não pode acessar acidentalmente métodos ou propriedades que a classe implementa além de sua conformidade de protocolo.
+
+### Tratamento de erro
+
+Você representa erros usando qualquer tipo que adote o protocolo `Error`.
+
+```swift
+enum ErroImpressora: Error {
+    case semPapel
+    case semToner
+    case emChamas
+}
+```
+
+Use `throw` para lançar um erro e `throws` para marcar uma função que pode gerar um erro. Se você lançar um erro em uma função, a função retornará imediatamente e o código que chamou a função manipulará o erro.
+
+```swift
+func enviar(trabalho: Int, paraImpressora nomeImpressora: String) throws -> String {
+    if nomeImpressora == "Nunca Tem Toner" {
+        throw ErroImpressora.semToner
+    }
+    return "Trabalho enviado"
+}
+```
+
+Existem várias maneiras de manipular erros. Uma maneira é usar `do`-`catch`. Dentro do bloco `do`, você marca o código que pode lançar um erro escrevendo `try` na frente dele. Dentro do bloco `catch`, o erro recebe automaticamente o nome `error`, a menos que você dê um nome diferente.
+
+```swift
+do {
+    let respostaImpressora = try enviar(trabalho: 1040, paraImpressora: "Bi Sheng")
+    print(respostaImpressora)
+} catch {
+    print(error)
+}
+// Imprime "Trabalho enviado"
+```
+
+> **Experimento**
+>
+> Altere o nome da impressora para `"Nunca Tem Toner"`, para que a função `enviar(trabalho:paraImpressora:)` lance um erro.
+
+Você pode fornecer vários blocos `catch` que manipulam erros específicos. Você escreve um padrão depois do `catch` da mesma forma que faz após o `case` em um *switch*.
+
+```swift
+do {
+    let respostaImpressora = try enviar(trabalho: 1440, paraImpressora: "Gutenberg")
+    print(respostaImpressora)
+} catch ErroImpressora.emChamas {
+    print("Vou colocar isso aqui, com o resto do fogo.")
+} catch let erroImpressora as ErroImpressora {
+    print("Erro da impressora: \(erroImpressora).")
+} catch {
+    print(error)
+}
+// Imprime "Trabalho enviado"
+```
+
+> **Experimento**
+>
+> Adicione código para lançar um erro dentro do bloco `do`. Que tipo de erro você precisa lançar para que o erro seja tratado pelo primeiro bloco `catch`? E quanto ao segundo e terceiro blocos?
+
+Outra maneira de manipular erros é usar `try?` para converter o resultado em opcional. Se a função gerar um erro, o erro específico será descartado e o resultado será `nil`. Caso contrário, o resultado é um opcional contendo o valor que a função retornou.
+
+```swift
+let sucessoImpressora = try? enviar(trabalho: 1884, paraImpressora: "Mergenthaler")
+let falhaImpressora = try? enviar(trabalho: 1885, paraImpressora: "Nunca Tem Toner")
+```
+
+Use `defer` para escrever um bloco de código que é executado depois de todos os outros códigos na função, logo antes do retorno da função. O código é executado independentemente de a função lançar um erro. Você pode usar `defer` para escrever códigos de configuração e limpeza um ao lado do outro, mesmo que precisem ser executados em momentos diferentes.
+
+```swift
+var geladeiraAberta = false
+let conteudoGeladeira = ["leite", "ovos", "sobras"]
+
+func geladeiraContem(_ comida: String) -> Bool {
+    geladeiraAberta = true
+    defer {
+        geladeiraAberta = false
+    }
+
+    let resultado = conteudoGeladeira.contains(comida)
+    return resultado
+}
+geladeiraContem("banana")
+print(geladeiraAberta)
+// Imprime "false"
+```
