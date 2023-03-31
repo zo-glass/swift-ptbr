@@ -845,3 +845,55 @@ geladeiraContem("banana")
 print(geladeiraAberta)
 // Imprime "false"
 ```
+
+### Genéricos
+
+Escreva um nome entre parênteses angulares [ `<`  `>` ] para criar uma função ou tipo genérico.
+
+```swift
+func criarArray<Item>(repetindo item: Item, numeroDeVezes: Int) -> [Item] {
+    var resultado: [Item] = []
+    for _ in 0..<numeroDeVezes {
+         resultado.append(item)
+    }
+    return resultado
+}
+criarArray(repetindo: "toc", numeroDeVezes: 4)
+```
+
+Você pode criar formas genéricas de funções e métodos, bem como classes, enumerações e estruturas.
+
+```swift
+// Reimplemente o tipo opcional da biblioteca padrão Swift
+enum OptionalValue<Wrapped> {
+    case none
+    case some(Wrapped)
+}
+var inteiroPossivel: OptionalValue<Int> = .none
+inteiroPossivel = .some(100)
+```
+
+Use `where`logo antes do corpo para especificar uma lista de requisitos — por exemplo, para exigir que o tipo implemente um protocolo, para exigir que dois tipos sejam iguais ou para exigir que uma classe tenha uma superclasse específica.
+
+```swift
+func quaisquerElementosComuns<T: Sequence, U: Sequence>(_ esquerda: T, _ direita: U) -> Bool
+    where T.Element: Equatable, T.Element == U.Element
+{
+    for itemEsq in esquerda {
+        for itemDir in direita {
+            if itemEsq == itemDir {
+                return true
+            }
+        }
+    }
+   return false
+}
+
+quaisquerElementosComuns([1, 2, 3], [3])
+```
+
+> **Experimento**
+>
+> Modifique a função `quaisquerElementosComuns(_:_:)` para fazer uma função que retorne uma matriz dos elementos que quaisquer duas sequências têm em comum.
+
+Escrever `<T: Equatable>` é o mesmo que escrever `<T> ... where T: Equatable`.
