@@ -687,3 +687,75 @@ Task {
 }
 // Imprime "Olá Convidadeo, ID de usuário 97"
 ```
+
+### Protocolos e Extensões
+
+Use `protocol` para declarar um protocolo.
+
+```swift
+protocol ProtocoloExemplo {
+    var descricaoSimples: String { get }
+    mutating func ajustar()
+}
+```
+
+Classes, enumerações e estruturas podem adotar protocolos.
+
+```swift
+class ClasseSimples: ProtocoloExemplo {
+    var descricaoSimples: String = "Uma classe bem simples."
+    var outraPropriedade: Int = 69105
+    func ajustar() {
+        descricaoSimples += "  Agora 100% ajustado."
+    }
+}
+var a = ClasseSimples()
+a.ajustar()
+let descricaoA = a.descricaoSimples
+
+struct EstruturaSimples: ProtocoloExemplo {
+    var descricaoSimples: String = "Uma estrutura simples"
+    mutating func ajustar() {
+        descricaoSimples += " (ajustado)"
+    }
+}
+var b = EstruturaSimples()
+b.ajustar()
+let descricaoB = b.descricaoSimples
+```
+
+> **Experimento**
+>
+> Adicione outro requisito a `ProtocoloExemplo`. Quais alterações você precisa fazer em `ClasseSimples` e `EstruturaSimples` para que ainda estejam em conformidade com o protocolo?
+
+Observe o uso da palavra-chave `mutating` na declaração de `EstruturaSimples` para marcar um método que modifica a estrutura. A declaração de `ClasseSimples` não precisa de nenhum de seus métodos marcados como *mutating* porque os métodos em uma classe sempre podem modificar a classe.
+
+Use `extension` para adicionar funcionalidade a um tipo existente, como novos métodos e propriedades computadas. Você pode usar uma extensão para adicionar conformidade de protocolo a um tipo declarado em outro lugar ou até mesmo a um tipo que você importou de uma biblioteca ou *framework*.
+
+```swift
+extension Int: ProtocoloExemplo {
+    var descricaoSimples: String {
+        return "O número \(self)"
+    }
+    mutating func ajustar() {
+        self += 42
+    }
+ }
+print(7.descricaoSimples)
+// Imprime "O número 7"
+```
+
+> **Experimento**
+>
+> Escreva uma extensão para o tipo `Double` que adiciona uma propriedade `valorAbsoluto`.
+
+Você pode usar um nome de protocolo como qualquer outro tipo nomeado — por exemplo, para criar uma coleção de objetos que têm tipos diferentes, mas todos estão de acordo com um único protocolo. Quando você trabalha com valores cujo tipo é um tipo de protocolo, os métodos fora da definição do protocolo não estão disponíveis.
+
+```swift
+let valorProtoclo: ProtocoloExemplo = a
+print(valorProtoclo.descricaoSimples)
+// Imprime "Uma classe bem simples. Agora 100% ajustado."
+// print(valorProtoclo.outraPropriedade)    // Descomente para ver o erro
+```
+
+Mesmo que a variável `valorProtoclo` tenha um tipo em *runtime* de `ClasseSimples`, o compilador a trata como o tipo fornecido de `ProtocoloExemplo`. Isso significa que você não pode acessar acidentalmente métodos ou propriedades que a classe implementa além de sua conformidade de protocolo.
