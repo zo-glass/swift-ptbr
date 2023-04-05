@@ -135,4 +135,31 @@ print("O valor atual de boasVindasAmigaveis é \(boasVindasAmigaveis)")
 >
 > Todas as opções que você pode usar com a interpolação de strings são descritas em [Interpolação de Strings](./strings-e-caracteres.md/#interpolação-de-string).
 
+## Comentários
+
+Use comentários para incluir texto não executável em seu código, como uma nota ou lembrete para você mesmo. Comentários são ignorados pelo compilador Swift quando seu código é compilado.
+
+Os comentários em Swift são muito semelhantes aos comentários em C. Os comentários de uma linha começam com duas barras (`//`):
+
+```swift
+// Este é um comentário.
+```
+
+Os comentários de várias linhas começam com uma barra seguida de um asterisco (`/*`) e terminam com um asterisco seguido de uma barra (`*/`):
+
+```swift
+/* Isso também é um comentário
+mas é escrito em várias linhas. */
+```
+
+Ao contrário dos comentários multilinha em C, os comentários multilinha em Swift podem ser aninhados dentro de outros comentários multilinha. Você escreve comentários aninhados iniciando um bloco de comentário multilinha e, em seguida, iniciando um segundo comentário multilinha dentro do primeiro bloco. O segundo bloco é então fechado, seguido pelo primeiro bloco:
+
+```swift
+/* Este é o início do primeiro comentário multilinha.
+    /* Este é o segundo comentário multilinha aninhado. */
+Este é o fim do primeiro comentário multilinha. */
+```
+
+Os comentários multilinha aninhados permitem que você comente grandes blocos de código de forma rápida e fácil, mesmo que o código já contenha comentários multilinha.
+
 ## Segurança de tipo e Inferência de tipo
