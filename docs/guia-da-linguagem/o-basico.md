@@ -167,8 +167,8 @@ Os comentários multilinha aninhados permitem que você comente grandes blocos d
 Ao contrário de muitas outras linguagens, o Swift não exige que você escreva um ponto e vírgula (`;`) após cada instrução em seu código, embora você possa fazê-lo se desejar. No entanto, o Ponto e vírgula é necessário se você quiser escrever várias instruções separadas em uma única linha:
 
 ```swift
-let cat = "🐱"; print(cat)
-// Prints "🐱"
+let gato = "🐱"; print(gato)
+// Imprime "🐱"
 ```
 
 ## Segurança de tipo e Inferência de tipo
