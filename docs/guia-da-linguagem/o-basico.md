@@ -77,7 +77,7 @@ var vermelho, verde, azul: Double
 
 > **Nota**
 >
-> É raro precisar escrever *type annotations* na prática. Se você fornecer um valor inicial para uma constante ou variável no ponto em que é definido, o Swift quase sempre pode inferir o tipo a ser usado para essa constante ou variável, conforme descrito em [Segurança de tipo e Inferência de tipo](#segurança-de-tipo-e-inferência-de-tipo) . No exemplo `mensagemDeBoasVindas` acima, nenhum valor inicial é fornecido e, portanto, o tipo da variável `mensagemDeBoasVindas` é especificado com uma *type annotation* em vez de ser inferido de um valor inicial.
+> É raro precisar escrever *type annotations* na prática. Se você fornecer um valor inicial para uma constante ou variável no ponto em que é definido, o Swift quase sempre pode inferir o tipo a ser usado para essa constante ou variável, conforme descrito em [Segurança de tipo e Inferência de tipo](#segurança-de-tipo-e-inferência-de-tipo). No exemplo `mensagemDeBoasVindas` acima, nenhum valor inicial é fornecido e, portanto, o tipo da variável `mensagemDeBoasVindas` é especificado com uma *type annotation* em vez de ser inferido de um valor inicial.
 
 ### Nomeando Constantes e Variáveis
 
@@ -170,5 +170,42 @@ Ao contrário de muitas outras linguagens, o Swift não exige que você escreva 
 let gato = "🐱"; print(gato)
 // Imprime "🐱"
 ```
+
+## Inteiros
+
+Inteiros são números inteiros sem componente fracionário, como `42` e `-23`. Os inteiros são sinalizados (positivo, zero ou negativo) ou não sinalizados (positivo ou zero).
+
+O *Swift* fornece números inteiros sinalizados e não sinalizados em formatos de 8, 16, 32 e 64 bits. Esses inteiros seguem uma convenção de nomenclatura semelhante ao C, em que um inteiro sem sinal de 8 bits é do tipo `UInt8`, e um inteiro com sinal de 32 bits é do tipo `Int32`. Como todos os tipos no *Swift*, esses tipos inteiros têm nomes em letras maiúsculas.
+
+### Limites Inteiros
+
+Você pode acessar os valores mínimo e máximo de cada tipo inteiro com suas propriedades `min` e `max`:
+
+```swift
+let valorMinimo = UInt8.min  // valorMinimo é igual a 0, e é do tipo UInt8
+let valorMaximo = UInt8.max  // valorMaximo é igual a 255, e é do tipo UInt8
+```
+
+Os valores dessas propriedades são do tipo de número de tamanho apropriado (como `UInt8` no exemplo acima) e podem, portanto, ser usados ​​em expressões junto com outros valores do mesmo tipo.
+
+### Int
+
+Na maioria dos casos, você não precisa escolher um tamanho inteiro específico para usar em seu código. O Swift fornece um tipo inteiro adicional, `Int`, que tem o mesmo tamanho que o tamanho da palavra nativa da plataforma atual:
+
+- Em uma plataforma de 32 bits, `Int`é do mesmo tamanho que `Int32`.
+- Em uma plataforma de 64 bits, `Int` é do mesmo tamanho que `Int64`.
+
+A menos que você precise trabalhar com um tamanho específico de número inteiro, sempre use `Int` para valores inteiros em seu código. Isso ajuda na consistência e interoperabilidade do código. Mesmo em plataformas de 32 bits, `Int` pode armazenar qualquer valor entre `-2,147,483,648` e `2,147,483,647`, e é grande o suficiente para muitos intervalos inteiros.
+
+### UInt
+
+O Swift também fornece um tipo inteiro sem sinal, `UInt`, que tem o mesmo tamanho que o tamanho da palavra nativa da plataforma atual:
+
+- Em uma plataforma de 32 bits, `UInt` é do mesmo tamanho que `UInt32`.
+- Em uma plataforma de 64 bits, `UInt` é do mesmo tamanho que `UInt64`.
+
+> **Nota**
+>
+> Use `UInt` somente quando precisar especificamente de um tipo inteiro sem sinal com o mesmo tamanho que o tamanho da palavra nativa da plataforma. Se não for o caso, `Int` é preferível, mesmo quando os valores a serem armazenados são conhecidos como não negativos. Um uso consistente de `Int` para valores inteiros ajuda na interoperabilidade do código, evita a necessidade de converter entre diferentes tipos de números e corresponde à inferência de tipo inteiro, conforme descrito em [Segurança de tipo e Inferência de tipo](#segurança-de-tipo-e-inferência-de-tipo).
 
 ## Segurança de tipo e Inferência de tipo
