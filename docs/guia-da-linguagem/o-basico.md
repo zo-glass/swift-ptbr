@@ -208,4 +208,17 @@ O Swift também fornece um tipo inteiro sem sinal, `UInt`, que tem o mesmo taman
 >
 > Use `UInt` somente quando precisar especificamente de um tipo inteiro sem sinal com o mesmo tamanho que o tamanho da palavra nativa da plataforma. Se não for o caso, `Int` é preferível, mesmo quando os valores a serem armazenados são conhecidos como não negativos. Um uso consistente de `Int` para valores inteiros ajuda na interoperabilidade do código, evita a necessidade de converter entre diferentes tipos de números e corresponde à inferência de tipo inteiro, conforme descrito em [Segurança de tipo e Inferência de tipo](#segurança-de-tipo-e-inferência-de-tipo).
 
+## Números de ponto flutuante
+
+Números de ponto flutuante são números com um componente fracionário, como `3.14159`, `0.1` e `-273.15`.
+
+Os tipos de ponto flutuante podem representar um intervalo muito maior de valores do que os tipos inteiros e podem armazenar números muito maiores ou menores do que podem ser armazenados em um Int. O Swift fornece dois tipos de números de ponto flutuante sinalizados:
+
+- `Double` representa um número de ponto flutuante de 64 bits.
+- `Float` representa um número de ponto flutuante de 32 bits.
+
+> **Nota**
+>
+> `Double` tem uma precisão de pelo menos 15 dígitos decimais, enquanto a precisão do `Float` pode ser de até 6 dígitos decimais. O tipo de ponto flutuante apropriado a ser usado depende da natureza e do intervalo de valores com os quais você precisa trabalhar em seu código. Em situações em que qualquer tipo seria apropriado, `Double` é preferível.
+
 ## Segurança de tipo e Inferência de tipo
