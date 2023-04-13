@@ -222,3 +222,38 @@ Os tipos de ponto flutuante podem representar um intervalo muito maior de valore
 > `Double` tem uma precisão de pelo menos 15 dígitos decimais, enquanto a precisão do `Float` pode ser de até 6 dígitos decimais. O tipo de ponto flutuante apropriado a ser usado depende da natureza e do intervalo de valores com os quais você precisa trabalhar em seu código. Em situações em que qualquer tipo seria apropriado, `Double` é preferível.
 
 ## Segurança de tipo e Inferência de tipo
+
+Swift é uma linguagem *type-safe*. Uma linguagem de tipo seguro encoraja você a ser claro sobre os tipos de valores com os quais seu código pode trabalhar. Se parte do seu código exigir uma `String`, você não pode passar um `Int` por engano.
+
+Como o Swift é do tipo seguro, ele executa verificações de tipo ao compilar seu código e sinaliza qualquer tipo incompatível como erro. Isso permite detectar e corrigir erros o mais cedo possível no processo de desenvolvimento.
+
+A verificação de tipo ajuda a evitar erros ao trabalhar com diferentes tipos de valores. No entanto, isso não significa que você precisa especificar o tipo de cada constante e variável declarada. Se você não especificar o tipo de valor que precisa, o Swift usa inferência de tipo para descobrir o tipo apropriado. A inferência de tipo permite que um compilador deduza o tipo de uma determinada expressão automaticamente ao compilar seu código, simplesmente examinando os valores fornecidos.
+
+Por causa da inferência de tipo, o Swift requer muito menos declarações de tipo do que linguagens como C ou Objective-C. Constantes e variáveis ​​ainda são digitadas explicitamente, mas muito do trabalho de especificar seu tipo é feito para você.
+
+A inferência de tipo é particularmente útil quando você declara uma constante ou variável com um valor inicial. Isso geralmente é feito atribuindo um valor literal (ou literal) à constante ou variável no ponto em que você a declara. (Um valor literal é um valor que aparece diretamente em seu código-fonte, como `42` e `3.14159` nos exemplos abaixo.)
+
+Por exemplo, se você atribuir um valor literal de `42` a uma nova constante sem dizer de que tipo é, o Swift infere que você deseja que a constante seja um `Int` , porque você a inicializou com um número que se parece com um inteiro:
+
+```swift
+let significadoDaVida = 42
+// significadoDaVida é inferido como sendo do tipo Int
+```
+
+Da mesma forma, se você não especificar um tipo para um literal de ponto flutuante, o Swift inferirá que você deseja criar um `Double`:
+
+```swift
+let pi = 3.14159
+// pi é inferido como sendo do tipo Double
+```
+
+Swift sempre escolhe `Double` (em vez de `Float`) ao inferir o tipo de números de ponto flutuante.
+
+Se você combinar literais inteiros e de ponto flutuante em uma expressão, um tipo de `Double` será inferido a partir do contexto:
+
+```swift
+let outroPi = 3.14159
+// outroPi é inferido como sendo do tipo Double
+```
+
+O valor literal de `3` não tem um tipo explícito em si e, portanto, um tipo de saída apropriado `Double` é inferido da presença de um literal de ponto flutuante como parte da adição.
