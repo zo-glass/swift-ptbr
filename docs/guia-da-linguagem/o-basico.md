@@ -257,3 +257,49 @@ let outroPi = 3.14159
 ```
 
 O valor literal de `3` não tem um tipo explícito em si e, portanto, um tipo de saída apropriado `Double` é inferido da presença de um literal de ponto flutuante como parte da adição.
+
+## Literais Numéricos
+
+Os literais inteiros podem ser escritos como:
+
+- Um número decimal, sem prefixo
+- Um número binário, com o prefixo `0b`
+- Um número octal, com o prefixo `0o`
+- Um número hexadecimal, com o prefixo `0x`
+
+Todos esses literais inteiros têm um valor decimal de `17`:
+
+```swift
+let inteiroDecimal = 17
+let inteiroBinario = 0b10001       // 17 em notação binária
+let inteiroOctal = 0o21           // 17 em notação octal
+let inteiroHexadecimal = 0x11     // 17 em notação hexadecimal
+```
+
+Os literais de ponto flutuante podem ser decimais (sem prefixo) ou hexadecimais (com o prefixo `0x`). Devem sempre ter um número (ou número hexadecimal) em ambos os lados do ponto decimal. Os *floats* decimais também podem ter um expoente opcional, indicado por um `e` maiúsculo ou minúsculo; *floats* hexadecimais devem ter um expoente, indicado por um `p` maiúsculo ou minúsculo.
+
+Para números decimais com um expoente de `x`, o número base é multiplicado por $10^x$:
+
+- `1.25e2` significa $1,25 \cdot 10^2$, ou `125.0`.
+- `1.25e-2` significa $1,25 \cdot 10^{-2}$, ou `0.0125`.
+
+Para números hexadecimais com um expoente de `x`, o número base é multiplicado por $2^x$:
+
+- `0xFp2` significa $15 \cdot 2^2$, ou `60.0`.
+- `0xFp-2` significa $15 \cdot 2^{-2}$ , ou `3.75`.
+
+Todos esses literais de ponto flutuante têm um valor decimal de `12.1875`:
+
+```swift
+let doubleDecimal = 12.1875
+let doubleExpoente = 1.21875e1
+let doubleHexadecimal = 0xC.3p0
+```
+
+Os literais numéricos podem conter formatação extra para facilitar a leitura. Tanto inteiros quanto *floats* podem ser preenchidos com zeros extras e podem conter sublinhados para facilitar a leitura. Nenhum tipo de formatação afeta o valor subjacente do literal:
+
+```swift
+let doubleTrabalhado = 000123.456
+let umMilhao = 1_000_000
+let poucoMaisDeUmMilhao = 1_000_000.000_000_1
+```
