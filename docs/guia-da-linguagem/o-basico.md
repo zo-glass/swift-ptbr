@@ -361,3 +361,22 @@ Os valores de ponto flutuante são sempre truncados quando usados ​​para ini
 > **Nota**
 >
 > As regras para combinar constantes e variáveis ​​numéricas são diferentes das regras para literais numéricos. O valor literal `3` pode ser adicionado diretamente ao valor literal `0.14159`, porque os literais numéricos não têm um tipo explícito em si mesmos. Seu tipo é inferido apenas no ponto em que são avaliados pelo compilador.
+
+## Type Aliases
+
+Os *type aliases* definem um nome alternativo para um tipo existente. Você define *aliases* de tipo com a palavra-chave `typealias`.
+
+Os *type aliases* são úteis quando você deseja se referir a um tipo existente por um nome contextualmente mais apropriado, como ao trabalhar com dados de um tamanho específico de uma fonte externa:
+
+```swift
+typealias AmostraDeAudio = UInt16
+```
+
+Depois de definir um *type alias*, você pode usar o *alias* em qualquer lugar em que possa usar o nome original:
+
+```swift
+var amplitudeMaximaEncontrada = AmostraDeAudio.min
+// amplitudeMaximaEncontrada agora é 0
+```
+
+Aqui, `AmostraDeAudio` é definido como um *alias* para `UInt16`. Por ser um *alias*, a chamada para `AmostraDeAudio.min` realmente chama `UInt16.min`, que fornece um valor inicial de `0` para a variável `amplitudeMaximaEncontrada`.
