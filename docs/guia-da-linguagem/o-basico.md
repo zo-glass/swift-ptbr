@@ -380,3 +380,49 @@ var amplitudeMaximaEncontrada = AmostraDeAudio.min
 ```
 
 Aqui, `AmostraDeAudio` é definido como um *alias* para `UInt16`. Por ser um *alias*, a chamada para `AmostraDeAudio.min` realmente chama `UInt16.min`, que fornece um valor inicial de `0` para a variável `amplitudeMaximaEncontrada`.
+
+## Booleanos
+
+Swift tem um tipo booleano básico, chamado `Bool`. Os valores booleanos são referidos como lógicos porque só podem ser verdadeiros ou falsos. O Swift fornece dois valores constantes booleanos `true` e `false`:
+
+```swift
+let laranjasSaoLaranjas = true
+let nabosSaoDeliciosos = false
+```
+
+Os tipos de `laranjasSaoLaranjas` e `nabosSaoDeliciosos` foram inferidos como `Bool` a partir do fato de terem sido inicializados com valores literais booleanos. Assim como `Int` e `Double` acima, você não precisa declarar constantes ou variáveis ​​como `Bool` se você defini-los como `true` ou `false` assim que os criar. A inferência de tipo ajuda a tornar o código Swift mais conciso e legível ao inicializar constantes ou variáveis ​​com outros valores cujo tipo já é conhecido.
+
+Os valores booleanos são particularmente úteis quando você trabalha com declarações condicionais, como a declaração `if`:
+
+```swift
+if nabosSaoDeliciosos {
+    print("Mmm, nabos saborosos!")
+} else {
+    print("Eww, nabos são horríveis.")
+}
+// Imprime "Eww, nabos são horríveis."
+```
+
+Instruções condicionais, como a instrução `if`, são abordadas com mais detalhes em [Controle de fluxo](controle-de-fluxo.md).
+
+A segurança de tipo do Swift impede que valores não booleanos sejam substituídos por `Bool`. O exemplo a seguir relata um erro de tempo de compilação:
+
+```swift
+let i = 1
+if i {
+    // este exemplo não compilará, e reportará um erro
+}
+```
+
+No entanto, o exemplo alternativo abaixo é válido:
+
+```swift
+let i = 1
+if i == 1 {
+    // este exemplo irá compilar com sucesso
+}
+```
+
+O resultado da comparação `i == 1` é do tipo `Bool` e, portanto, este segundo exemplo passa na verificação de tipo. Comparações como `i == 1` são discutidas em [Operadores Básicos](operadores-basicos.md).
+
+Como em outros exemplos de segurança de tipo no Swift, essa abordagem evita erros acidentais e garante que a intenção de uma determinada seção do código seja sempre clara.
