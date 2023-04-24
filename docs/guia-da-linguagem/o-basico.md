@@ -426,3 +426,66 @@ if i == 1 {
 O resultado da comparação `i == 1` é do tipo `Bool` e, portanto, este segundo exemplo passa na verificação de tipo. Comparações como `i == 1` são discutidas em [Operadores Básicos](operadores-basicos.md).
 
 Como em outros exemplos de segurança de tipo no Swift, essa abordagem evita erros acidentais e garante que a intenção de uma determinada seção do código seja sempre clara.
+
+## Tuplas
+
+As tuplas agrupam vários valores em um único valor composto. Os valores dentro de uma tupla podem ser de qualquer tipo e não precisam ser do mesmo tipo.
+
+Neste exemplo, `(404, "Not Found")` é uma tupla que descreve um **código de status HTTP**. Um código de status HTTP é um valor especial retornado por um servidor Web sempre que você solicita uma página da Web. Um código de status `404 Not Found` será retornado se você solicitar uma página da web que não existe.
+
+```swift
+let erroHttp404 = (404, "Not Found")
+// erroHttp404 é do tipo (Int, String), e é igual a (404, "Not Found")
+```
+
+A tupla `(404, "Not Found")` agrupa um `Int` e uma `String` para fornecer ao **código de status HTTP** dois valores separados: um número e uma descrição legível por humanos. Pode ser descrito como “uma tupla do tipo `(Int, String)`”.
+
+Você pode criar tuplas a partir de qualquer permutação de tipos, e elas podem conter quantos tipos diferentes você desejar. Não há nada que o impeça de ter uma tupla do tipo `(Int, Int, Int)`, ou `(String, Bool)`, ou mesmo qualquer outra permutação necessária.
+
+Você pode decompor o conteúdo de uma tupla em constantes ou variáveis ​​separadas, que você acessa normalmente:
+
+```swift
+let (codigoDeStatus, mensagemDeStatus) = erroHttp404
+print("O código de status é \(codigoDeStatus)")
+// Imprime "O código de status é 404"
+print("A mensagem de status é \(mensagemDeStatus)")
+// Imprime "A mensagem de status é Not Found"
+```
+
+Se você precisar apenas de alguns valores da tupla, ignore partes da tupla com um sublinhado (`_`) ao decompor a tupla:
+
+```swift
+let (apenasOCodigoDeStatus, _) = erroHttp404
+print("O código de status é \(apenasOCodigoDeStatus)")
+// Imprime "O código de status é 404"
+```
+
+Como alternativa, acesse os valores de elementos individuais em uma tupla usando números de índice começando em zero:
+
+```swift
+print("O código de status é \(erroHttp404.0)")
+// Imprime "O código de status é 404"
+print("A mensagem de status é \(erroHttp404.1)")
+// Imprime "A mensagem de estado é Not Found"
+```
+
+Você pode nomear os elementos individuais em uma tupla quando a tupla é definida:
+
+```swift
+let statusHttp200 = (codigoStatus: 200, descricao: "OK")
+```
+
+Se você nomear os elementos em uma tupla, poderá usar os nomes dos elementos para acessar os valores desses elementos:
+
+```swift
+print("O código de status é \(statusHttp200.codigoStatus)")
+// Imprime "O código de status é 200"
+print("A mensagem de status é \(statusHttp200.descricao)")
+// Imprime "A mensagem de estado é OK"
+```
+
+Tuplas são particularmente úteis como valores de retorno de funções. Uma função que tenta recuperar uma página da Web pode retornar o tipo de tupla `(Int, String)` para descrever o sucesso ou a falha da recuperação da página. Ao retornar uma tupla com dois valores distintos, cada um de um tipo diferente, a função fornece informações mais úteis sobre seu resultado do que se pudesse retornar apenas um único valor de um único tipo. Para obter mais informações, consulte [Funções com vários valores de retorno](./funcoes.md/#funções-com-vários-valores-de-retorno).
+
+> **Nota**
+>
+> As tuplas são úteis para grupos simples de valores relacionados. Eles não são adequados para a criação de estruturas de dados complexas. Se for provável que sua estrutura de dados seja mais complexa, modele-a como uma classe ou estrutura, em vez de uma tupla. Para obter mais informações, consulte [Estruturas e Classes](./estruturas-e-classes.md).
