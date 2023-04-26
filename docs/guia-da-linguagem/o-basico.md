@@ -489,3 +489,77 @@ Tuplas são particularmente úteis como valores de retorno de funções. Uma fun
 > **Nota**
 >
 > As tuplas são úteis para grupos simples de valores relacionados. Eles não são adequados para a criação de estruturas de dados complexas. Se for provável que sua estrutura de dados seja mais complexa, modele-a como uma classe ou estrutura, em vez de uma tupla. Para obter mais informações, consulte [Estruturas e Classes](./estruturas-e-classes.md).
+
+## Opcionais
+
+Você usa opcionais em situações em que um valor pode estar ausente. Um opcional representa duas possibilidades: ou existe um valor e você pode desembrulhar o opcional para acessar esse valor, ou não existe nenhum valor.
+
+> **Nota**
+>
+> O conceito de opcionais não existe em C ou Objective-C. A coisa mais próxima em Objective-C é a capacidade de retornar `nil` de um método que, de outra forma, retornaria um objeto, com `nil` significando a “ausência de um objeto válido”. No entanto, isso só funciona para objetos — não funciona para estruturas, tipos básicos de C ou valores de enumeração. Para esses tipos, os métodos Objective-C geralmente retornam um valor especial (como `NSNotFound`) para indicar a ausência de um valor. Essa abordagem assume que o chamador do método sabe que há um valor especial para testar e se lembra de verificá-lo. Os opcionais do Swift permitem que você indique a ausência de um valor para qualquer tipo, sem a necessidade de constantes especiais.
+
+Aqui está um exemplo de como os opcionais podem ser usados ​​para lidar com a ausência de um valor. O tipo `Int` do Swift tem um inicializador que tenta converter um valor `String` em um valor `Int`. No entanto, nem toda string pode ser convertida em um inteiro. A string `"123"` pode ser convertida no valor numérico `123` , mas a string `"hello, world"` não tem um valor numérico óbvio para converter.
+
+O exemplo abaixo usa o inicializador para tentar converter uma `String` em um `Int`:
+
+```swift
+let numeroPossivel = "123"
+let numeroConvertido = Int(numeroPossivel)
+// convertedNumber é inferido como sendo do tipo "Int?", ou "Int opcional"
+```
+
+Como o inicializador pode falhar, ele retorna um `Int` opcional, em vez de um `Int`. Um `Int` opcional é escrito como `Int?`, não `Int`. O ponto de interrogação indica que o valor que ele contém é opcional, o que significa que pode conter algum valor `Int` ou pode não conter nenhum valor. (Ele não pode conter mais nada, como um valor `Bool` ou um valor `String`. Ou é um `Int` ou não é nada.)
+
+### nil
+
+Você define uma variável opcional para um estado sem valor atribuindo a ela o valor especial `nil`:
+
+```swift
+var codigoDeRespostaDoServidor: Int? = 404
+// codigoDeRespostaDoServidor contém um valor Int real de 404
+codigoDeRespostaDoServidor = nil
+// serverResponseCode agora não contém nenhum valor
+```
+
+> **Nota**
+>
+> Você não pode usar `nil` com constantes e variáveis ​​não opcionais. Se uma constante ou variável em seu código precisar funcionar com a ausência de um valor sob certas condições, sempre declare-a como um valor opcional do tipo apropriado.
+
+Se você definir uma variável opcional sem fornecer um valor padrão, a variável é automaticamente definida como `nil` para você:
+
+```swift
+var respostaPesquisa: String?
+// respostaPesquisa é definido automaticamente para nil
+```
+
+> **Nota**
+>
+> `nil` em Swift não é o mesmo que `nil` em Objective-C. Em Objective-C, `nil` é um ponteiro para um objeto inexistente. Em Swift, `nil` não é um ponteiro — é a ausência de um valor de certo tipo. Opcionais de qualquer tipo podem ser definidos como `nil`, não apenas tipos de objeto.
+
+### Instruções If e Desembrulho forçado
+
+Você pode usar uma instrução `if` para descobrir se um opcional contém um valor comparando o opcional com `nil`. Você realiza essa comparação com o operador “igual a” (`==`) ou o operador “diferente de” (`!=`).
+
+Se um opcional tiver um valor, ele será considerado “diferente de” `nil`:
+
+```swift
+if numeroConvertido != nil {
+    print("numeroConvertido contém algum valor inteiro.")
+}
+// Imprime "numeroConvertido contém algum valor inteiro."
+```
+
+Assim que tiver certeza de que o opcional contém um valor, você pode acessar seu valor subjacente adicionando um ponto de exclamação (`!`) ao final do nome do opcional. O ponto de exclamação efetivamente diz: “Eu sei que esse opcional definitivamente tem um valor; por favor, use-o.” Isso é conhecido como *forced unwrapping* do valor do opcional:
+
+```swift
+if numeroConvertido != nil {
+    print("numeroConvertido tem um valor inteiro de \(numeroConvertido!).")
+}
+// Imprime "numeroConvertido tem um valor inteiro de 123."
+```
+
+Para obter mais informações sobre a instrução `if`, consulte [Controle de fluxo](controle-de-fluxo.md).
+
+> **Nota**
+>
+> Tentar usar `!` para acessar um valor opcional inexistente aciona um erro em *runtime*. Certifique-se sempre de que um opcional contém um valor diferente de `nil` antes de usar `!` para forçar o desembrulho de seu valor.
