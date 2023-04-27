@@ -563,3 +563,130 @@ Para obter mais informações sobre a instrução `if`, consulte [Controle de fl
 > **Nota**
 >
 > Tentar usar `!` para acessar um valor opcional inexistente aciona um erro em *runtime*. Certifique-se sempre de que um opcional contém um valor diferente de `nil` antes de usar `!` para forçar o desembrulho de seu valor.
+
+### Optional Binding
+
+Você usa *optional binding* para descobrir se um opcional contém um valor e, em caso afirmativo, para disponibilizar esse valor como uma constante ou variável temporária. O *optional binding* pode ser usado com instruções `if` e `while` para verificar um valor dentro de um opcional e extrair esse valor em uma constante ou variável, como parte de uma única ação. As instruções `if` e `while` são descritas com mais detalhes em [Controle de fluxo](controle-de-fluxo.md).
+
+Escreva uma *optional binding* para uma instrução `if` da seguinte forma:
+
+```swift
+if let <#nomeConstante#> = <#algumOpcional#> {
+   <#instrucoes#>
+}
+```
+
+Você pode reescrever o exemplo `numeroPossivel` da seção [Opcionais](#opcionais) para usar *optional binding* em vez do desembrulho forçado:
+
+```swift
+if let numeroReal = Int(numeroPossivel) {
+    print("A string \"\(numeroPossivel)\" possui um valor inteiro de \(numeroReal)")
+} else {
+    print("A string \"\(numeroPossivel)\" não pôde ser convertida em um número inteiro")
+}
+// Imprime "A string "123" possui um valor inteiro de 123"
+```
+
+Este código pode ser lido como:
+
+“Se o opcional `Int` retornado por `Int(numeroPossivel)` contiver um valor, defina uma nova constante chamada `numeroReal` para o valor contido no opcional.”
+
+Se a conversão for bem-sucedida, a constante `numeroReal` ficará disponível para uso na primeira ramificação da instrução `if`. Ele já foi inicializado com o valor contido no opcional, então você não usa o sufixo `!` para acessar seu valor. Neste exemplo, `numeroReal` é usado simplesmente para imprimir o resultado da conversão.
+
+Se você não precisar se referir à constante ou variável original opcional após acessar o valor que ela contém, você pode usar o mesmo nome para a nova constante ou variável:
+
+```swift
+let meuMumero = Int(numeroPossivel)
+// Aqui, meuMumero é um número inteiro opcional
+if let meuMumero = meuMumero {
+    // Aqui, meuMumero é um número inteiro não opcional
+    print("Meu número é \(meuMumero)")
+}
+// Imprime "Meu número é 123"
+```
+
+Este código começa verificando se `meuMumero` contém um valor, assim como o código do exemplo anterior. Se `meuMumero` tiver um valor, o valor de uma nova constante nomeada `meuMumero` é definido para esse valor. Dentro do corpo da instrução `if`, escrever `meuMumero` refere-se a essa nova constante não opcional. Antes do início da instrução `if` e após seu final, escrever `meuMumero` refere-se à constante opcional inteira.
+
+Como esse tipo de código é muito comum, você pode usar uma ortografia mais curta para desembrulhar um valor opcional: escreva apenas o nome da constante ou variável que você está desembrulhando. A nova constante ou variável desembrulhada usa implicitamente o mesmo nome que o valor opcional.
+
+```swift
+if let meuMumero {
+    print("Meu número é \(meuMumero)")
+}
+// Imprime "Meu número é 123"
+```
+
+Você pode usar constantes e variáveis ​​com *optional binding*. Se você quisesse manipular o valor `meuMumero` de dentro do primeiro ramo da instrução `if`, poderia escrever `if var meuMumero` em vez disso, e o valor contido no opcional seria disponibilizado como uma variável em vez de uma constante. As alterações feitas em `meuMumero` dentro do corpo da instrução `if` se aplicam apenas a essa variável local, não à variável ou constante opcional original que você desembrulhou.
+
+Você pode incluir quantas *optional bindings* e condições booleanas forem necessárias em uma única instrução `if`, separadas por vírgulas. Se algum dos valores nas ligações opcionais for `nil` ou qualquer condição booleana for avaliada como `false`, toda a condição da instrução `if` será considerada `false`. As seguintes instruções `if` são equivalentes:
+
+```swift
+if let primeiroNumero = Int("4"), let segundoNumero = Int("42"), primeiroNumero < segundoNumero && segundoNumero < 100 {
+    print("\(primeiroNumero) < \(segundoNumero) < 100")
+}
+// Imprime "4 < 42 < 100"
+
+if let primeiroNumero = Int("4") {
+    if let segundoNumero = Int("42") {
+        if primeiroNumero < segundoNumero && segundoNumero < 100 {
+            print("\(primeiroNumero) < \(segundoNumero) < 100")
+        }
+    }
+}
+// Imprime "4 < 42 < 100"
+```
+
+> **Nota**
+>
+> Constantes e variáveis ​​criadas com *optional binding* em uma instrução `if` estão disponíveis apenas no corpo da instrução `if`. Por outro lado, as constantes e variáveis ​​criadas com uma instrução `guard` estão disponíveis nas linhas de código que seguem a instrução `guard`, conforme descrito em [Saída Antecipada](./controle-de-fluxo.md/#saída-antecipada).
+
+### Opcionais implicitamente desembrulhados
+
+Conforme descrito acima, os opcionais indicam que uma constante ou variável pode ter “nenhum valor”. Os opcionais podem ser verificados com uma instrução `if` para ver se existe um valor e podem ser desembrulhados condicionalmente com *optional binding* para acessar o valor do opcional, se ele existir.
+
+Às vezes, fica claro na estrutura de um programa que um opcional sempre terá um valor, depois que esse valor for definido pela primeira vez. Nesses casos, é útil remover a necessidade de verificar e desempacotar o valor do opcional toda vez que ele for acessado, porque pode-se presumir com segurança que ele tem um valor o tempo todo.
+
+Esses tipos de opcionais são definidos como opcionais desembrulhados implicitamente. Você escreve um opcional desembrulhados implicitamente colocando um ponto de exclamação (`String!`) em vez de um ponto de interrogação (`String?`) após o tipo que deseja tornar opcional. Em vez de colocar um ponto de exclamação após o nome do opcional ao usá-lo, coloque um ponto de exclamação após o tipo do opcional ao declará-lo.
+
+Opcionais implicitamente desembrulhados são úteis quando o valor de um opcional é confirmado imediatamente após o opcional ser definido pela primeira vez e pode ser assumido definitivamente como existindo em todos os pontos subsequentes. O uso principal de opcionais não agrupados implicitamente no Swift é durante a inicialização da classe, conforme descrito em [Referências sem dono e propriedades de opcionais desembrulhadas implicitamente](./contagem-automatica-de-referencia.md/#referências-sem-dono-e-propriedades-de-opcionais-desembrulhadas-implicitamente).
+
+Um opcional implicitamente desembrulhado é um opcional normal nos bastidores, mas também pode ser usado como um valor não opcional, sem a necessidade de desembrulhar o valor opcional toda vez que for acessado. O exemplo a seguir mostra a diferença de comportamento entre uma string opcional e uma string opcional desembrulhada implicitamente ao acessar seu valor agrupado como uma `String` explícita:
+
+```swift
+let stringPossivel: String? = "Uma string opcional."
+let stringForcada: String = stringPossivel! // requer um ponto de exclamação
+
+let stringAssumida: String! = "Uma string opcional implicitamente desembrulhada."
+let stringImplicita: String = stringAssumida // não precisa de ponto de exclamação
+```
+
+Você pode pensar em um opcional desembrulhado implicitamente como dando permissão para que o opcional seja desembrulhado à força, se necessário. Quando você usa um valor opcional desembrulhado implicitamente, o Swift primeiro tenta usá-lo como um valor opcional comum; se não puder ser usado como opcional, o Swift forçará o desembrulho do valor. No código acima, o valor opcional `stringAssumida` é desembrulhado à força antes de atribuir seu valor a `stringImplicita` porque `stringImplicita` tem um tipo explícito e não opcional de `String`. No código abaixo, não possui um tipo explícito, portanto é um opcional comum.
+
+```swift
+let stringOpcional = stringAssumida
+// O tipo de optionalString é "String?" e assumidoString não é desembrulhado à força.
+```
+
+Se um opcional desembrulhado implicitamente for `nil` e você tentar acessar seu desembrulhado, você acionará um erro em *runtime*. O resultado é exatamente o mesmo como se você colocasse um ponto de exclamação após um opcional normal que não contém um valor.
+
+Você pode verificar se um opcional desembrulhado implicitamente é `nil` da mesma forma que verifica um opcional normal:
+
+```swift
+if stringAssumida != nil {
+    print(stringAssumida!)
+}
+// Imprime "Uma string opcional implicitamente desembrulhada."
+```
+
+Você também pode usar um opcional desembrulhado implicitamente com *optional binding*, para verificar e desembrulhar seu valor em uma única instrução:
+
+```swift
+if let stringDefinitiva = stringAssumida {
+    print(stringDefinitiva)
+}
+// Imprime "Uma string opcional implicitamente desembrulhada."
+```
+
+> **Nota**
+>
+> Não use um opcional desembrulhado implicitamente quando houver a possibilidade de uma variável se tornar `nil` em um ponto posterior. Sempre use um tipo opcional normal se precisar verificar um valor `nil` durante o tempo de vida de uma variável.

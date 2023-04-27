@@ -6,6 +6,8 @@ sidebar_position: 5
 
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
+## Saída Antecipada
+
 ```swift
 // TODO: Translate
 ```
