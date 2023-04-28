@@ -690,3 +690,53 @@ if let stringDefinitiva = stringAssumida {
 > **Nota**
 >
 > Não use um opcional desembrulhado implicitamente quando houver a possibilidade de uma variável se tornar `nil` em um ponto posterior. Sempre use um tipo opcional normal se precisar verificar um valor `nil` durante o tempo de vida de uma variável.
+
+## Tratamento de erros
+
+Você usa o tratamento de erros para responder às condições de erro que seu programa pode encontrar durante a execução.
+
+Ao contrário dos opcionais, que podem usar a presença ou ausência de um valor para comunicar o sucesso ou falha de uma função, o tratamento de erros permite determinar a causa subjacente da falha e, se necessário, propagar o erro para outra parte do seu programa.
+
+Quando uma função encontra uma condição de erro, ela lança um erro. O chamador dessa função pode pegar o erro e responder adequadamente.
+
+```swift
+func podeLançarUmErro() throws {
+    // esta função pode ou não lançar um erro
+}
+```
+
+Uma função indica que pode lançar um erro ao incluir a palavra-chave `throws` em sua declaração. Ao chamar uma função que pode lançar um erro, você acrescenta a palavra-chave `try` à expressão.
+
+O Swift propaga automaticamente os erros fora de seu escopo atual até que sejam tratados por uma cláusula `catch`.
+
+```swift
+do {
+    try podeLançarUmErro()
+    // nenhum erro foi lançado
+} catch {
+    // um erro foi lançado
+}
+```
+
+Uma instrução `do` cria um novo escopo de conteúdo, que permite que os erros sejam propagados para uma ou mais cláusulas `catch`.
+
+```swift
+func fazerUmSanduiche() throws {
+    // ...
+}
+
+do {
+    try fazerUmSanduiche()
+    comerUmSanduiche()
+} catch ErroSanduiche.naoTerPratosLimpos {
+    lavarLouca()
+} catch ErroSanduiche.faltandoIngredientes(let ingredientes) {
+    comprarMantimentos(ingredientes)
+}
+```
+
+Neste exemplo, a função `fazerUmSanduiche()` lançará um erro se não houver pratos limpos disponíveis ou se faltar algum ingrediente. Porque `makeASandwich()` pode lançar um erro, a chamada da função é coberta por uma expressão `try`. Ao incluir a chamada de função em uma instrução `do`, quaisquer erros lançados serão propagados para as cláusulas `catch` fornecidas.
+
+Se nenhum erro for lançado, a função `comerUmSanduiche()` é chamada. Se um erro for lançado e corresponder ao caso `ErroSanduiche.naoTerPratosLimpos`, a função `lavarLouca()` será chamada. Se um erro for lançado e corresponder ao caso `ErroSanduiche.faltandoIngredientes`, a função `comprarMantimentos(_:)` será chamada com o valor `[String]` associado, capturado pelo padrão `catch`.
+
+Lançar, capturar e propagar erros é abordado com mais detalhes em [Tratamento de Erros](./tratamento-de-erros.md).
