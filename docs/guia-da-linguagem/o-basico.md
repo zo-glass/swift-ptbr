@@ -740,3 +740,63 @@ Neste exemplo, a função `fazerUmSanduiche()` lançará um erro se não houver 
 Se nenhum erro for lançado, a função `comerUmSanduiche()` é chamada. Se um erro for lançado e corresponder ao caso `ErroSanduiche.naoTerPratosLimpos`, a função `lavarLouca()` será chamada. Se um erro for lançado e corresponder ao caso `ErroSanduiche.faltandoIngredientes`, a função `comprarMantimentos(_:)` será chamada com o valor `[String]` associado, capturado pelo padrão `catch`.
 
 Lançar, capturar e propagar erros é abordado com mais detalhes em [Tratamento de Erros](./tratamento-de-erros.md).
+
+## Asserções e pré-condições
+
+Asserções e pré-condições são verificações que acontecem em *runtime*. Você os usa para garantir que uma condição essencial seja satisfeita antes de executar qualquer outro código. Se a condição booleana na declaração ou pré-condição for avaliada como `true`, a execução do código continuará normalmente. Se a condição for avaliada como `false`, o estado atual do programa é inválido; a execução do código termina e seu aplicativo é encerrado.
+
+Você usa asserções e pré-condições para expressar as suposições que faz e as expectativas que tem durante a codificação, para que possa incluí-las como parte de seu código. As asserções ajudam a encontrar erros e suposições incorretas durante o desenvolvimento, e as pré-condições ajudam a detectar problemas na produção.
+
+Além de verificar suas expectativas em *runtime*, asserções e pré-condições também se tornam uma forma útil de documentação dentro do código. Ao contrário das condições de erro discutidas em [Tratamento de Erros](./tratamento-de-erros.md) acima, asserções e pré-condições não são usadas para erros recuperáveis ​​ou esperados. Como uma asserção ou pré-condição com falha indica um estado de programa inválido, não há como detectar uma asserção com falha.
+
+Usar asserções e pré-condições não é um substituto para projetar seu código de forma que condições inválidas provavelmente não surjam. No entanto, usá-los para impor dados e estados válidos faz com que seu aplicativo seja encerrado de forma mais previsível se ocorrer um estado inválido e ajuda a facilitar a depuração do problema. Interromper a execução assim que um estado inválido for detectado também ajuda a limitar os danos causados ​​por esse estado inválido.
+
+A diferença entre asserções e pré-condições está em quando elas são verificadas: as asserções são verificadas apenas em compilações de depuração, mas as pré-condições são verificadas em compilações de depuração e de produção. Em compilações de produção, a condição dentro de uma asserção não é avaliada. Isso significa que você pode usar quantas asserções quiser durante o seu processo de desenvolvimento, sem afetar o desempenho na produção.
+
+### Depurando com Asserções
+
+Você escreve uma asserção chamando a função [assert(_:_:file:line:)](https://developer.apple.com/documentation/swift/1541112-assert) da biblioteca padrão do Swift. Você passa a esta função uma expressão que avalia para `true` ou `false` e uma mensagem para exibir se o resultado da condição for `false`. Por exemplo:
+
+```swift
+let idade = -3
+assert(idade >= 0, "A idade de uma pessoa não pode ser menor que zero.")
+// Essa asserção falha porque -3 não é >= 0.
+```
+
+Neste exemplo, a execução do código continua se `age >= 0` for avaliada como `true`, ou seja, se o valor de `idade` for não negativo. Se o valor de `idade` for negativo, como no código acima, então `age >= 0` será avaliado como `false`, e a asserção falhará, encerrando o aplicativo.
+
+Você pode omitir a mensagem de asserção — por exemplo, quando ela apenas repetir a condição como prosa.
+
+```swift
+assert(idade >= 0)
+```
+
+Se o código já verifica a condição, você usa a função [assertionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539616-assertionfailure) para indicar que uma asserção falhou. Por exemplo:
+
+```swift
+if idade > 10 {
+    print("Você pode andar na montanha-russa ou na roda gigante.")
+} else if idade >= 0 {
+    print("Você pode andar na roda gigante.")
+} else {
+    assertionFailure("A idade de uma pessoa não pode ser menor que zero.")
+}
+```
+
+### Impondo pré-condições
+
+Use uma pré-condição sempre que uma condição tiver o potencial de ser falsa, mas deve ser definitivamente verdadeira para que seu código continue a execução. Por exemplo, use uma pré-condição para verificar se um subscript não está out of bounds ou para verificar se uma função recebeu um valor válido.
+
+Você escreve uma pré-condição chamando a função [precondition(_:_:file:line:)](https://developer.apple.com/documentation/swift/1540960-precondition). Você passa a esta função uma expressão que avalia para `true` ou `false` e uma mensagem para exibir se o resultado da condição for `false`. Por exemplo:
+
+```swift
+// Na implementação de um subscript...
+precondition(index > 0, "O índice deve ser maior que zero.")
+```
+
+Você também pode chamar a função [preconditionFailure(_:file:line:)](https://developer.apple.com/documentation/swift/1539374-preconditionfailure) para indicar que ocorreu uma falha — por exemplo, se o caso padrão de um *switch* foi obtido, mas todos os dados de entrada válidos deveriam ter sido manipulados por um dos outros casos do *switch*.
+
+> **Nota**
+>
+> Se você compilar no modo desmarcado (`-Ounchecked`), as pré-condições não serão verificadas. O compilador assume que as pré-condições são sempre verdadeiras e otimiza seu código de acordo. No entanto, a função `fatalError(_:file:line:)` sempre interrompe a execução, independentemente das configurações de otimização.
+> Você pode usar a função `fatalError(_:file:line:)` durante a prototipagem e o desenvolvimento inicial para criar *stubs* para funcionalidades que ainda não foram implementadas, escrevendo como `fatalError("Não implementado")` a implementação do *stub*. Como os erros fatais nunca são otimizados, ao contrário das asserções ou pré-condições, você pode ter certeza de que a execução sempre será interrompida se encontrar uma implementação de *stub*.
