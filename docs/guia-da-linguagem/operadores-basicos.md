@@ -13,3 +13,15 @@ O Swift oferece suporte aos operadores que você já conhece de linguagens como 
 O Swift também fornece operadores de intervalo que não são encontrados em C, como `a..<b` e `a...b`, como uma redução para expressar um intervalo de valores.
 
 Este capítulo descreve os operadores comuns no Swift. [Operadores Avançados](./operadores-avancados.md) cobrem os operadores avançados do Swift, e descrevem como definir seus próprios operadores personalizados e implementar os operadores padrão para seus próprios tipos personalizados.
+
+## Terminologia
+
+Os operadores são unários, binários ou ternários:
+
+- Os operadores unários operam em um único alvo (como `-a`). Os operadores de prefixo unário aparecem imediatamente antes do alvo (como `!b`) e os operadores de pós-fixo unário aparecem imediatamente após o alvo (como `c!`).
+
+- Operadores binários operam em dois alvos (como `2 + 3`) e são infixos porque aparecem entre seus dois alvos.
+
+- Os operadores ternários operam em três alvos. Como em C, o Swift tem apenas um operador ternário, o operador condicional ternário (`a ? b : c`).
+
+Os valores que os operadores afetam são operandos. Na expressão `1 + 2`, o símbolo `+` é um operador infixo e seus dois operandos são os valores `1` e `2`.
