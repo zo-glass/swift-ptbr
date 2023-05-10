@@ -25,3 +25,31 @@ Os operadores são unários, binários ou ternários:
 - Os operadores ternários operam em três alvos. Como em C, o Swift tem apenas um operador ternário, o operador condicional ternário (`a ? b : c`).
 
 Os valores que os operadores afetam são operandos. Na expressão `1 + 2`, o símbolo `+` é um operador infixo e seus dois operandos são os valores `1` e `2`.
+
+## Operador de Atribuição
+
+O operador de atribuição (`a = b`) inicializa ou atualiza o valor de `a` com o valor de `b`:
+
+```swift
+let b = 10
+var a = 5
+a = b
+// a agora é igual a 10
+```
+
+Se o lado direito da atribuição for uma tupla com vários valores, seus elementos podem ser decompostos em várias constantes ou variáveis ​​de uma só vez:
+
+```swift
+let (x, y) = (1, 2)
+// x é igual a 1, e y é igual a 2
+```
+
+Ao contrário do operador de atribuição em C e Objective-C, o operador de atribuição em Swift não retorna um valor. A seguinte declaração não é válida:
+
+```swift
+if x = y {
+    // Isso não é válido, porque x = y não retorna um valor.
+}
+```
+
+Esse recurso evita que o operador de atribuição (`=`) seja usado acidentalmente quando o operador igual a (`==`) é realmente pretendido. Ao tornar `if x = y` inválido, o Swift ajuda você a evitar esses tipos de erros em seu código.
