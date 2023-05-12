@@ -53,3 +53,27 @@ if x = y {
 ```
 
 Esse recurso evita que o operador de atribuição (`=`) seja usado acidentalmente quando o operador igual a (`==`) é realmente pretendido. Ao tornar `if x = y` inválido, o Swift ajuda você a evitar esses tipos de erros em seu código.
+
+## Operadores Aritméticos
+
+O Swift suporta os quatro operadores aritméticos padrão para todos os tipos de números:
+
+- Adição (`+`)
+- Subtração (`-`)
+- Multiplicação (`*`)
+- Divisão (`/`)
+
+```swift
+1 + 2       // é igual a 3
+5 - 3       // é igual a 2
+2 * 3       // é igual a 6
+10.0 / 2.5  // é igual a 4.0
+```
+
+Ao contrário dos operadores aritméticos em C e Objective-C, os operadores aritméticos Swift não permitem que os valores estourem por padrão. Você pode aceitar o comportamento de estouro de valor usando os operadores de estouro do Swift (como `a &+ b`). Consulte [Operadores de Estouro](./operadores-avancados.md/#operadores-de-estouro).
+
+O operador de adição também é suportado para Stringconcatenação:
+
+```swift
+"olá, " + "mundo"  // é igual a "olá, mundo"
+```
