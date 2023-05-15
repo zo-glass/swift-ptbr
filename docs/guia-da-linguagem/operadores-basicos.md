@@ -77,3 +77,49 @@ O operador de adição também é suportado para Stringconcatenação:
 ```swift
 "olá, " + "mundo"  // é igual a "olá, mundo"
 ```
+
+### Operador de Resto
+
+O operador de resto (`a % b`) calcula quantos múltiplos de `b` cabem dentro de `a` e retorna o valor que sobrou (conhecido como resto).
+
+> **Nota**
+>
+> O operador de resto (`%`) também é conhecido como operador de módulo em outras linguagens. No entanto, seu comportamento no Swift para números negativos significa que, estritamente falando, é um resto em vez de uma operação de módulo.
+
+Veja como funciona o operador de resto. Para calcular `9 % 4`, você primeiro calcula quantos `4` caberão dentro de `9`:
+
+<div align="center">
+    <img src="https://docs.swift.org/swift-book/images/remainderInteger~dark@2x.png" alt="" width="273" />
+</div>
+
+Você pode colocar dois `4` dentro de `9`, e o restante é `1` (mostrado em laranja).
+
+Em Swift, isso seria escrito como:
+
+```swift
+9 % 4    // é igual a 1
+```
+
+Para determinar a resposta para `a % b`, o operador `%` calcula a seguinte equação e retorna `resto` como saída:
+
+$a = (b \cdot algum\ multiplicador) + resto$
+
+onde `algum multiplicador` é o maior número de múltiplos de `b` que caberá dentro `a`.
+
+Inserindo `9` e `4` nesta equação, obtém-se:
+
+$9 = (4 \cdot 2) + 1$
+
+O mesmo método é aplicado ao calcular o restante para um valor negativo de `a`:
+
+```swift
+-9 % 4   // é igual a -1
+```
+
+Inserindo `-9` e `4` na equação resulta:
+
+$-9 = (4 \cdot -2) + -1$
+
+dando um valor restante de `-1`.
+
+O sinal de `b` é ignorado para valores negativos de `b`. Isso significa que `a % b` e `a % -b` sempre dá a mesma resposta.
