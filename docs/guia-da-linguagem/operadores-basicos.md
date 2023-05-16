@@ -123,3 +123,15 @@ $-9 = (4 \cdot -2) + -1$
 dando um valor restante de `-1`.
 
 O sinal de `b` é ignorado para valores negativos de `b`. Isso significa que `a % b` e `a % -b` sempre dá a mesma resposta.
+
+### Operador unário de menos
+
+O sinal de um valor numérico pode ser alternado usando um prefixo `-`, conhecido como operador unário de menos:
+
+```swift
+let tres = 3
+let menosTres = -tres       // menosTres é igual a -3
+let maisTres = -menosTres   // maisTres é igual a 3, ou "menos menos três"
+```
+
+O Operador unário de menos (`-`) é anexado diretamente antes do valor em que opera, sem nenhum espaço em branco.
