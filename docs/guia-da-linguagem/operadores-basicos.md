@@ -135,3 +135,14 @@ let maisTres = -menosTres   // maisTres é igual a 3, ou "menos menos três"
 ```
 
 O Operador unário de menos (`-`) é anexado diretamente antes do valor em que opera, sem nenhum espaço em branco.
+
+### Operador unário de mais
+
+O operador unário de mais (`+`) simplesmente retorna o valor sobre o qual opera, sem qualquer alteração:
+
+```swift
+let menosSeis = -6
+let tambemMenosSeis = +menosSeis  // tambemMenosSeis é igual a -6
+```
+
+Embora o operador unário de mais não faça nada, você pode usá-lo para fornecer simetria em seu código para números positivos ao usar também o operador unário menos para números negativos.
