@@ -146,3 +146,21 @@ let tambemMenosSeis = +menosSeis  // tambemMenosSeis é igual a -6
 ```
 
 Embora o operador unário de mais não faça nada, você pode usá-lo para fornecer simetria em seu código para números positivos ao usar também o operador unário menos para números negativos.
+
+## Operadores de atribuição compostos
+
+Como em C, o Swift fornece operadores de atribuição compostos que combinam atribuição (`=`) com outra operação. Um exemplo é o operador de atribuição de adição (`+=`):
+
+```swift
+var a = 1
+a += 2
+// a agora é igual a 3
+```
+
+A expressão `a += 2` é uma abreviação de `a = a + 2`. Efetivamente, a adição e a atribuição são combinadas em um operador que executa as duas tarefas ao mesmo tempo.
+
+> **Nota**
+>
+> Os operadores de atribuição compostos não retornam um valor. Por exemplo, você não pode escrever `let b = a += 2`.
+
+Para obter informações sobre os operadores fornecidos pela biblioteca padrão do Swift, consulte [Declarações do Operador](https://developer.apple.com/documentation/swift/operator_declarations).
