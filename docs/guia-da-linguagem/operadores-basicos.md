@@ -164,3 +164,64 @@ A expressão `a += 2` é uma abreviação de `a = a + 2`. Efetivamente, a adiç�
 > Os operadores de atribuição compostos não retornam um valor. Por exemplo, você não pode escrever `let b = a += 2`.
 
 Para obter informações sobre os operadores fornecidos pela biblioteca padrão do Swift, consulte [Declarações do Operador](https://developer.apple.com/documentation/swift/operator_declarations).
+
+## Operadores de Comparação
+
+Swift suporta os seguintes operadores de comparação:
+
+- Igual a (`a == b`)
+- Diferente de (`a != b`)
+- Maior que (`a > b`)
+- Menor que (`a < b`)
+- Maior ou igual a (`a >= b`)
+- Menor ou igual a (`a <= b`)
+
+> **Nota**
+>
+> O Swift também fornece dois operadores de identidade (`===` e `!==`), que você usa para testar se duas referências de objeto se referem à mesma instância de objeto. Para obter mais informações, consulte [Operadores de Identidade](./estruturas-e-classes.md/#operadores-de-identidade).
+
+Cada um dos operadores de comparação retorna um valor `Bool` para indicar se a afirmação é verdadeira ou não:
+
+```swift
+1 == 1   // (true) verdadeiro porque 1 é igual a 1
+2 != 1   // (true) verdadeiro porque 2 não é igual a 1
+2 > 1    // (true) verdadeiro porque 2 é maior que 1
+1 < 2    // (true) verdadeiro porque 1 é menor que 2
+1 >= 1   // (true) verdadeiro porque 1 é maior ou igual a 1
+2 <= 1   // (false) falso porque 2 não é menor ou igual a 1
+```
+
+Operadores de comparação são frequentemente usados em instruções condicionais, como a instrução `if`:
+
+```swift
+let nome = "mundo"
+if nome == "mundo" {
+    print("olá, mundo")
+} else {
+    print("Desculpa \(nome), mas não te reconheço")
+}
+// Imprime "olá, mundo", porque nome é de fato igual a "mundo".
+```
+
+Para obter mais informações sobre a instrução `if`, consulte [Controle de Fluxo](./controle-de-fluxo.md).
+
+Você pode comparar duas tuplas se elas tiverem o mesmo tipo e o mesmo número de valores. As tuplas são comparadas da esquerda para a direita, um valor por vez, até que a comparação encontre dois valores que não sejam iguais. Esses dois valores são comparados e o resultado dessa comparação determina o resultado geral da comparação de tupla. Se todos os elementos forem iguais, as próprias tuplas serão iguais. Por exemplo:
+
+```swift
+(1, "zebra") < (2, "apple")   // (true) verdadeiro porque 1 é menor que 2, "zebra" e "apple" não são comparadas
+(3, "apple") < (3, "bird")    // (true) verdadeiro porque 3 é igual a 3, e "apple" é menor que "bird"
+(4, "dog") == (4, "dog")      // (true) verdadeiro porque 4 é igual a 4, e "dog" é igual a "dog"
+```
+
+No exemplo acima, você pode ver o comportamento de comparação da esquerda para a direita na primeira linha. Porque `1` é menor que `2`, `(1, "zebra")` é considerado menor que `(2, "apple")`, independentemente de quaisquer outros valores nas tuplas. Não importa que `"zebra"` não seja menor que `"apple"`, pois a comparação já está determinada pelos primeiros elementos das tuplas. Porém, quando os primeiros elementos das tuplas são iguais, seus segundos elementos são comparados — é o que acontece na segunda e na terceira linha.
+
+As tuplas podem ser comparadas com um determinado operador somente se o operador puder ser aplicado a cada valor nas respectivas tuplas. Por exemplo, conforme demonstrado no código abaixo, você pode comparar duas tuplas do tipo `(String, Int)` porque ambos os valores `String` e `Int` podem ser comparados usando o operador `<`. Em contraste, duas tuplas do tipo `(String, Bool)` não podem ser comparadas com o operador `<` porque o operador `<` não pode ser aplicado a valores `Bool`.
+
+```swift
+("blue", -1) < ("purple", 1)        // Certo, avalia como verdadeiro
+("blue", false) < ("purple", true)  // Erro porque < não pode comparar valores booleanos
+```
+
+> **Nota**
+>
+> A biblioteca padrão Swift inclui operadores de comparação de tuplas para tuplas com menos de sete elementos. Para comparar tuplas com sete ou mais elementos, você mesmo deve implementar os operadores de comparação.
