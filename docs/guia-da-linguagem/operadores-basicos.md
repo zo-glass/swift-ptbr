@@ -225,3 +225,44 @@ As tuplas podem ser comparadas com um determinado operador somente se o operador
 > **Nota**
 >
 > A biblioteca padrão Swift inclui operadores de comparação de tuplas para tuplas com menos de sete elementos. Para comparar tuplas com sete ou mais elementos, você mesmo deve implementar os operadores de comparação.
+
+### Operador Condicional Ternário
+
+O operador condicional ternário é um operador especial com três partes, que assume a forma `pergunta ? resposta1 : resposta2`. É um atalho para avaliar uma das duas expressões com base em se `pergunta` é `true` ou `false`. Se `pergunta` for verdadeiro, avalia `resposta1` e retorna seu valor; caso contrário, avalia `resposta2` e retorna seu valor.
+
+O operador condicional ternário é um atalho para o código abaixo:
+
+```swift
+if pergunta {
+    resposta1
+} else {
+    resposta2
+}
+```
+
+Aqui está um exemplo, que calcula a altura de uma linha da tabela. A altura da linha deve ser 50 pontos mais alta que a altura do conteúdo se a linha tiver um cabeçalho, e 20 pontos mais alta se a linha não tiver um cabeçalho:
+
+```swift
+let alturaDoConteudo = 40
+let temCabecalho = true
+let alturaDaLinha = alturaDoConteudo + (temCabecalho ? 50 : 20)
+// alturaDaLinha é igual a 90
+```
+
+O exemplo acima é uma abreviação do código abaixo:
+
+```swift
+let alturaDoConteudo = 40
+let temCabecalho = true
+let alturaDaLinha: Int
+if temCabecalho {
+    alturaDaLinha = alturaDoConteudo + 50
+} else {
+    alturaDaLinha = alturaDoConteudo + 20
+}
+// alturaDaLinha é igual a 90
+```
+
+O uso do primeiro exemplo do operador condicional ternário significa que `alturaDaLinha` pode ser definido com o valor correto em uma única linha de código, que é mais conciso do que o código usado no segundo exemplo.
+
+O operador condicional ternário fornece uma abreviação eficiente para decidir qual das duas expressões considerar. No entanto, use o operador condicional ternário com cuidado. Sua concisão pode levar a um código difícil de ler se usado em excesso. Evite combinar várias instâncias do operador condicional ternário em uma instrução composta.
