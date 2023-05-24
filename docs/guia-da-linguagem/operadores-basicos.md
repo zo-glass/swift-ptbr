@@ -266,3 +266,39 @@ if temCabecalho {
 O uso do primeiro exemplo do operador condicional ternário significa que `alturaDaLinha` pode ser definido com o valor correto em uma única linha de código, que é mais conciso do que o código usado no segundo exemplo.
 
 O operador condicional ternário fornece uma abreviação eficiente para decidir qual das duas expressões considerar. No entanto, use o operador condicional ternário com cuidado. Sua concisão pode levar a um código difícil de ler se usado em excesso. Evite combinar várias instâncias do operador condicional ternário em uma instrução composta.
+
+## Nil-Coalescing Operator
+
+O *nil-coalescing operator* (`a ?? b`) desembrulha um opcional `a` se ele contiver um valor, ou retornará um valor padrão `b` se `a` for `nil`. A expressão `a` é sempre de um tipo opcional. A expressão `b` deve corresponder ao tipo armazenado dentro de `a`.
+
+O *nil-coalescing operator* é um atalho para o código abaixo:
+
+```swift
+a != nil ? a! : bs
+```
+
+O código acima usa o operador condicional ternário e o desembrulho forçado (`a!`) para acessar o valor agrupado dentro de `a` quando não `a` é `nil`, e para retornar `b` caso contrário. O *nil-coalescing operator* fornece uma maneira mais elegante de encapsular essa verificação e desembrulho condicional em uma forma concisa e legível.
+
+> **Nota**
+>
+> Se o valor de `a` não for `nil`, o valor de `b` não será avaliado. Isso é conhecido como *short-circuit evaluation*.
+
+O exemplo abaixo usa o *nil-coalescing operator* para escolher entre um nome de cor padrão e um nome de cor opcional definido pelo usuário:
+
+```swift
+let nomeDaCorPadrao = "vermelho"
+var nomeDaCorDefinidaPeloUsuário: String?   // o padrão é nil
+
+var nomeDaCorParaUsar = nomeDaCorDefinidaPeloUsuário ?? nomeDaCorPadrao
+// nomeDaCorDefinidaPeloUsuário é nil, então nomeDaCorParaUsar é definido como o padrão de "vermelho"
+```
+
+A variável `nomeDaCorDefinidaPeloUsuário` é definida como uma `String` opcional, com um valor padrão de `nil`. Como `nomeDaCorDefinidaPeloUsuário` é de um tipo opcional, você pode usar o *nil-coalescing operator* para considerar seu valor. No exemplo acima, o operador é usado para determinar um valor inicial para uma variável `String` chamada `nomeDaCorParaUsar`. Como `nomeDaCorDefinidaPeloUsuário` é `nil`, a expressão `nomeDaCorDefinidaPeloUsuário ?? nomeDaCorPadrao` retorna o valor de `nomeDaCorPadrao`, ou `"vermelho"`.
+
+Se você atribuir um valor não nulo (`nil`) a `nomeDaCorDefinidaPeloUsuário` e executar a verificação do *nil-coalescing operator* novamente, o valor agrupado dentro de `nomeDaCorDefinidaPeloUsuário` será usado em vez do padrão:
+
+```swift
+nomeDaCorDefinidaPeloUsuário = "verde"
+nomeDaCorParaUsar = nomeDaCorDefinidaPeloUsuário ?? nomeDaCorPadrao
+// nomeDaCorDefinidaPeloUsuário não é nil, então nomeDaCorParaUsar é definido como "verde"
+```
