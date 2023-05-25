@@ -302,3 +302,7 @@ nomeDaCorDefinidaPeloUsuário = "verde"
 nomeDaCorParaUsar = nomeDaCorDefinidaPeloUsuário ?? nomeDaCorPadrao
 // nomeDaCorDefinidaPeloUsuário não é nil, então nomeDaCorParaUsar é definido como "verde"
 ```
+
+## Operadores de Intervalo
+
+O Swift inclui vários operadores de intervalo, que são atalhos para expressar um intervalo de valores.
