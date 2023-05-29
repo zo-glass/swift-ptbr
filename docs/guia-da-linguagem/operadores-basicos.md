@@ -306,3 +306,22 @@ nomeDaCorParaUsar = nomeDaCorDefinidaPeloUsuário ?? nomeDaCorPadrao
 ## Operadores de Intervalo
 
 O Swift inclui vários operadores de intervalo, que são atalhos para expressar um intervalo de valores.
+
+### Operador de Intervalo Fechado
+
+O operador de intervalo fechado (`a...b`) define um intervalo que vai de `a` a `b`, e inclui os valores `a` e `b`. O valor de `a` não deve ser maior que `b`.
+
+O operador de intervalo fechado é útil ao iterar em um intervalo no qual você deseja que todos os valores sejam usados, como com um loop `for-in`:
+
+```swift
+for indice in 1...5 {
+    print("\(indice) vezes 5 é \(indice * 5)")
+}
+// 1 vezes 5 é 5
+// 2 vezes 5 é 10
+// 3 vezes 5 é 15
+// 4 vezes 5 é 20
+// 5 vezes 5 é 25
+```
+
+Para obter mais informações sobre loops `for-in`, consulte [Controle de Fluxo](./controle-de-fluxo.md).
