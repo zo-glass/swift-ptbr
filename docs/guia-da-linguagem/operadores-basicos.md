@@ -345,3 +345,41 @@ for i in 0..<contagem {
 ```
 
 Observe que a matriz contém quatro itens, mas `0..<contagem` conta apenas até `3` (o índice do último item do *array*), porque é um intervalo semiaberto. Para saber mais sobre *arrays*, consulte [Arrays](./tipos-de-colecao.md/#arrays).
+
+### Intervalos Unilaterais
+
+O operador de intervalo fechado tem uma forma alternativa para intervalos que continuam o mais longe possível em uma direção — por exemplo, um intervalo que inclui todos os elementos de um *array* do índice 2 até o final do *array*. Nesses casos, você pode omitir o valor de um lado do operador de intervalo. Esse tipo de intervalo é chamado de *one-sided range* porque o operador tem um valor em apenas um lado. Por exemplo:
+
+```swift
+for nome in nomes[2...] {
+    print(nome)
+}
+// Brian
+// Jack
+
+for nome in nomes[...2] {
+    print(nome)
+}
+// Anna
+// Alex
+// Brian
+```
+
+O operador de intervalo semi-aberto também possui uma forma unilateral que é escrita apenas com seu valor final. Assim como quando você inclui um valor em ambos os lados, o valor final não faz parte do intervalo. Por exemplo:
+
+```swift
+for nome in nomes[..<2] {
+    print(nome)
+}
+// Anna
+// Alex
+```
+
+Intervalos unilaterais podem ser usados ​​em outros contextos, não apenas em *subscripts*. Você não pode iterar em um intervalo unilateral que omite um primeiro valor, porque não está claro onde a iteração deve começar. Você pode iterar em um intervalo unilateral que omite seu valor final; no entanto, como o intervalo continua indefinidamente, certifique-se de adicionar uma condição final explícita para o *loop*. Você também pode verificar se um intervalo unilateral contém um valor específico, conforme mostrado no código abaixo.
+
+```swift
+let intervalo = ...5
+intervalo.contains(7)   // false (falso)
+intervalo.contains(4)   // true (verdadeiro)
+intervalo.contains(-1)  // true (verdadeiro)
+```
