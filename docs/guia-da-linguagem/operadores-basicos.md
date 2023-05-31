@@ -330,7 +330,7 @@ Para obter mais informações sobre loops `for-in`, consulte [Controle de Fluxo]
 
 O operador de intervalo semi-aberto (`a..<b`) define um intervalo que vai de `a` a `b`, mas não inclui `b`. Diz-se que está meio aberto porque contém seu primeiro valor, mas não seu valor final. Como no operador de intervalo fechado, o valor de `a` não deve ser maior que `b`. Se o valor de `a` for igual a `b`, o intervalo resultante ficará vazio.
 
-Intervalos entreabertos são particularmente úteis quando você trabalha com arrays baseadas em zero, como arrays, onde é útil contar até (mas não incluir) o comprimento do array:
+Intervalos entreabertos são particularmente úteis quando você trabalha com *arrays* baseadas em zero, como *arrays*, onde é útil contar até (mas não incluir) o comprimento do *array*:
 
 ```swift
 let nomes = ["Anna", "Alex", "Brian", "Jack"]
@@ -344,4 +344,4 @@ for i in 0..<contagem {
 // A pessoa 4 se chama Jack
 ```
 
-Observe que a matriz contém quatro itens, mas `0..<contagem` conta apenas até `3` (o índice do último item do array), porque é um intervalo semiaberto. Para saber mais sobre arrays, consulte [Arrays](./tipos-de-colecao.md/#arrays).
+Observe que a matriz contém quatro itens, mas `0..<contagem` conta apenas até `3` (o índice do último item do *array*), porque é um intervalo semiaberto. Para saber mais sobre *arrays*, consulte [Arrays](./tipos-de-colecao.md/#arrays).
