@@ -383,3 +383,11 @@ intervalo.contains(7)   // false (falso)
 intervalo.contains(4)   // true (verdadeiro)
 intervalo.contains(-1)  // true (verdadeiro)
 ```
+
+## Operadores Lógicos
+
+Os operadores lógicos modificam ou combinam os valores lógicos booleanos `true` e `false`. O Swift suporta os três operadores lógicos padrão encontrados em linguagens baseadas em C:
+
+- Logical NOT (`!a`)
+- Logical AND (`a && b`)
+- Logical OR (`a || b`)
