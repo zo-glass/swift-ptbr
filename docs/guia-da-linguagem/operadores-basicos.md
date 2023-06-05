@@ -391,3 +391,21 @@ Os operadores lógicos modificam ou combinam os valores lógicos booleanos `true
 - Logical NOT (`!a`)
 - Logical AND (`a && b`)
 - Logical OR (`a || b`)
+
+### Operador Lógico NOT
+
+O operador lógico NOT (`!a`) inverte um valor booleano para que `true` se torne `false`, e `false` se torne `true`.
+
+O operador lógico NOT é um operador de prefixo e aparece imediatamente antes do valor em que opera, sem nenhum espaço em branco. Pode ser lido como “não a”, conforme o exemplo a seguir:
+
+```swift
+let permitidoEntrada = false
+if !permitidoEntrada {
+    print("ACESSO NEGADO")
+}
+// Imprime "ACESSO NEGADO"
+```
+
+A frase `if !permitidoEntrada` pode ser lida como “se não for permitida a entrada”. A linha subsequente só é executada se “entrada não permitida” for verdadeira; isto é, se `permitidoEntrada` é `false`.
+
+Como neste exemplo, a escolha cuidadosa de nomes de constantes e variáveis ​​booleanas pode ajudar a manter o código legível e conciso, evitando duplas negativas ou declarações lógicas confusas.
