@@ -409,3 +409,22 @@ if !permitidoEntrada {
 A frase `if !permitidoEntrada` pode ser lida como “se não for permitida a entrada”. A linha subsequente só é executada se “entrada não permitida” for verdadeira; isto é, se `permitidoEntrada` é `false`.
 
 Como neste exemplo, a escolha cuidadosa de nomes de constantes e variáveis ​​booleanas pode ajudar a manter o código legível e conciso, evitando duplas negativas ou declarações lógicas confusas.
+
+### Operador lógico AND
+
+O operador lógico AND (`a && b`) cria expressões lógicas em que ambos os valores devem ser `true` para que a expressão geral também seja `true`.
+
+Se um dos valores for `false`, a expressão geral também será `false`. Na verdade, se o primeiro valor for `false`, o segundo valor nem será avaliado, porque não é possível que a expressão geral seja igual a `true`. Isso é conhecido como `short-circuit evaluation`.
+
+Este exemplo considera dois valores `Bool` e só permite o acesso se ambos os valores forem `true`:
+
+```swift
+let digitadoCodigoDaPorta = true
+let passouNaVarreduraDeRetina = false
+if digitadoCodigoDaPorta && passouNaVarreduraDeRetina {
+    print("Bem-vindo!")
+} else {
+    print("ACESSO NEGADO")
+}
+// Imprime "ACESSO NEGADO"
+```
