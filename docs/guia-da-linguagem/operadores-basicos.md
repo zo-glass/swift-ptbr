@@ -410,7 +410,7 @@ A frase `if !permitidoEntrada` pode ser lida como “se não for permitida a ent
 
 Como neste exemplo, a escolha cuidadosa de nomes de constantes e variáveis ​​booleanas pode ajudar a manter o código legível e conciso, evitando duplas negativas ou declarações lógicas confusas.
 
-### Operador lógico AND
+### Operador Lógico AND
 
 O operador lógico AND (`a && b`) cria expressões lógicas em que ambos os valores devem ser `true` para que a expressão geral também seja `true`.
 
