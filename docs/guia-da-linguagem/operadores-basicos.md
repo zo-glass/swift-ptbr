@@ -428,3 +428,22 @@ if digitadoCodigoDaPorta && passouNaVarreduraDeRetina {
 }
 // Imprime "ACESSO NEGADO"
 ```
+
+### Operador Lógico OR
+
+O operador lógico OR (`a || b`) é um operador infixo feito de dois caracteres de barra vertical (*pipe*) adjacentes. Você o usa para criar expressões lógicas nas quais apenas um dos dois valores deve ser `true` para que a expressão geral seja `true`.
+
+Assim como o operador lógico AND acima, o operador lógico OR usa *short-circuit evaluation* para considerar suas expressões. Se o lado esquerdo de uma expressão lógica OR for `true`, o lado direito não será avaliado, pois não poderá alterar o resultado da expressão geral.
+
+No exemplo abaixo, o primeiro valor `Bool` (`temAChaveDaPorta`) é `false`, mas o segundo valor (`sabeSubstituirASenha`) é `true`. Como um valor é `true`, a expressão geral também é avaliada como `true`, e o acesso é permitido:
+
+```swift
+let temAChaveDaPorta = false
+let sabeSubstituirASenha = true
+if temAChaveDaPorta || sabeSubstituirASenha {
+    print("Bem-vindo!")
+} else {
+    print("ACESSO NEGADO")
+}
+// Imprime "Bem-vindo!"
+```
