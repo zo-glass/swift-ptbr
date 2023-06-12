@@ -447,3 +447,26 @@ if temAChaveDaPorta || sabeSubstituirASenha {
 }
 // Imprime "Bem-vindo!"
 ```
+
+### Combinando Operadores Lógicos
+
+Você pode combinar vários operadores lógicos para criar expressões compostas mais longas:
+
+```swift
+if digitadoCodigoDaPorta && passouNaVarreduraDeRetina || temAChaveDaPorta || sabeSubstituirASenha {
+   print("Bem-vindo!")
+} else {
+    print("ACESSO NEGADO")
+}
+// Imprime "Bem-vindo!"
+```
+
+Este exemplo usa múltiplos `&&` e `||` operadores para criar uma expressão composta mais longa. No entanto, os operadores `&&` e `||` ainda operam em apenas dois valores, portanto, na verdade, são três expressões menores encadeadas. O exemplo pode ser lido como:
+
+Se inserimos o código da porta correto e passamos no exame de retina, ou se tivermos uma chave de porta válida, ou se soubermos a senha de cancelamento de emergência, permita o acesso.
+
+Com base nos valores de `digitadoCodigoDaPorta`, `passouNaVarreduraDeRetina` e `temAChaveDaPorta`, as duas primeiras subexpressões são `false`. No entanto, a senha de substituição de emergência é conhecida, portanto, a expressão composta geral ainda é avaliada como `true`.
+
+> **Nota**
+>
+> Os operadores lógicos do Swift `&&` e `||` são associativas à esquerda, o que significa que expressões compostas com vários operadores lógicos avaliam primeiro a subexpressão mais à esquerda.
