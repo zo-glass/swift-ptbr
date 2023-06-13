@@ -470,3 +470,24 @@ Com base nos valores de `digitadoCodigoDaPorta`, `passouNaVarreduraDeRetina` e `
 > **Nota**
 >
 > Os operadores lógicos do Swift `&&` e `||` são associativas à esquerda, o que significa que expressões compostas com vários operadores lógicos avaliam primeiro a subexpressão mais à esquerda.
+
+### Parênteses Explícitos
+
+Às vezes é útil incluir parênteses quando eles não são estritamente necessários, para facilitar a leitura da intenção de uma expressão complexa. No exemplo de acesso à porta acima, é útil adicionar parênteses ao redor da primeira parte da expressão composta para tornar sua intenção explícita:
+
+```swift
+if (digitadoCodigoDaPorta && passouNaVarreduraDeRetina) || temAChaveDaPorta || sabeSubstituirASenha {
+   print("Bem-vindo!")
+} else {
+    print("ACESSO NEGADO")
+}
+// Imprime "Bem-vindo!"
+```
+
+Os parênteses deixam claro que os dois primeiros valores são considerados como parte de um estado possível separado na lógica geral. A saída da expressão composta não muda, mas a intenção geral é mais clara para o leitor. A legibilidade é sempre preferida à brevidade; use parênteses onde eles ajudam a deixar suas intenções claras.
+
+> Software beta
+>
+> Esta documentação contém informações preliminares sobre uma API ou tecnologia em desenvolvimento. Essas informações estão sujeitas a alterações e o software implementado de acordo com esta documentação deve ser testado com o software do sistema operacional final.
+>
+> Saiba mais sobre como usar o [software beta da Apple](https://developer.apple.com/support/beta-software/).
