@@ -16,6 +16,18 @@ Apesar dessa simplicidade de sintaxe, o tipo `String` do Swift é uma implementa
 >
 > Para obter mais informações sobre o uso de `String` com Foundation e Cocoa, consulte [Bridging Between String and NSString](https://developer.apple.com/documentation/swift/string#2919514).
 
+## Literais de String
+
+Você pode incluir valores de `String` predefinidos em seu código como literais de *string*. Um literal de *string* é uma sequência de caracteres cercada por aspas duplas (`"`).
+
+Use um literal de *string* como valor inicial para uma constante ou variável:
+
+```swift
+let algumaString = "Algum valor literal de string"
+```
+
+Observe que o Swift infere um tipo de `String `para a constante `algumaString` porque ela é inicializada com um valor literal de string.
+
 ## Armazene e manipule texto.
 
 ## Interpolação de String
