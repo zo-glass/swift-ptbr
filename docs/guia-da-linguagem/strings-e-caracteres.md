@@ -28,6 +28,58 @@ let algumaString = "Algum valor literal de string"
 
 Observe que o Swift infere um tipo de `String `para a constante `algumaString` porque ela é inicializada com um valor literal de string.
 
+### Literais de String Multilinhas
+
+Se você precisa de uma *string* que abrange várias linhas, use um literal de *string* multilinhas - uma sequência de caracteres cercada por três aspas duplas:
+
+```swift
+let citação = """
+O Coelho Branco colocou seus óculos. "Por onde devo começar,
+por favor, Majestade?" ele perguntou.
+
+"Comece pelo começo", disse o Rei gravemente, "e continue
+até chegar ao fim; então pare."
+"""
+```
+
+Um literal de *string* multilinhas inclui todas as linhas entre suas aspas de abertura e fechamento. A *string* começa na primeira linha após as aspas de abertura (`"""`) e termina na linha anterior às aspas de fechamento, o que significa que nenhuma das *strings* abaixo começa ou termina com uma quebra de linha:
+
+```swift
+let stringEmUmaLinha = "Estas são as mesmas."
+let stringMultilinhas = """
+Estas são as mesmas.
+"""
+```
+
+Quando seu código-fonte inclui uma quebra de linha dentro de um literal de *string* multilinhas, essa quebra de linha também aparece no valor da *string*. Se você quiser usar quebras de linha para tornar seu código-fonte mais legível, mas não quiser que as quebras de linha façam parte do valor da *string*, escreva uma barra invertida (`\`) no final dessas linhas:
+
+```swift
+let citaçãoComQuebrasSuaves = """
+O Coelho Branco colocou seus óculos. "Por onde devo começar, \
+por favor, Majestade?" ele perguntou.
+
+"Comece pelo começo", disse o Rei gravemente, "e continue \
+até chegar ao fim; então pare."
+"""
+```
+
+Para criar um literal de *string* multilinhas que começa ou termina com uma alimentação de linha, escreva uma linha em branco como a primeira ou última linha. Por exemplo:
+
+```swift
+let quebraDeLinha = """
+
+Esta string começa com uma quebra de linha.
+Ela também termina com uma quebra de linha.
+
+"""
+```
+
+Uma *string* multilinhas pode ser recuada para combinar com o código circundante. O espaço em branco antes das aspas de fechamento (`"""`) informa ao Swift qual espaço em branco ignorar antes de todas as outras linhas. No entanto, se você escrever espaço em branco no início de uma linha, além do que está antes das aspas de fechamento, esse espaço em branco será incluído.
+
+![multilineStringWhitespace~dark@2x.png (1038×258)](https://docs.swift.org/swift-book/images/multilineStringWhitespace~dark@2x.png)
+
+No exemplo acima, mesmo que todo o literal de *string* multilinhas esteja recuado, as primeiras e últimas linhas da *string* não começam com nenhum espaço em branco. A linha do meio tem mais recuo do que as aspas de fechamento, então ela começa com esse recuo extra de quatro espaços.
+
 ## Armazene e manipule texto.
 
 ## Interpolação de String
