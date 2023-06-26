@@ -82,4 +82,32 @@ Uma *string* multilinhas pode ser recuada para combinar com o código circundant
 
 No exemplo acima, mesmo que todo o literal de *string* multilinhas esteja recuado, as primeiras e últimas linhas da *string* não começam com nenhum espaço em branco. A linha do meio tem mais recuo do que as aspas de fechamento, então ela começa com esse recuo extra de quatro espaços.
 
+### Caracteres Especiais em Literais de String
+
+Literais de *string* podem incluir os seguintes caracteres especiais:
+
+- Os caracteres especiais escapados `\0` (caractere nulo), `\\` (barra invertida), `\t` (tabulação horizontal), `\n` (quebra de linha), `\r` (retorno de carro), `\"` (aspas duplas) e `\'` (aspas simples)
+- Um valor escalar Unicode arbitrário, escrito como `\u{`*n*`}`, onde *n* é um número hexadecimal de 1 a 8 dígitos (Unicode é discutido em [Unicode](#unicode) abaixo)
+
+O código abaixo mostra quatro exemplos desses caracteres especiais. A constante `palavrasSabias` contém duas aspas duplas escapadas. As constantes dollarSign, blackHeart e sparklingHeart demonstram o formato escalar Unicode:
+
+```swift
+let palavrasSabias = "\"A imaginação é mais importante que o conhecimento\" - Einstein"
+// "A imaginação é mais importante que o conhecimento" - Einstein
+let cifrao = "\u{24}" // $, Escalar Unicode U+0024
+let coracaoPreto = "\u{2665}" // ♥, Escalar Unicode U+2665
+let coracaoBrilhante = "\u{1F496}" // 💖, Escalar Unicode U+1F496
+```
+
+Como literais de *string* multilinha usam três aspas duplas em vez de apenas uma, você pode incluir uma aspa dupla (`"`) dentro de um literal de *string* multilinha sem escapá-la. Para incluir o texto `"""` em uma *string* multilinha, escape pelo menos uma das aspas. Por exemplo:
+
+```swift
+let tresAspasDuplas = """
+Escapando a primeira aspa dupla \"""
+Escapando todas as três aspas duplas \"\"\"
+"""
+```
+
 ## Interpolação de String
+
+## Unicode
