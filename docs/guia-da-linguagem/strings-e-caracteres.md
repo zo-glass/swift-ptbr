@@ -108,6 +108,20 @@ Escapando todas as três aspas duplas \"\"\"
 """
 ```
 
+### Delimitadores Estendidos de String
+
+Você pode colocar uma *string* literal dentro de delimitadores estendidos para incluir caracteres especiais em uma *string* sem invocar seu efeito. Você coloca sua *string* entre aspas (`"`) e envolve isso com sinais de número (`#`). Por exemplo, imprimir a *string* literal `#"Linha 1\nLinha 2"#` imprime a sequência de escape de quebra de linha (`\n`) em vez de imprimir a *string* em duas linhas.
+
+Se você precisar dos efeitos especiais de um caractere em uma *string* literal, combine o número de sinais de número dentro da *string* seguindo o caractere de escape (`\`). Por exemplo, se sua *string* for `#"Linha 1\nLinha 2"#` e você quiser quebrar a linha, você pode usar `#"Linha 1\#nLinha 2"#` em vez disso. Da mesma forma, `###"Linha1\###nLinha2"###` também quebra a linha.
+
+As literais de *string* criadas usando delimitadores estendidos também podem ser literais de *string* de várias linhas. Você pode usar delimitadores estendidos para incluir o texto `"""` em uma *string* de várias linhas, substituindo o comportamento padrão que encerra a literal. Por exemplo:
+
+```swift
+let tresAspasDuplasAdicionais = #"""
+Aqui estão mais três aspas duplas: """
+"""#
+```
+
 ## Interpolação de String
 
 ## Unicode
