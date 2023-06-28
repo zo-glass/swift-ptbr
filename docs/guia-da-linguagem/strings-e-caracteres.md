@@ -122,6 +122,25 @@ Aqui estão mais três aspas duplas: """
 """#
 ```
 
+## Inicializando uma String Vazia
+
+Para criar um valor de `String` vazio como ponto de partida para construir uma *string* mais longa, você pode atribuir uma *string* vazia a uma variável ou inicializar uma nova instância de `String` com a sintaxe de inicializador:
+
+```swift
+var stringVazia = ""               // literal de string vazia
+var outraStringVazia = String()  // sintaxe de inicializador
+// essas duas strings estão ambas vazias e são equivalentes uma à outra
+```
+
+Descubra se um valor de `String` está vazio verificando sua propriedade Booleana `isEmpty`:
+
+```swift
+if stringVazia.isEmpty {
+    print("Nada para ver aqui")
+}
+// Imprime "Nada para ver aqui"
+```
+
 ## Interpolação de String
 
 ## Unicode
