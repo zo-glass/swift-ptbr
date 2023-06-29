@@ -141,6 +141,24 @@ if stringVazia.isEmpty {
 // Imprime "Nada para ver aqui"
 ```
 
+## Mutabilidade de Strings
+
+Você indica se uma determinada `String` pode ser modificada (ou mutada) atribuindo-a a uma variável (nesse caso, ela pode ser modificada) ou a uma constante (nesse caso, ela não pode ser modificada):
+
+```swift
+var stringVariavel = "Cavalo"
+stringVariavel += " e carruagem"
+// stringVariavel agora é "Cavalo e carruagem"
+
+let stringConstante = "Highlander"
+stringConstante += " e outro Highlander"
+// isso gera um erro de compilação - uma string constante não pode ser modificada
+```
+
+> **Nota**
+>
+> Essa abordagem é diferente da mutação de *strings* em Objective-C e Cocoa, onde você escolhe entre duas classes (`NSString` e `NSMutableString`) para indicar se uma string pode ser mutada.
+
 ## Interpolação de String
 
 ## Unicode
