@@ -159,6 +159,14 @@ stringConstante += " e outro Highlander"
 >
 > Essa abordagem é diferente da mutação de *strings* em Objective-C e Cocoa, onde você escolhe entre duas classes (`NSString` e `NSMutableString`) para indicar se uma string pode ser mutada.
 
+## As Strings são tipos de valor
+
+O tipo `String` do Swift é um tipo de valor. Se você criar um novo valor de `String`, esse valor de `String` será copiado quando for passado para uma função ou método, ou quando for atribuído a uma constante ou variável. Em cada caso, uma nova cópia do valor de `String` existente é criada e a nova cópia é passada ou atribuída, não a versão original. Tipos de valor são descritos em [Estruturas e Enumerações São Tipos de Valor](./estruturas-e-classes.md/#estruturas-e-enumerações-são-tipos-de-valor).
+
+O comportamento padrão de cópia de `String` do Swift garante que, quando uma função ou método lhe passa um valor de `String`, fica claro que você possui exatamente aquele valor de `String`, independentemente de onde ele tenha vindo. Você pode ter a certeza de que a *string* passada não será modificada a menos que você a modifique.
+
+Nos bastidores, o compilador do Swift otimiza o uso de *strings* para que a cópia real ocorra apenas quando absolutamente necessário. Isso significa que você sempre obtém um ótimo desempenho ao trabalhar com *strings* como tipos de valor.
+
 ## Interpolação de String
 
 ## Unicode
