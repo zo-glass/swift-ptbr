@@ -167,6 +167,38 @@ O comportamento padrão de cópia de `String` do Swift garante que, quando uma f
 
 Nos bastidores, o compilador do Swift otimiza o uso de *strings* para que a cópia real ocorra apenas quando absolutamente necessário. Isso significa que você sempre obtém um ótimo desempenho ao trabalhar com *strings* como tipos de valor.
 
+## Trabalhando com caracteres
+
+Você pode acessar os valores individuais de `Character` de uma `string` iterando sobre a *string* com um loop for-in:
+
+```swift
+for caractere in "Cão!🐶" {
+    print(caractere)
+}
+// C
+// ã
+// o
+// !
+// 🐶
+```
+
+O loop for-in é descrito em [Loops For-In](./controle-de-fluxo.md/#loops-for-in).
+
+Alternativamente, você pode criar uma constante ou variável autônoma do tipo `Character` a partir de um literal de *string* de um único caractere, fornecendo uma anotação de tipo `Character`:
+
+```swift
+let pontoDeExclamacao: Character = "!"
+```
+
+Valores de `String` podem ser construídos passando um *array* de valores de `Character` como argumento para seu inicializador:
+
+```swift
+let caracteresDeGato: [Character] = ["G", "a", "t", "o", "!", "🐱"]
+let stringDeGato = String(caracteresDeGato)
+print(stringDeGato)
+// Imprime "Gato!🐱"
+```
+
 ## Interpolação de String
 
 ## Unicode
