@@ -199,6 +199,67 @@ print(stringDeGato)
 // Imprime "Gato!🐱"
 ```
 
+## Concatenando Strings e Caracteres
+
+Valores de `String` podem ser adicionados juntos (ou concatenados) usando o operador de adição (`+`) para criar um novo valor de `String`:
+
+```swift
+let string1 = "olá"
+let string2 = " pessoal"
+var bemVindo = string1 + string2
+// bemVindo agora é igual a "olá pessoal"
+```
+
+Você também pode anexar um valor de `String` a uma variável de `String` existente usando o operador de atribuição de adição (`+=`):
+
+```swift
+var instrucao = "Olhem para cima"
+instrucao += string2
+// instrucao agora é igual a "Olhem para cima pessoal"
+```
+
+Você pode anexar um valor de `Caractere` a uma variável de `String` usando o método `append()` do tipo `String`:
+
+```swift
+let pontoDeExclamacao: Character = "!"
+bemVindo.append(pontoDeExclamacao)
+// bemVindo agora é igual a "olá pessoal!"
+```
+
+> **Nota**
+>
+> Você não pode anexar uma `String` ou `Character` a uma variável de `Character` existente, pois um valor de `Character` deve conter apenas um único caractere.
+
+Se você estiver usando literais de *string* em várias linhas para construir as linhas de uma *string* mais longa, você deseja que cada linha na *string* termine com uma quebra de linha, incluindo a última linha. Por exemplo:
+
+```swift
+let mauComeco = """
+    um
+    dois
+    """
+let fim = """
+    três
+    """
+print(mauComeco + fim)
+// Imprime duas linhas:
+// um
+// doistrês
+
+
+let bomComeco = """
+    um
+    dois
+
+    """
+print(bomComeco + fim)
+// Imprime três linhas:
+// um
+// dois
+// três
+```
+
+No código acima, a concatenação de `mauComeco` com `fim` produz uma *string* de duas linhas, o que não é o resultado desejado. Como a última linha de `mauComeco` não termina com uma quebra de linha, essa linha é combinada com a primeira linha de `fim`. Em contraste, ambas as linhas de `bomComeco` terminam com uma quebra de linha, portanto, quando ela é combinada com `fim`, o resultado possui três linhas, conforme esperado.
+
 ## Interpolação de String
 
 ## Unicode
