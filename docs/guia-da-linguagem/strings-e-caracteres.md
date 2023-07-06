@@ -262,4 +262,34 @@ No código acima, a concatenação de `mauComeco` com `fim` produz uma *string* 
 
 ## Interpolação de String
 
+A interpolação de *string* é uma maneira de construir um novo valor de `String` a partir de uma mistura de constantes, variáveis, literais e expressões, incluindo seus valores dentro de um literal de *string*. Você pode usar a interpolação de *string* tanto em literais de *string* de uma linha quanto em várias linhas. Cada item que você insere no literal de *string* é envolto em um par de parênteses, prefixado por uma barra invertida (`\`):
+
+```swift
+let multiplicador = 3
+let mensagem = "\(multiplicador) vezes 2.5 é \(Double(multiplicador) * 2.5)"
+// mensagem é "3 vezes 2.5 é 7.5"
+```
+
+No exemplo acima, o valor de `multiplicador` é inserido em um literal de *string* como `\(multiplicador)`. Esse marcador de posição é substituído pelo valor real de `multiplicador` quando a interpolação de *string* é avaliada para criar uma *string* real.
+
+O valor de `multiplicador` também faz parte de uma expressão maior posteriormente na *string*. Essa expressão calcula o valor de `Double(multiplicador) * 2.5` e insere o resultado (`7.5`) na *string*. Nesse caso, a expressão é escrita como `\(Double(multiplicador) * 2.5)` quando ela é incluída dentro do literal de *string*.
+
+Você pode usar delimitadores de *string* estendidos para criar *strings* contendo caracteres que, de outra forma, seriam tratados como uma interpolação de *string*. Por exemplo:
+
+```swift
+print(#"Escreva uma string interpolada em Swift usando \(multiplicador)."#)
+// Imprime "Escreva uma string interpolada em Swift usando \(multiplicador)."
+```
+
+Para usar interpolação de *string* dentro de uma *string* que usa delimitadores estendidos, faça com que o número de sinais de número após a barra invertida corresponda ao número de sinais de número no início e no final da *string*. Por exemplo:
+
+```swift
+print(#"6 vezes 7 é \#(6 * 7)."#)
+// Imprime "6 vezes 7 é 42."
+```
+
+> **Nota**
+>
+> As expressões que você escreve entre parênteses dentro de uma *string* interpolada não podem conter uma barra invertida (`\`), um retorno de carro ou uma quebra de linha não escapados. No entanto, elas podem conter outros literais de *string*.
+
 ## Unicode
