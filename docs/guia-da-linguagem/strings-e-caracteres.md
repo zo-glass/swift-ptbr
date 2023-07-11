@@ -295,3 +295,9 @@ print(#"6 vezes 7 é \#(6 * 7)."#)
 ## Unicode
 
 O Unicode é um padrão internacional para codificar, representar e processar texto em diferentes sistemas de escrita. Ele permite representar quase qualquer caractere de qualquer idioma em uma forma padronizada, além de ler e escrever esses caracteres a partir de uma fonte externa, como um arquivo de texto ou página da *web*. Os tipos `String` e `Character` do Swift são totalmente compatíveis com o Unicode, conforme descrito nesta seção.
+
+### Valores Escalares Unicode
+
+Nos bastidores, o tipo `String` nativo do Swift é construído a partir de valores escalares Unicode. Um valor escalar Unicode é um número de 21 *bits* exclusivo para um caractere ou modificador, como `U+0061` para `LATIN SMALL LETTER A` (`"a"`), ou `U+1F425` para `FRONT-FACING BABY CHICK` (`"🐥"`).
+
+Observe que nem todos os valores escalares Unicode de 21 bits são atribuídos a um caractere - alguns escalares são reservados para atribuições futuras ou para uso na codificação UTF-16. Valores escalares que foram atribuídos a um caractere geralmente também possuem um nome, como `LATIN SMALL LETTER A` e `FRONT-FACING BABY CHICK` nos exemplos acima.
