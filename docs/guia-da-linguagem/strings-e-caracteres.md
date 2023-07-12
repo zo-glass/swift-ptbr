@@ -301,3 +301,39 @@ O Unicode é um padrão internacional para codificar, representar e processar te
 Nos bastidores, o tipo `String` nativo do Swift é construído a partir de valores escalares Unicode. Um valor escalar Unicode é um número de 21 *bits* exclusivo para um caractere ou modificador, como `U+0061` para `LATIN SMALL LETTER A` (`"a"`), ou `U+1F425` para `FRONT-FACING BABY CHICK` (`"🐥"`).
 
 Observe que nem todos os valores escalares Unicode de 21 bits são atribuídos a um caractere - alguns escalares são reservados para atribuições futuras ou para uso na codificação UTF-16. Valores escalares que foram atribuídos a um caractere geralmente também possuem um nome, como `LATIN SMALL LETTER A` e `FRONT-FACING BABY CHICK` nos exemplos acima.
+
+### Conjuntos de Grafemas Estendidos
+
+Cada instância do tipo `Character` em Swift representa um único conjunto de grafemas estendidos. Um conjunto de grafemas estendidos é uma sequência de um ou mais escalares Unicode que, quando combinados, produzem um único caractere legível por humanos.
+
+Aqui está um exemplo. A letra `é` pode ser representada pelo único escalar Unicode `é`(`LATIN SMALL LETTER E WITH ACUTE`, ou `U+00E9`). No entanto, a mesma letra também pode ser representada por um par de escalares - uma letra `e` padrão (`LATIN SMALL LETTER E`, ou `U+0065`), seguida pelo escalar `COMBINING ACUTE ACCENT` (`U+0301`). O escalar `COMBINING ACUTE ACCENT` é aplicado graficamente ao escalar que o precede, transformando um `e` em um `é` quando é renderizado por um sistema de renderização de texto com suporte a Unicode.
+
+Em ambos os casos, a letra `é` é representada como um único valor `Character` em Swift que representa um conjunto de grafemas estendidos. No primeiro caso, o conjunto contém um único escalar; no segundo caso, é um conjunto de dois escalares:
+
+```swift
+let eAgudo: Character = "\u{E9}" // é
+let eAgudoCombinado: Character = "\u{65}\u{301}" // e seguido por  ́
+// eAgudo é é, eAgudoCombinado é é
+```
+
+Conjuntos de grafemas estendidos são uma forma flexível de representar muitos caracteres complexos de scripts como um único valor `Character`. Por exemplo, sílabas Hangul do alfabeto coreano podem ser representadas como uma sequência pré-composta ou decomposta. Ambas essas representações se qualificam como um único valor `Character` em Swift:
+
+```swift
+let pré-composto: Character = "\u{D55C}"                  // 한
+let descomposto: Character = "\u{1112}\u{1161}\u{11AB}"   // ᄒ, ᅡ, ᆫ
+// pré-composto é 한, descomposto é 한
+```
+
+Conjuntos de grafemas estendidos permitem que escalares de marcas de fechamento (como `COMBINING ENCLOSING CIRCLE`, ou `U+20DD`) fechem outros escalares Unicode como parte de um único valor `Character`:
+
+```swift
+let eAgudoEnclausurado: Character = "\u{E9}\u{20DD}"
+// eAgudoEnclausurado é é⃝
+```
+
+Escalares Unicode para símbolos indicadores regionais podem ser combinados em pares para formar um único valor `Character`, como essa combinação de `REGIONAL INDICATOR SYMBOL LETTER U` (`U+1F1FA`) e `REGIONAL INDICATOR SYMBOL LETTER S` (`U+1F1F8`):
+
+```swift
+let indicadorRegionalParaEUA: Character = "\u{1F1FA}\u{1F1F8}"
+// indicadorRegionalParaEUA é 🇺🇸
+```
