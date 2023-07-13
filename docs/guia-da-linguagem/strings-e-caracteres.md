@@ -337,3 +337,34 @@ Escalares Unicode para símbolos indicadores regionais podem ser combinados em p
 let indicadorRegionalParaEUA: Character = "\u{1F1FA}\u{1F1F8}"
 // indicadorRegionalParaEUA é 🇺🇸
 ```
+
+## Contando Caracteres
+
+Para obter a contagem dos valores de `Character` em uma *string*, use a propriedade "count" da *string*:
+
+```swift
+let menagerieIncomum = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+print("menagerieIncomum tem \(menagerieIncomum.count) caracteres")
+// Imprime "unusualMenagerie tem 40 caracteres"
+```
+
+Observe que o uso de agrupamentos de grafemas estendidos do Swift para valores de `Character` significa que a concatenação e a modificação de *strings* nem sempre afetam a contagem de caracteres da *string*.
+
+Por exemplo, se você inicializar uma nova *string* com a palavra `cafe` de quatro caracteres e, em seguida, anexar um `COMBINING ACUTE ACCENT` (`U+0301`) ao final da *string*, a *string* resultante ainda terá uma contagem de caracteres de 4, com o quarto caractere sendo `é`, não `e`:
+
+```swift
+var palavra = "cafe"
+print("o número de caracteres em \(palavra) é \(palavra.count)")
+// Imprime "o número de caracteres em cafe é 4"
+
+palavra += "\u{301}"    // COMBINING ACUTE ACCENT, U+0301
+
+print("o número de caracteres em \(palavra) é \(palavra.count)")
+// Imprime "o número de caracteres em café é 4"
+```
+
+> **Nota**
+>
+> Os agrupamentos de grafemas estendidos podem ser compostos por vários escalares Unicode. Isso significa que diferentes caracteres - e diferentes representações do mesmo caractere - podem exigir quantidades diferentes de memória para armazenar. Por causa disso, os caracteres no Swift não ocupam cada um a mesma quantidade de memória dentro da representação de uma *string*. Como resultado, o número de caracteres em uma *string* não pode ser calculado sem iterar pela *string* para determinar os limites dos agrupamentos de grafemas estendidos. Se você estiver trabalhando com valores de *string* especialmente longos, esteja ciente de que a propriedade `count` deve iterar sobre os escalares Unicode em toda a *string* para determinar os caracteres dessa *string*.
+>
+> A contagem dos caracteres retornada pela propriedade `count` nem sempre é a mesma que a propriedade `length` de um `NSString` que contém os mesmos caracteres. O comprimento de um `NSString` é baseado no número de unidades de código de 16 bits na representação UTF-16 da *string* e não no número de agrupamentos de grafemas estendidos Unicode na *string*.
