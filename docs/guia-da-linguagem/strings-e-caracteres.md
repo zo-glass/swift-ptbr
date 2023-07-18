@@ -368,3 +368,7 @@ print("o número de caracteres em \(palavra) é \(palavra.count)")
 > Os agrupamentos de grafemas estendidos podem ser compostos por vários escalares Unicode. Isso significa que diferentes caracteres - e diferentes representações do mesmo caractere - podem exigir quantidades diferentes de memória para armazenar. Por causa disso, os caracteres no Swift não ocupam cada um a mesma quantidade de memória dentro da representação de uma *string*. Como resultado, o número de caracteres em uma *string* não pode ser calculado sem iterar pela *string* para determinar os limites dos agrupamentos de grafemas estendidos. Se você estiver trabalhando com valores de *string* especialmente longos, esteja ciente de que a propriedade `count` deve iterar sobre os escalares Unicode em toda a *string* para determinar os caracteres dessa *string*.
 >
 > A contagem dos caracteres retornada pela propriedade `count` nem sempre é a mesma que a propriedade `length` de um `NSString` que contém os mesmos caracteres. O comprimento de um `NSString` é baseado no número de unidades de código de 16 bits na representação UTF-16 da *string* e não no número de agrupamentos de grafemas estendidos Unicode na *string*.
+
+## Acessando e Modificando uma String
+
+Você acessa e modifica uma string por meio de seus métodos e propriedades, ou usando a sintaxe de subscrito.
