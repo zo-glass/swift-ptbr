@@ -372,3 +372,48 @@ print("o número de caracteres em \(palavra) é \(palavra.count)")
 ## Acessando e Modificando uma String
 
 Você acessa e modifica uma string por meio de seus métodos e propriedades, ou usando a sintaxe de subscrito.
+
+### Índices de String
+
+Cada valor de `String` tem um tipo de índice associado, `String.Index`, que corresponde à posição de cada `Character` na *string*.
+
+Conforme mencionado acima, diferentes caracteres podem exigir quantidades diferentes de memória para serem armazenados, portanto, para determinar qual `Character` está em uma posição específica, é necessário iterar sobre cada escalar Unicode a partir do início ou do final da `String`. Por esse motivo, as *strings* em Swift não podem ser indexadas por valores inteiros.
+
+Use a propriedade `startIndex` para acessar a posição do primeiro `Character` de uma `String`. A propriedade `endIndex` é a posição após o último caractere em uma `String`. Como resultado, a propriedade `endIndex` não é um argumento válido para um subscrito de *string*. Se uma `String` estiver vazia, `startIndex` e `endIndex` serão iguais.
+
+Você pode acessar os índices antes e depois de um índice específico usando os métodos `index(before:)` e `index(after:)` da `String`. Para acessar um índice mais distante do índice dado, você pode usar o método `index(_:offsetBy:)` em vez de chamar um desses métodos várias vezes.
+
+Você pode usar a sintaxe de subscrito para acessar o `Character` em um índice específico da `String`.
+
+```swift
+let saudacao = "Guten Tag!"
+saudacao[saudacao.startIndex]
+// G
+saudacao[saudacao.index(before: saudacao.endIndex)]
+// !
+saudacao[saudacao.index(after: saudacao.startIndex)]
+// u
+let index = saudacao.index(saudacao.startIndex, offsetBy: 7)
+saudacao[index]
+// a
+```
+
+Tentar acessar um índice fora do intervalo de uma *string* ou um `Character` em um índice fora do intervalo de uma *string* acionará um erro em tempo de execução.
+
+```swift
+saudacao[saudacao.endIndex] // Error
+saudacao.index(after: saudacao.endIndex) // Error
+```
+
+Use a propriedade `indices` para acessar todos os índices dos caracteres individuais em uma *string*.
+
+```swift
+for indice in saudacao.indices {
+    print("\(saudacao[indice]) ", terminator: "")
+}
+// Imprime "G u t e n   T a g ! "
+```
+
+> **Nota**
+>
+> Você pode usar as propriedades `startIndex` e `endIndex` e os métodos `index(before:)`, `index(after:)` e `index(_:offsetBy:)` em qualquer tipo que esteja em conformidade com o protocolo `Collection`. Isso inclui `String`, como mostrado aqui, bem como tipos de coleção como `Array`, `Dictionary` e `Set`.
