@@ -417,3 +417,31 @@ for indice in saudacao.indices {
 > **Nota**
 >
 > Você pode usar as propriedades `startIndex` e `endIndex` e os métodos `index(before:)`, `index(after:)` e `index(_:offsetBy:)` em qualquer tipo que esteja em conformidade com o protocolo `Collection`. Isso inclui `String`, como mostrado aqui, bem como tipos de coleção como `Array`, `Dictionary` e `Set`.
+
+### Inserindo e Removendo
+
+Para inserir um único caractere em uma *string* em um índice específico, use o método `insert(_:at:)`, e para inserir o conteúdo de outra *string* em um índice específico, use o método `insert(contentsOf:at:)`.
+
+```swift
+var bemVindo = "olá"
+bemVindo.insert("!", at: bemVindo.endIndex)
+// bemVindo agora é igual a "olá!"
+
+bemVindo.insert(contentsOf: " pessoal", at: bemVindo.index(before: bemVindo.endIndex))
+// bemVindo agora é igual a "olá pessoal!"
+```
+
+Para remover um único caractere de uma *string* em um índice específico, use o método `remove(at:)`, e para remover uma *substring* em um intervalo específico, use o método `removeSubrange(_:)`.
+
+```swift
+bemVindo.remove(at: bemVindo.index(before: bemVindo.endIndex))
+// agora bemVindo é igual a "olá pessoal"
+
+let intervalo = bemVindo.index(bemVindo.endIndex, offsetBy: -8)..<bemVindo.endIndex
+bemVindo.removeSubrange(intervalo)
+// agora bemVindo é igual a "olá"
+```
+
+> **Nota**
+>
+> Você pode usar os métodos `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, e `removeSubrange(_:)` em qualquer tipo que esteja em conformidade com o protocolo `RangeReplaceableCollection`. Isso inclui a `String`, como mostrado aqui, bem como tipos de coleção como `Array`, `Dictionary` e `Set`.
