@@ -445,3 +445,28 @@ bemVindo.removeSubrange(intervalo)
 > **Nota**
 >
 > Você pode usar os métodos `insert(_:at:)`, `insert(contentsOf:at:)`, `remove(at:)`, e `removeSubrange(_:)` em qualquer tipo que esteja em conformidade com o protocolo `RangeReplaceableCollection`. Isso inclui a `String`, como mostrado aqui, bem como tipos de coleção como `Array`, `Dictionary` e `Set`.
+
+## Substrings
+
+Quando você obtém uma *substring* de uma *string* — por exemplo, usando um subscrito ou um método como `prefix(_:)` — o resultado é uma instância de [Substring](https://developer.apple.com/documentation/swift/substring), e não outra *string*. *Substrings* em Swift possuem a maioria dos mesmos métodos que as *strings*, o que significa que você pode trabalhar com elas da mesma forma que trabalha com *strings*. No entanto, ao contrário das *strings*, você usa *substrings* apenas por um curto período de tempo enquanto realiza ações em uma *string*. Quando estiver pronto para armazenar o resultado por um período mais longo, você converte a subcadeia em uma instância de `String`. Por exemplo:
+
+```swift
+let saudacao = "Olá, mundo!"
+let indice = saudacao.firstIndex(of: ",") ?? saudacao.endIndex
+let comeco = saudacao[..<indice]
+// inicio é "Olá"
+
+
+// CConverta o resultado para String para armazenamento de longo prazo.
+let novaString = String(comeco)
+```
+
+Como *strings*, cada *substring* tem uma região de memória onde os caracteres que compõem a *substring* são armazenados. A diferença entre *strings* e *substrings* é que, como uma otimização de desempenho, uma *substring* pode reutilizar parte da memória que é usada para armazenar a *string* original ou parte da memória que é usada para armazenar outra *substring*. (As *strings* têm uma otimização semelhante, mas se duas *strings* compartilham memória, elas são iguais.) Essa otimização de desempenho significa que você não precisa pagar o custo de desempenho de copiar memória até que você modifique a *string* ou *substring*. Como mencionado acima, as *substrings* não são adequadas para armazenamento de longo prazo — porque elas reutilizam o armazenamento da *string* original, a *string* original inteira deve ser mantida na memória enquanto qualquer uma de suas *substrings* estiver sendo usada.
+
+No exemplo acima, `saudacao` é uma *string*, o que significa que possui uma região de memória onde os caracteres que compõem a *string* são armazenados. Como `comeco` é uma *substring* de `saudacao`, ela reutiliza a memória que `saudacao` usa. Em contraste, `novaString` é uma *string* - quando é criada a partir da *substring*, ela tem seu próprio espaço de armazenamento. A figura abaixo mostra essas relações:
+
+![stringSubstring](https://docs.swift.org/swift-book/images/stringSubstring~dark@2x.png)
+
+> **Nota**
+>
+> Tanto a `String` quanto a `Substring` estão em conformidade com o protocolo [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol), o que significa que é frequentemente conveniente para funções de manipulação de *strings* aceitarem um valor do tipo `StringProtocol`. Você pode chamar essas funções com um valor de `String` ou `Substring`.
