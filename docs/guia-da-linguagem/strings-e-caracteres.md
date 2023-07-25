@@ -470,3 +470,7 @@ No exemplo acima, `saudacao` é uma *string*, o que significa que possui uma reg
 > **Nota**
 >
 > Tanto a `String` quanto a `Substring` estão em conformidade com o protocolo [StringProtocol](https://developer.apple.com/documentation/swift/stringprotocol), o que significa que é frequentemente conveniente para funções de manipulação de *strings* aceitarem um valor do tipo `StringProtocol`. Você pode chamar essas funções com um valor de `String` ou `Substring`.
+
+## Comparando Strings
+
+Swift fornece três maneiras de comparar valores textuais: igualdade de *strings* e caracteres, igualdade de prefixo e igualdade de sufixo.
