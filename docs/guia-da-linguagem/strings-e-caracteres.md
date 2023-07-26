@@ -474,3 +474,55 @@ No exemplo acima, `saudacao` é uma *string*, o que significa que possui uma reg
 ## Comparando Strings
 
 Swift fornece três maneiras de comparar valores textuais: igualdade de *strings* e caracteres, igualdade de prefixo e igualdade de sufixo.
+
+### Igualdade de Strings e Caracteres
+
+A igualdade de *strings* e caracteres é verificada com o operador "igual a" (`==`) e o operador "diferente de" (`!=`), conforme descrito em [Operadores de Comparação](./operadores-basicos.md/#operadores-de-comparação):
+
+```swift
+let citacao = "Nós somos muito parecidos, você e eu."
+let mesmaCitacao = "Nós somos muito parecidos, você e eu."
+if citacao == mesmaCitacao {
+    print("Essas duas strings são consideradas iguais")
+}
+// Imprime "Essas duas strings são consideradas iguais"
+```
+
+Dois valores de `String` (ou dois valores de `Character`) são considerados iguais se os seus aglomerados de grafemas estendidos forem canonicamente equivalentes. Os aglomerados de grafemas estendidos são canonicamente equivalentes se tiverem o mesmo significado linguístico e aparência, mesmo que sejam compostos por diferentes caracteres Unicode nos bastidores.
+
+
+Por exemplo, `LATIN SMALL LETTER E WITH ACUTE` (`U+00E9`) é canonicamente equivalente a `LATIN SMALL LETTER E` (`U+0065`) seguido por `COMBINING ACUTE ACCENT` (`U+0301`). Ambos esses aglomerados de grafemas estendidos são formas válidas de representar o caractere `é`, sendo assim considerados canonicamente equivalentes:
+
+```swift
+// "Voulez-vous un café?" usando LATIN SMALL LETTER E WITH ACUTE
+let questaoEAgudo = "Voulez-vous un caf\u{E9}?"
+
+
+// "Voulez-vous un café?" usando LATIN SMALL LETTER E e COMBINING ACUTE ACCENT
+let questaoEAgudoCombinado = "Voulez-vous un caf\u{65}\u{301}?"
+
+
+if questaoEAgudo == questaoEAgudoCombinado {
+    print("Essas duas strings são consideradas iguais")
+}
+// Imprime "Essas duas strings são consideradas iguais"
+```
+
+Por outro lado, `LATIN CAPITAL LETTER A` (`U+0041`, ou `"A"`), usado em inglês, não é equivalente a `CYRILLIC CAPITAL LETTER A` (`U+0410`, ou `"А"`), usado em russo. Os caracteres são visualmente semelhantes, mas não possuem o mesmo significado linguístico:
+
+```swift
+let letraAMaiusculaLatina: Character = "\u{41}"
+
+
+let letraAMaiusculaCirilica: Character = "\u{0410}"
+
+
+if letraAMaiusculaLatina != letraAMaiusculaCirilica {
+    print("Esses dois caracteres não são equivalentes.")
+}
+// Imprime "Esses dois caracteres não são equivalentes."
+```
+
+> **Nota**
+>
+> As comparações de *strings* e caracteres em Swift não são sensíveis a localidade.
