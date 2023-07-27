@@ -526,3 +526,58 @@ if letraAMaiusculaLatina != letraAMaiusculaCirilica {
 > **Nota**
 >
 > As comparações de *strings* e caracteres em Swift não são sensíveis a localidade.
+
+### Igualdade de Prefixo e Sufixo
+
+Para verificar se uma *string* tem um determinado prefixo ou sufixo, chame os métodos `hasPrefix(_:)` e `hasSuffix(_:)` da *string*, ambos os quais recebem um único argumento do tipo `String` e retornam um valor `Boolean`.
+
+Os exemplos abaixo consideram um *array* de *strings* representando os locais das cenas dos dois primeiros atos de Romeu e Julieta, de Shakespeare:
+
+```swift
+let romeoAndJuliet = [
+    "Act 1 Scene 1: Verona, A public place",
+    "Act 1 Scene 2: Capulet's mansion",
+    "Act 1 Scene 3: A room in Capulet's mansion",
+    "Act 1 Scene 4: A street outside Capulet's mansion",
+    "Act 1 Scene 5: The Great Hall in Capulet's mansion",
+    "Act 2 Scene 1: Outside Capulet's mansion",
+    "Act 2 Scene 2: Capulet's orchard",
+    "Act 2 Scene 3: Outside Friar Lawrence's cell",
+    "Act 2 Scene 4: A street in Verona",
+    "Act 2 Scene 5: Capulet's mansion",
+    "Act 2 Scene 6: Friar Lawrence's cell"
+]
+```
+
+Você pode usar o método `hasPrefix(_:)` com o *array* `romeoAndJuliet` para contar o número de cenas no Ato 1 da peça:
+
+```swift
+var act1SceneCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasPrefix("Act 1 ") {
+        act1SceneCount += 1
+    }
+}
+print("There are \(act1SceneCount) scenes in Act 1")
+// Prints "There are 5 scenes in Act 1"
+```
+
+Da mesma forma, use o método `hasSuffix(_:)` para contar o número de cenas que ocorrem na mansão dos Capuletos e na cela do Frei Lourenço:
+
+```swift
+var mansionCount = 0
+var cellCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasSuffix("Capulet's mansion") {
+        mansionCount += 1
+    } else if scene.hasSuffix("Friar Lawrence's cell") {
+        cellCount += 1
+    }
+}
+print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
+// Prints "6 mansion scenes; 2 cell scenes"
+```
+
+> **Nota**
+>
+> Os métodos `hasPrefix(_:)` e `hasSuffix(_:)` realizam uma comparação de equivalência canônica caractere por caractere entre os agrupamentos de grafemas estendidos em cada *string*, conforme descrito em [Igualdade de Strings e Caracteres](#igualdade-de-strings-e-caracteres).
