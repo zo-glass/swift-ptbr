@@ -581,3 +581,22 @@ print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 > **Nota**
 >
 > Os métodos `hasPrefix(_:)` e `hasSuffix(_:)` realizam uma comparação de equivalência canônica caractere por caractere entre os agrupamentos de grafemas estendidos em cada *string*, conforme descrito em [Igualdade de Strings e Caracteres](#igualdade-de-strings-e-caracteres).
+
+## Representações Unicode de Strings
+
+Quando uma *string* Unicode é escrita em um arquivo de texto ou em algum outro tipo de armazenamento, os escalares Unicode nessa *string* são codificados em uma das várias formas de codificação definidas pela Unicode. Cada forma codifica a *string* em pequenos blocos conhecidos como *code units*. Estas incluem a forma de codificação UTF-8 (que codifica uma *string* como *8-bit code units*), a forma de codificação UTF-16 (que codifica uma *string* como *16-bit code units*) e a forma de codificação UTF-32 (que codifica uma *string* como *32-bit code units*).
+
+O Swift fornece várias maneiras diferentes de acessar as representações Unicode de *strings*. Você pode iterar sobre a *string* com um loop *for-in*, para acessar seus valores de `Character` individuais como aglomerados de grafemas estendidos Unicode. Esse processo é descrito em [Trabalhando com Caracteres](#trabalhando-com-caracteres).
+
+
+Alternativamente, acesse um valor de `String` em uma das três outras representações compatíveis com Unicode:
+
+- Uma coleção de *code units* UTF-8 (acessada através da propriedade `utf8` da *string*)
+- Uma coleção de *code units* UTF-16 (acessada através da propriedade `utf16` da *string*)
+- Uma coleção de valores de escalares Unicode de 21 bits, equivalentes à forma de codificação UTF-32 da *string* (acessada através da propriedade `unicodeScalars` da *string*)
+
+Cada exemplo abaixo mostra uma representação diferente da seguinte *string*, que é composta pelos caracteres `D`, `o`, `g`, `‼` (`DOUBLE EXCLAMATION MARK`, ou escalar Unicode `U+203C`) e o caractere 🐶 (`DOG FACE`, ou escalar Unicode `U+1F436`):
+
+```swift
+let dogString = "Dog‼🐶"
+```
