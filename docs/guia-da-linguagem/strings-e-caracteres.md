@@ -600,3 +600,19 @@ Cada exemplo abaixo mostra uma representação diferente da seguinte *string*, q
 ```swift
 let dogString = "Dog‼🐶"
 ```
+
+### Representação UTF-8
+
+Você pode acessar uma representação UTF-8 de uma `String` iterando sobre sua propriedade utf8. Essa propriedade é do tipo `String.UTF8View`, que é uma coleção de valores de *unsigned* 8 bits (`UInt8`), um para cada byte na representação UTF-8 da *string*:
+
+![UTF8](https://docs.swift.org/swift-book/images/UTF8~dark@2x.png)
+
+```swift
+for codeUnit in dogString.utf8 {
+    print("\(codeUnit) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 226 128 188 240 159 144 182 "
+```
+
+No exemplo acima, os três primeiros valores decimais `codeUnit` (`68`, `111`, `103`) representam os caracteres `D`, `o` e `g`, cuja representação UTF-8 é a mesma que sua representação ASCII. Os três próximos valores decimais `codeUnit` (`226`, `128`, `188`) são uma representação UTF-8 de três bytes do caractere `DOUBLE EXCLAMATION MARK`. Os últimos quatro valores `codeUnit` (`240`, `159`, `144`, `182`) são uma representação UTF-8 de quatro bytes do caractere `DOG FACE`.
