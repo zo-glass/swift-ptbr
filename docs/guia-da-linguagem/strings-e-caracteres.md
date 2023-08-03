@@ -616,3 +616,23 @@ print("")
 ```
 
 No exemplo acima, os três primeiros valores decimais `codeUnit` (`68`, `111`, `103`) representam os caracteres `D`, `o` e `g`, cuja representação UTF-8 é a mesma que sua representação ASCII. Os três próximos valores decimais `codeUnit` (`226`, `128`, `188`) são uma representação UTF-8 de três bytes do caractere `DOUBLE EXCLAMATION MARK`. Os últimos quatro valores `codeUnit` (`240`, `159`, `144`, `182`) são uma representação UTF-8 de quatro bytes do caractere `DOG FACE`.
+
+### Representação UTF-16
+
+Você pode acessar uma representação UTF-16 de uma `String` iterando sobre sua propriedade `utf16`. Essa propriedade é do tipo `String.UTF16View`, que é uma coleção de valores de 16 bits não assinados (`UInt16`), um para cada unidade de código de 16 bits na representação UTF-16 da *string*:
+
+![UTF16](https://docs.swift.org/swift-book/images/UTF16~dark@2x.png)
+
+```swift
+for codeUnit in dogString.utf16 {
+    print("\(codeUnit) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 8252 55357 56374 "
+```
+
+Novamente, os três primeiros valores de `codeUnit` (`68`, `111`, `103`) representam os caracteres `D`, `o` e `g`, cujas unidades de código UTF-16 têm os mesmos valores da representação UTF-8 da string (porque esses escalares Unicode representam caracteres ASCII).
+
+O quarto valor de `codeUnit` (`8252`) é o equivalente decimal do valor hexadecimal `203C`, que representa o escalar Unicode `U+203C` para o caractere `DOUBLE EXCLAMATION MARK`. Esse caractere pode ser representado como uma única unidade de código em UTF-16.
+
+Os quinto e sexto valores de `codeUnit` (`55357` e `56374`) são uma representação de par substituto UTF-16 do caractere `DOG FACE`. Esses valores são um valor *high-surrogate* de `U+D83D` (valor decimal `55357`) e o valor *low-surrogate* de `U+DC36` (valor decimal `56374`).
