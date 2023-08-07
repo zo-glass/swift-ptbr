@@ -636,3 +636,44 @@ Novamente, os três primeiros valores de `codeUnit` (`68`, `111`, `103`) represe
 O quarto valor de `codeUnit` (`8252`) é o equivalente decimal do valor hexadecimal `203C`, que representa o escalar Unicode `U+203C` para o caractere `DOUBLE EXCLAMATION MARK`. Esse caractere pode ser representado como uma única unidade de código em UTF-16.
 
 Os quinto e sexto valores de `codeUnit` (`55357` e `56374`) são uma representação de par substituto UTF-16 do caractere `DOG FACE`. Esses valores são um valor *high-surrogate* de `U+D83D` (valor decimal `55357`) e o valor *low-surrogate* de `U+DC36` (valor decimal `56374`).
+
+### Representação Escalar Unicode
+
+Você pode acessar uma representação escalar Unicode de um valor de `String` iterando sobre a propriedade `unicodeScalars`. Essa propriedade é do tipo `UnicodeScalarView`, que é uma coleção de valores do tipo `UnicodeScalar`.
+
+Cada `UnicodeScalar` possui uma propriedade `value` que retorna o valor de 21 *bits* do escalar, representado como um valor `UInt32`.
+
+![UnicodeScalar](https://docs.swift.org/swift-book/images/UnicodeScalar~dark@2x.png)
+
+```swift
+for scalar in dogString.unicodeScalars {
+    print("\(scalar.value) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 8252 128054 "
+```
+
+As propriedades `value` para os três primeiros valores `UnicodeScalar` (`68`, `111`, `103`) mais uma vez representam os caracteres `D`, `o` e `g`.
+
+O quarto valor `codeUnit` (`8252`) é novamente um equivalente decimal do valor hexadecimal `203C`, que representa o escalar Unicode `U+203C` para o caractere `DOUBLE EXCLAMATION MARK`.
+
+A propriedade `value` do quinto e último `UnicodeScalar`, `128054`, é o equivalente decimal do valor hexadecimal `1F436`, que representa o código Unicode `U+1F436` para o caractere `DOG FACE`.
+
+Como alternativa para consultar suas propriedades `value`, cada valor `UnicodeScalar` também pode ser usado para construir um novo valor de `String`, como por meio de interpolação de *strings*:
+
+```swift
+for scalar in dogString.unicodeScalars {
+    print("\(scalar) ")
+}
+// D
+// o
+// g
+// ‼
+// 🐶
+```
+
+> Software Beta
+>
+> Esta documentação contém informações preliminares sobre uma API ou tecnologia em desenvolvimento. Essas informações estão sujeitas a alterações e o *software* implementado de acordo com esta documentação deve ser testado com o *software* final do sistema operacional.
+>
+> Saiba mais sobre o uso do [software beta da Apple](https://developer.apple.com/support/beta-software/).
