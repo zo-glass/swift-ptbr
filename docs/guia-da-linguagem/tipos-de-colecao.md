@@ -25,3 +25,11 @@ Se você cria um *array*, um *set* ou um dicionário, e o atribui a uma variáve
 > É uma boa prática criar coleções imutáveis em todos os casos em que a coleção não precisa ser alterada. Fazer isso torna mais fácil para você entender o seu código e permite que o compilador Swift otimize o desempenho das coleções que você cria.
 
 ## Arrays
+
+Um *array* armazena valores do mesmo tipo em uma lista ordenada. O mesmo valor pode aparecer várias vezes em um *array* em posições diferentes.
+
+> **Nota**
+>
+> O tipo `Array` do Swift é conectado à classe `NSArray` da Foundation.
+>
+> Para obter mais informações sobre o uso de `Array` com a Foundation e o Cocoa, consulte a seção [Ponte entre Array e NSArray](https://developer.apple.com/documentation/swift/array#2846730).
