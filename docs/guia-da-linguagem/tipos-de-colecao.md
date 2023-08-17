@@ -33,3 +33,7 @@ Um *array* armazena valores do mesmo tipo em uma lista ordenada. O mesmo valor p
 > O tipo `Array` do Swift é conectado à classe `NSArray` da Foundation.
 >
 > Para obter mais informações sobre o uso de `Array` com a Foundation e o Cocoa, consulte a seção [Ponte entre Array e NSArray](https://developer.apple.com/documentation/swift/array#2846730).
+
+### Sintaxe abreviada do tipo Array
+
+O tipo de um *array* em Swift é escrito completamente como `Array<Element>`, onde `Element` é o tipo de valores que o *array* pode armazenar. Você também pode escrever o tipo de um *array* de forma abreviada como `[Element]`. Embora as duas formas sejam funcionalmente idênticas, a forma abreviada é preferida e é utilizada ao longo deste guia ao se referir ao tipo de um *array*.
