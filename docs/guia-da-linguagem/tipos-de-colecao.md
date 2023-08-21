@@ -37,3 +37,24 @@ Um *array* armazena valores do mesmo tipo em uma lista ordenada. O mesmo valor p
 ### Sintaxe abreviada do tipo Array
 
 O tipo de um *array* em Swift é escrito completamente como `Array<Element>`, onde `Element` é o tipo de valores que o *array* pode armazenar. Você também pode escrever o tipo de um *array* de forma abreviada como `[Element]`. Embora as duas formas sejam funcionalmente idênticas, a forma abreviada é preferida e é utilizada ao longo deste guia ao se referir ao tipo de um *array*.
+
+### Criando um Array Vazio
+
+Você pode criar um *array* vazio de um certo tipo usando a sintaxe do inicializador:
+
+```swift
+var algunsInts: [Int] = []
+print("algunsInts é do tipo [Int] com \(algunsInts.count) itens.")
+// Imprime "algunsInts é do tipo [Int] com 0 itens."
+```
+
+Note que o tipo da variável `algunsInts` é inferido como `[Int]` a partir do tipo do inicializador.
+
+Alternativamente, se o contexto já fornecer informações de tipo, como um argumento de função ou uma variável ou constante já tipada, você pode criar um *array* vazio com um literal de *array* vazio, que é escrito como `[]` (um par de colchetes vazios):
+
+```swift
+algunsInts.append(3)
+// algunsInts agora contém 1 valor do tipo Int
+algunsInts = []
+// algunsInts agora é um array vazio, mas ainda é do tipo [Int]
+```
