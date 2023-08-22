@@ -58,3 +58,12 @@ algunsInts.append(3)
 algunsInts = []
 // algunsInts agora é um array vazio, mas ainda é do tipo [Int]
 ```
+
+### Criando um Array com um Valor Padrão
+
+O tipo `Array` em Swift também oferece um inicializador para criar um *array* de um determinado tamanho com todos os seus valores definidos para o mesmo valor padrão. Você passa para esse inicializador um valor padrão do tipo apropriado (chamado de `repeating`): e o número de vezes que esse valor se repete no novo *array* (chamado de `count`):
+
+```swift
+var tresDoubles = Array(repeating: 0.0, count: 3)
+// tresDoubles é do tipo [Double], e é igual a [0.0, 0.0, 0.0]
+```
