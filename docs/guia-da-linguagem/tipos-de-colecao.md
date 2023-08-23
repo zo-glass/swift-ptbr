@@ -67,3 +67,15 @@ O tipo `Array` em Swift também oferece um inicializador para criar um *array* d
 var tresDoubles = Array(repeating: 0.0, count: 3)
 // tresDoubles é do tipo [Double], e é igual a [0.0, 0.0, 0.0]
 ```
+
+### Criando um Array ao Adicionar Dois Arrays Juntos
+
+Você pode criar um novo *array* ao adicionar dois *arrays* existentes com tipos compatíveis usando o operador de adição (`+`). O tipo do novo *array* é inferido a partir do tipo dos dois *arrays* que você adiciona juntos:
+
+```swift
+var outroTresDoubles = Array(repeating: 2.5, count: 3)
+// outroTresDoubles é do tipo [Double] e igual a [2.5, 2.5, 2.5]
+
+var seisDoubles = tresDoubles + outroTresDoubles
+// seisDoubles é inferido como [Double] e igual a [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]
+```
