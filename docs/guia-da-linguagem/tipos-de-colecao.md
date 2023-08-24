@@ -79,3 +79,34 @@ var outroTresDoubles = Array(repeating: 2.5, count: 3)
 var seisDoubles = tresDoubles + outroTresDoubles
 // seisDoubles é inferido como [Double] e igual a [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]
 ```
+
+### Criando um Array com um Literal de Array
+
+Você também pode inicializar um *array* com um literal de *array*, que é uma forma abreviada de escrever um ou mais valores como uma coleção de *array*. Um literal de *array* é escrito como uma lista de valores, separados por vírgulas, cercados por um par de colchetes:
+
+```swift
+[<#value 1#>, <#value 2#>, <#value 3#>]
+```
+
+O exemplo abaixo cria um *array* chamado `listaDeCompras` para armazenar valores do tipo `String`:
+
+```swift
+var listaDeCompras: [String] = ["Ovos", "Leite"]
+// listaDeCompras foi inicializada com dois itens iniciais
+```
+
+A variável `listaDeCompras` é declarada como "um *array* de valores de string", escrito como `[String]`. Como este *array* específico especificou um tipo de valor como `String`, ele só pode armazenar valores do tipo `String`. Aqui, o array `listaDeCompras` é inicializado com dois valores de `String` (`"Eggs"` e `"Milk"`), escritos dentro de um literal de *array*.
+
+> **Nota**
+>
+> O *array* `listaDeCompras` é declarado como uma variável (com o introduzido `var`) e não como uma constante (com o introduzido `let`), pois mais itens são adicionados à lista de compras nos exemplos a seguir.
+
+Neste caso, o literal de *array* contém dois valores do tipo `String` e nada mais. Isso corresponde ao tipo declarado da variável `listaDeCompras` (um *array* que só pode conter valores do tipo `String`), e, portanto, a atribuição do literal de *array* é permitida como uma maneira de inicializar `listaDeCompras` com dois itens iniciais.
+
+Graças à inferência de tipo do Swift, você não precisa escrever o tipo do *array* se estiver inicializando-o com um literal de *array* contendo valores do mesmo tipo. A inicialização de `listaDeCompras` poderia ter sido escrita de forma mais curta:
+
+```swift
+var listaDeCompras = ["Ovos", "Leite"]
+```
+
+Como todos os valores no literal de *array* são do mesmo tipo, o Swift pode inferir que `[String]` é o tipo correto a ser usado para a variável `listaDeCompras`.
