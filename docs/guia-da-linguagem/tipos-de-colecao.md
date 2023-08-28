@@ -110,3 +110,108 @@ var listaDeCompras = ["Ovos", "Leite"]
 ```
 
 Como todos os valores no literal de *array* são do mesmo tipo, o Swift pode inferir que `[String]` é o tipo correto a ser usado para a variável `listaDeCompras`.
+
+### Acessando e Modificando um Array
+
+Você acessa e modifica um *array* através de seus métodos e propriedades, ou usando a sintaxe de subscrito.
+
+Para descobrir o número de itens em um *array*, verifique sua propriedade de contagem somente leitura:
+
+```swift
+print("A lista de compras contém \(listaDeCompras.count) itens.")
+// Imprime "A lista de compras contém 2 itens."
+```
+
+Use a propriedade Booleana `isEmpty` como atalho para verificar se a propriedade `count` é igual a `0`:
+
+```swift
+if listaDeCompras.isEmpty {
+    print("A lista de compras está vazia.")
+} else {
+    print("A lista de compras não está vazia.")
+}
+// Imprime "A lista de compras não está vazia."
+```
+
+Você pode adicionar um novo item ao final de um *array* chamando o método `append(_:)` do array:
+
+```swift
+listaDeCompras.append("Farinha")
+// Agora a lista de compras contém 3 itens, e alguém está fazendo panquecas
+```
+
+Alternativamente, adicione um *array* de um ou mais itens compatíveis usando o operador de atribuição de adição (`+=`):
+
+```swift
+listaDeCompras += ["Fermento em Pó"]
+// Agora a lista de compras contém 4 itens
+listaDeCompras += ["Creme de Chocolate", "Queijo", "Manteiga"]
+// Agora a lista de compras contém 7 itens
+```
+
+Recupere um valor do *array* usando a sintaxe de subscrito, passando o índice do valor que você deseja obter dentro de colchetes imediatamente após o nome do *array*:
+
+```swift
+var primeiroItem = listaDeCompras[0]
+// primeiroItem é igual a "Ovos"
+```
+
+> **Nota**
+>
+> O primeiro item no *array* tem um índice `0`, não `1`. *Arrays* em Swift sempre têm índices começando em zero.
+
+Você pode usar a sintaxe de subscrito para alterar um valor existente em um índice específico:
+
+```swift
+listaDeCompras[0] = "Seis ovos"
+// o primeiro item na lista agora é igual a "Seis ovos" em vez de "Ovos"
+```
+
+Quando você usa a sintaxe de subscrito, o índice que você especifica precisa ser válido. Por exemplo, escrever `listaDeCompras[listaDeCompras.count] = "Sal"` para tentar adicionar um item ao final do *array* resulta em um erro de tempo de execução.
+
+Você também pode usar a sintaxe de subscrito para alterar um intervalo de valores de uma vez, mesmo que o conjunto de valores de substituição tenha um comprimento diferente do intervalo que você está substituindo. O exemplo a seguir substitui `"Creme de Chocolate"`, `"Queijo"` e `"Manteiga"` por `"Bananas"` e `"Maçãs"`:
+
+```swift
+listaDeCompras[4...6] = ["Bananas", "Maçãs"]
+// Agora a lista de compras contém 6 itens
+```
+
+Para inserir um item no *array* em um índice especificado, chame o método `insert(_:at:)` do *array*:
+
+```swift
+listaDeCompras.insert("Xarope de Bordo", at: 0)
+// Agora a lista de compras contém 7 itens
+// "Xarope de Bordo" agora é o primeiro item na lista
+```
+
+Essa chamada ao método `insert(_:at:)` insere um novo item com o valor `"Xarope de Bordo"` no início da lista de compras, indicado por um índice `0`.
+
+Da mesma forma, você remove um item do *array* com o método `remove(at:)`. Esse método remove o item no índice especificado e retorna o item removido (embora você possa ignorar o valor retornado se não precisar dele):
+
+```swift
+let xaropeDeBordo = listaDeCompras.remove(at: 0)
+// o item que estava no índice 0 acabou de ser removido
+// agora a lista de compras contém 6 itens, e nenhum Xarope de Bordo
+// a constante xaropeDeBordo agora é igual à string "Xarope de Bordo" removida
+```
+
+> **Nota**
+>
+> Se você tentar acessar ou modificar um valor de um índice que está fora dos limites existentes de um *array*, você irá provocar um erro de tempo de execução. Você pode verificar se um índice é válido antes de usá-lo comparando-o com a propriedade `count` do *array*. O maior índice válido em um *array* é `count - 1` porque os *arrays* têm índices a partir de zero - no entanto, quando count é `0` (significando que o *array* está vazio), não existem índices válidos.
+
+
+Quaisquer lacunas em um *array* são fechadas quando um item é removido, e assim o valor no índice `0` mais uma vez é igual a `"Seis ovos"`:
+
+```swift
+primeiroItem = listaDeCompras[0]
+// primeiroItem agora é igual a "Seis ovos"
+```
+
+Se você quiser remover o último item de um *array*, use o método `removeLast()` em vez do método `remove(at:)` para evitar a necessidade de consultar a propriedade `count` do *array*. Assim como o método `remove(at:)`, o `removeLast()` retorna o item removido:
+
+```swift
+let macas = listaDeCompras.removeLast()
+// o último item no array acabou de ser removido
+// agora a lista de compras contém 5 itens, e nenhuma maçã
+// a constante macas agora é igual à string "Maçãs" removida
+```
