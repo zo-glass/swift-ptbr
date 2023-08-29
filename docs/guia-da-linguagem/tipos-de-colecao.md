@@ -215,3 +215,33 @@ let macas = listaDeCompras.removeLast()
 // agora a lista de compras contém 5 itens, e nenhuma maçã
 // a constante macas agora é igual à string "Maçãs" removida
 ```
+
+### Iterando sobre um Array
+
+Você pode iterar sobre o conjunto completo de valores em um *array* com o *loop* `for-in`:
+
+```swift
+for item in listaDeCompras {
+    print(item)
+}
+// Seis ovos
+// Leite
+// Farinha
+// Fermento em pó
+// Bananas
+```
+
+Se você precisa do índice inteiro de cada elemento, bem como o seu valor, utilize o método `enumerated()` para iterar sobre o *array*. Para cada elemento no *array*, o método `enumerated()` retorna uma tupla composta por um inteiro e o elemento. Os inteiros começam em zero e contam de um em um para cada elemento; se você percorrer todo o *array*, esses inteiros correspondem aos índices dos elementos. Você pode decompor a tupla em constantes ou variáveis temporárias como parte da iteração:
+
+```swift
+for (indice, valor) in listaDeCompras.enumerated() {
+    print("Item \(indice + 1): \(valor)")
+}
+// Item 1: Seis ovos
+// Item 2: Leite
+// Item 3: Farinha
+// Item 4: Fermento em pó
+// Item 5: Bananas
+```
+
+Para mais informações sobre o *loop* `for-in`, consulte [Loops For-In](./controle-de-fluxo.md/#loops-for-in).
