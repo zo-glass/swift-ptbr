@@ -95,7 +95,7 @@ var listaDeCompras: [String] = ["Ovos", "Leite"]
 // listaDeCompras foi inicializada com dois itens iniciais
 ```
 
-A variável `listaDeCompras` é declarada como "um *array* de valores de string", escrito como `[String]`. Como este *array* específico especificou um tipo de valor como `String`, ele só pode armazenar valores do tipo `String`. Aqui, o array `listaDeCompras` é inicializado com dois valores de `String` (`"Eggs"` e `"Milk"`), escritos dentro de um literal de *array*.
+A variável `listaDeCompras` é declarada como "um *array* de valores de string", escrito como `[String]`. Como este *array* específico especificou um tipo de valor como `String`, ele só pode armazenar valores do tipo `String`. Aqui, o array `listaDeCompras` é inicializado com dois valores de `String` (`"Ovos"` e `"Leite"`), escritos dentro de um literal de *array*.
 
 > **Nota**
 >
