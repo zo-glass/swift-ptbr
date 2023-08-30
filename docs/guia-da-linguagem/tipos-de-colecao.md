@@ -245,3 +245,13 @@ for (indice, valor) in listaDeCompras.enumerated() {
 ```
 
 Para mais informações sobre o *loop* `for-in`, consulte [Loops For-In](./controle-de-fluxo.md/#loops-for-in).
+
+## Sets
+
+Um *set* armazena valores distintos do mesmo tipo em uma coleção sem uma ordem definida. Você pode usar um *set* em vez de um *array* quando a ordem dos itens não é importante, ou quando você precisa garantir que um item apareça apenas uma vez.
+
+> **Nota**
+>
+> O tipo `Set` em Swift é conectado à classe `NSSet` da Foundation.
+>
+> Para mais informações sobre como usar `Set` com a Foundation e o Cocoa, consulte [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530).
