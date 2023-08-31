@@ -255,3 +255,13 @@ Um *set* armazena valores distintos do mesmo tipo em uma coleção sem uma ordem
 > O tipo `Set` em Swift é conectado à classe `NSSet` da Foundation.
 >
 > Para mais informações sobre como usar `Set` com a Foundation e o Cocoa, consulte [Bridging Between Set and NSSet](https://developer.apple.com/documentation/swift/set#2845530).
+
+### Valores de Hash para Tipos de Set
+
+Um tipo precisa ser *hashable* para ser armazenado em um *set* — ou seja, o tipo deve fornecer uma maneira de calcular um valor de *hash* para si mesmo. Um valor de *hash* é um valor `Int` que é o mesmo para todos os objetos que se comparam de maneira igual, de forma que se `a == b`, o valor de *hash* de `a` é igual ao valor de *hash* de `b`.
+
+Todos os tipos básicos de Swift (como `String`, `Int`, `Double` e `Bool`) são *hashable* por padrão, e podem ser usados como tipos de valor de *set* ou tipos de chave de dicionário. *Enumeration case values* sem valores associados (conforme descrito em [Enumerações](./enumeracoes.md)) também são *hashable* por padrão.
+
+> **Nota**
+>
+> Você pode usar seus próprios tipos personalizados como tipos de valor de *set* ou tipos de chave de dicionário ao fazê-los seguir o protocolo `Hashable` da biblioteca padrão do Swift. Para obter informações sobre a implementação do método exigido `hash(into:)`, consulte [Hashable](https://developer.apple.com/documentation/swift/hashable). Para informações sobre como conformar-se a protocolos, consulte [Protocols](./protocolos.md).
