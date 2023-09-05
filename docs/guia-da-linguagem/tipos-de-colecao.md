@@ -265,3 +265,7 @@ Todos os tipos básicos de Swift (como `String`, `Int`, `Double` e `Bool`) são 
 > **Nota**
 >
 > Você pode usar seus próprios tipos personalizados como tipos de valor de *set* ou tipos de chave de dicionário ao fazê-los seguir o protocolo `Hashable` da biblioteca padrão do Swift. Para obter informações sobre a implementação do método exigido `hash(into:)`, consulte [Hashable](https://developer.apple.com/documentation/swift/hashable). Para informações sobre como conformar-se a protocolos, consulte [Protocols](./protocolos.md).
+
+### Sintaxe de Tipo de Set
+
+O tipo de um *set* em Swift é escrito como `Set<Element>`, onde `Element` é o tipo que o *set* está autorizado a armazenar. Ao contrário de *arrays*, *sets* não possuem uma forma abreviada equivalente.
