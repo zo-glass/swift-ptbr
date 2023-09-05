@@ -269,3 +269,26 @@ Todos os tipos básicos de Swift (como `String`, `Int`, `Double` e `Bool`) são 
 ### Sintaxe de Tipo de Set
 
 O tipo de um *set* em Swift é escrito como `Set<Element>`, onde `Element` é o tipo que o *set* está autorizado a armazenar. Ao contrário de *arrays*, *sets* não possuem uma forma abreviada equivalente.
+
+### Criando e Inicializando um Set Vazio
+
+Você pode criar um *set* vazio de um certo tipo usando a sintaxe de inicialização:
+
+```swift
+var letras = Set<Character>()
+print("letras é do tipo Set<Character> com \(letras.count) itens.")
+// Imprime "letras é do tipo Set<Character> com 0 itens."
+```
+
+> **Nota**
+>
+> O tipo da variável `letras` é inferido como `Set<Character>`, a partir do tipo do inicializador.
+
+Alternativamente, se o contexto já fornecer informações de tipo, como um argumento de função ou uma variável ou constante já tipada, você pode criar um *set* vazio com um literal de *array* vazio:
+
+```swift
+letras.insert("a")
+// letras agora contém 1 valor do tipo Character
+letras = []
+// letras agora é um set vazio, mas ainda é do tipo Set<Character>
+```
