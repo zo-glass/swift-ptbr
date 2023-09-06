@@ -292,3 +292,28 @@ letras.insert("a")
 letras = []
 // letras agora é um set vazio, mas ainda é do tipo Set<Character>
 ```
+
+### Criando um Set com um Literal de Array
+
+Você também pode inicializar um *set* com um literal de *array*, como uma forma abreviada de escrever um ou mais valores como uma coleção de *set*.
+
+O exemplo abaixo cria um *set* chamado `generosFavoritos` para armazenar valores do tipo `String`:
+
+```swift
+var generosFavoritos: Set<String> = ["Rock", "Clássica", "Hip hop"]
+// generosFavoritos foi inicializado com três itens iniciais
+```
+
+A variável `generosFavoritos` é declarada como "um *set* de valores `String`", escrito como `Set<String>`. Porque este *set* específico especificou um tipo de valor de `String`, ele só pode armazenar valores do tipo `String`. Aqui, o *set* `generosFavoritos` é inicializado com três valores do tipo `String` (`"Rock"`, `"Clássica"` e `"Hip hop"`), escritos dentro de um literal de *array*.
+
+> **Nota**
+>
+> O *set* `generosFavoritos` é declarado como uma variável (usando o introduzidor `var`) e não como uma constante (usando o introduzidor `let`) porque itens são adicionados e removidos nos exemplos a seguir.
+
+O tipo de *set* não pode ser inferido apenas a partir de um literal de *array*, portanto, o tipo `Set` deve ser explicitamente declarado. No entanto, devido à inferência de tipo do Swift, você não precisa escrever o tipo dos elementos do *set* se estiver inicializando-o com um literal de *array* que contém valores de apenas um tipo. A inicialização de `generosFavoritos` poderia ter sido escrita de forma mais curta em vez disso:
+
+```swift
+var generosFavoritos: Set = ["Rock", "Clássica", "Hip hop"]
+```
+
+Como todos os valores no literal da *array* são do mesmo tipo, o Swift pode inferir que `Set<String>` é o tipo correto a ser usado para a variável `generosFavoritos`.
