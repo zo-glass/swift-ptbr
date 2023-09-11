@@ -317,3 +317,54 @@ var generosFavoritos: Set = ["Rock", "Clássica", "Hip hop"]
 ```
 
 Como todos os valores no literal da *array* são do mesmo tipo, o Swift pode inferir que `Set<String>` é o tipo correto a ser usado para a variável `generosFavoritos`.
+
+### Acessando e Modificando um Set
+
+Você acessa e modifica um *set* por meio de seus métodos e propriedades.
+
+Para descobrir o número de itens em um *set*, verifique sua propriedade de somente leitura `count`:
+
+```swift
+print("Eu tenho \(generosFavoritos.count) gêneros de música favoritos.")
+// Imprime "Eu tenho 3 gêneros de música favoritos."
+```
+
+Utilize a propriedade booleana `isEmpty` como um atalho para verificar se a propriedade `count` é igual a `0`:
+
+```swift
+if generosFavoritos.isEmpty {
+    print("No que diz respeito à música, eu não sou exigente.")
+} else {
+    print("Eu tenho preferências musicais específicas.")
+}
+// Imprime "Eu tenho preferências musicais específicas."
+```
+
+Você pode adicionar um novo item a um *set* chamando o método `insert(_:)` do *set*:
+
+```swift
+generosFavoritos.insert("Jazz")
+// generosFavoritos agora contém 4 itens
+```
+
+Você pode remover um item de um *set* chamando o método `remove(_:)` do *set*, que remove o item se ele for um membro do *set* e retorna o valor removido, ou retorna `nil` se o *set* não o continha. Alternativamente, todos os itens em um *set* podem ser removidos com o método `removeAll()`.
+
+```swift
+if let generoRemovido = generosFavoritos.remove("Rock") {
+    print("\(generoRemovido)? Já superei.")
+} else {
+    print("Nunca liguei muito para isso.")
+}
+// Imprime "Rock? Já superei."
+```
+
+Para verificar se um *set* contém um item específico, utilize o método `contains(_:)`.
+
+```swift
+if generosFavoritos.contains("Funk") {
+    print("Eu me animo com o bom ritmo.")
+} else {
+    print("Está muito animado aqui.")
+}
+// Imprime "Está muito animado aqui."
+```
