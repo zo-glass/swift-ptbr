@@ -368,3 +368,29 @@ if generosFavoritos.contains("Funk") {
 }
 // Imprime "Está muito animado aqui."
 ```
+
+### Iterando sobre um Set
+
+Você pode iterar sobre os valores em um *set* com um *loop* `for`-`in`.
+
+```swift
+for genero in generosFavoritos {
+print("\(genero)")
+}
+// Clássico
+// Jazz
+// Hip hop
+```
+
+Para obter mais informações sobre o *loop* `for`-`in`, consulte [Loops For-In](./controle-de-fluxo.md/#loops-for-in).
+
+O tipo `Set` do Swift não possui uma ordenação definida. Para iterar sobre os valores de um *set* em uma ordem específica, utilize o método `sorted()`, que retorna os elementos do *set* como um *array* ordenado usando o operador `<`.
+
+```swift
+for genero in generosFavoritos.sorted() {
+print("\(genero)")
+}
+// Clássico
+// Hip hop
+// Jazz
+```
