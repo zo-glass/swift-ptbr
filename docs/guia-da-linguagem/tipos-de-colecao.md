@@ -394,3 +394,7 @@ print("\(genero)")
 // Hip hop
 // Jazz
 ```
+
+## Realizando Operações de Set
+
+Você pode realizar eficientemente operações fundamentais de *set*, como combinar dois *sets*, determinar quais valores dois *sets* têm em comum ou determinar se dois *sets* contêm todos, alguns ou nenhum dos mesmos valores.
