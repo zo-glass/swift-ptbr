@@ -398,3 +398,29 @@ print("\(genero)")
 ## Realizando Operações de Set
 
 Você pode realizar eficientemente operações fundamentais de *set*, como combinar dois *sets*, determinar quais valores dois *sets* têm em comum ou determinar se dois *sets* contêm todos, alguns ou nenhum dos mesmos valores.
+
+### Operações Fundamentais de Set
+
+A ilustração abaixo representa dois *sets* - `a` e `b` - com os resultados de várias operações de *sets* representadas pelas regiões sombreadas.
+
+![setVennDiagram](https://docs.swift.org/swift-book/images/setVennDiagram~dark@2x.png)
+
+- Utilize o método `intersection(_:)` para criar um novo *set* com apenas os valores comuns a ambos os *sets*.
+- Utilize o método `symmetricDifference(_:)` para criar um novo *set* com valores em qualquer um dos *sets*, mas não em ambos.
+- Utilize o método `union(_:)` para criar um novo *set* com todos os valores em ambos os *sets*.
+- Utilize o método `subtracting(_:)` para criar um novo *set* com valores que não estão no *set* especificado.
+
+```swift
+let digitosImpares: Set = [1, 3, 5, 7, 9]
+let digitosPares: Set = [0, 2, 4, 6, 8]
+let numerosPrimosDeUmDigito: Set = [2, 3, 5, 7]
+
+digitosImpares.union(digitosPares).sorted()
+// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+digitosImpares.intersection(digitosPares).sorted()
+// []
+digitosImpares.subtracting(numerosPrimosDeUmDigito).sorted()
+// [1, 9]
+digitosImpares.symmetricDifference(numerosPrimosDeUmDigito).sorted()
+// [1, 2, 9]
+```
