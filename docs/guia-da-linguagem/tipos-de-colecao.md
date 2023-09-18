@@ -424,3 +424,28 @@ digitosImpares.subtracting(numerosPrimosDeUmDigito).sorted()
 digitosImpares.symmetricDifference(numerosPrimosDeUmDigito).sorted()
 // [1, 2, 9]
 ```
+
+### Pertinência a Sets e Igualdade
+
+A ilustração abaixo representa três *sets* - `a`, `b` e `c` - com regiões sobrepostas representando elementos compartilhados entre *sets*. O *set* `a` é um *superset* do *set* `b`, pois `a` contém todos os elementos de `b`. Inversamente, o *set* `b` é um *subset* do *set* `a`, porque todos os elementos em `b` também estão contidos em `a`. O *set* `b` e o *set* `c` são disjuntos entre si, porque não compartilham elementos em comum.
+
+![setEulerDiagram](https://docs.swift.org/swift-book/images/setEulerDiagram~dark@2x.png)
+
+- Utilize o operador "é igual" (`==`) para determinar se dois *sets* contêm todos os mesmos valores.
+- Utilize o método `isSubset(of:)` para determinar se todos os valores de um *set* estão contidos no *set* especificado.
+- Utilize o método `isSuperset(of:)` para determinar se um *set* contém todos os valores de um *set* especificado.
+- Utilize os métodos `isStrictSubset(of:)` ou `isStrictSuperset(of:)` para determinar se um *set* é um *subset* ou *superset*, mas não é igual a um *set* especificado.
+- Utilize o método `isDisjoint(with:)` para determinar se dois *sets* não têm valores em comum.
+
+```swift
+let animaisDeCasa: Set = ["🐶", "🐱"]
+let animaisDaFazenda: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let animaisDaCidade: Set = ["🐦", "🐭"]
+
+animaisDeCasa.isSubset(of: animaisDaFazenda)
+// true
+animaisDaFazenda.isSuperset(of: animaisDeCasa)
+// true
+animaisDaFazenda.isDisjoint(with: animaisDaCidade)
+// true
+```
