@@ -449,3 +449,13 @@ animaisDaFazenda.isSuperset(of: animaisDeCasa)
 animaisDaFazenda.isDisjoint(with: animaisDaCidade)
 // true
 ```
+
+## Dicionários
+
+Um dicionário armazena associações entre chaves do mesmo tipo e valores do mesmo tipo em uma coleção sem ordenação definida. Cada valor está associado a uma chave única, que atua como um identificador para esse valor dentro do dicionário. Ao contrário dos itens em um *array*, os itens em um dicionário não têm uma ordem especificada. Você usa um dicionário quando precisa procurar valores com base em seu identificador, de maneira semelhante à forma como um dicionário do mundo real é usado para procurar a definição de uma palavra específica.
+
+> **Nota**
+>
+> O tipo `Dictionary` do Swift é conectado à classe `NSDictionary` da Foundation.
+>
+> Para obter mais informações sobre o uso de `Dictionary` com Foundation e Cocoa, consulte a seção [Ponte entre Dictionary e NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239).
