@@ -459,3 +459,13 @@ Um dicionário armazena associações entre chaves do mesmo tipo e valores do me
 > O tipo `Dictionary` do Swift é conectado à classe `NSDictionary` da Foundation.
 >
 > Para obter mais informações sobre o uso de `Dictionary` com Foundation e Cocoa, consulte a seção [Ponte entre Dictionary e NSDictionary](https://developer.apple.com/documentation/swift/dictionary#2846239).
+
+### Sintaxe Abreviada de Tipo de Dicionário
+
+O tipo de um dicionário em Swift é escrito por completo como `Dictionary<Key, Value>`, onde `Key` é o tipo de valor que pode ser usado como chave do dicionário, e `Value` é o tipo de valor que o dicionário armazena para essas chaves.
+
+> **Nota**
+>
+> O tipo de `Key` de um dicionário deve estar em conformidade com o protocolo `Hashable`, assim como o tipo de valor de um *set*.
+
+Você também pode escrever o tipo de um dicionário na forma abreviada como `[Key: Value]`. Embora as duas formas sejam funcionalmente idênticas, a forma abreviada é preferida e é usada em todo este guia ao se referir ao tipo de um dicionário.
