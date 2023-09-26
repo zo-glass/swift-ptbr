@@ -469,3 +469,23 @@ O tipo de um dicionário em Swift é escrito por completo como `Dictionary<Key, 
 > O tipo de `Key` de um dicionário deve estar em conformidade com o protocolo `Hashable`, assim como o tipo de valor de um *set*.
 
 Você também pode escrever o tipo de um dicionário na forma abreviada como `[Key: Value]`. Embora as duas formas sejam funcionalmente idênticas, a forma abreviada é preferida e é usada em todo este guia ao se referir ao tipo de um dicionário.
+
+### Criando um Dicionário Vazio
+
+Assim como com *arrays*, você pode criar um `Dictionary` vazio de um determinado tipo usando a sintaxe de inicialização:
+
+```swift
+var nomesDeInteiros: [Int: String] = [:]
+// nomesDeInteiros é um dicionário vazio do tipo [Int: String]
+```
+
+Este exemplo cria um dicionário vazio do tipo `[Int: String]` para armazenar nomes legíveis por humanos de valores inteiros. Suas chaves são do tipo `Int` e seus valores são do tipo `String`.
+
+Se o contexto já fornece informações sobre o tipo, você pode criar um dicionário vazio com um literal de dicionário vazio, que é escrito como `[:]` (dois pontos dentro de um par de colchetes):
+
+```swift
+nomesDeInteiros[16] = "dezesseis"
+// nomesDeInteiros agora contém 1 par chave-valor
+nomesDeInteiros = [:]
+// nomesDeInteiros é novamente um dicionário vazio do tipo [Int: String]
+```
