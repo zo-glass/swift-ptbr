@@ -489,3 +489,37 @@ nomesDeInteiros[16] = "dezesseis"
 nomesDeInteiros = [:]
 // nomesDeInteiros é novamente um dicionário vazio do tipo [Int: String]
 ```
+
+### Criando um Dicionário com um Literal de Dicionário
+
+Você também pode inicializar um dicionário com um literal de dicionário, que tem uma sintaxe semelhante ao literal de *array* visto anteriormente. Um literal de dicionário é uma forma abreviada de escrever um ou mais pares chave-valor como uma coleção de `Dictionary`.
+
+Um par chave-valor é uma combinação de uma chave e um valor. Em um literal de dicionário, a chave e o valor em cada par chave-valor são separados por dois pontos. Os pares chave-valor são escritos como uma lista, separados por vírgulas, cercados por um par de colchetes:
+
+```swift
+[<#key 1#>: <#value 1#>, <#key 2#>: <#value 2#>, <#key 3#>: <#value 3#>]
+```
+
+O exemplo abaixo cria um dicionário para armazenar os nomes de aeroportos internacionais. Neste dicionário, as chaves são códigos de três letras da Associação Internacional de Transporte Aéreo e os valores são os nomes dos aeroportos:
+
+```swift
+var aeroportos: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+```
+
+O dicionário `aeroportos` é declarado como tendo o tipo `[String: String]`, o que significa "um `Dictionary` cujas chaves são do tipo `String` e cujos valores também são do tipo `String`".
+
+> **Nota**
+>
+> O dicionário `aeroportos` é declarado como uma variável (com o *introducer* `var`) e não como uma constante (com o *introducer* `let`) porque mais aeroportos são adicionados ao dicionário nos exemplos a seguir.
+
+O dicionário `aeroportos` é inicializado com um literal de dicionário contendo dois pares chave-valor. O primeiro par tem uma chave `"YYZ"` e um valor `"Toronto Pearson"`. O segundo par tem uma chave `"DUB"` e um valor `"Dublin"`.
+
+Este literal de dicionário contém dois pares de tipo `String: String`. Esse tipo chave-valor corresponde ao tipo declarado da variável `aeroportos` (um dicionário com chaves do tipo `String` e valores do tipo `String`), portanto, a atribuição do literal de dicionário é permitida como uma maneira de inicializar o dicionário `aeroportos` com dois itens iniciais.
+
+Assim como com *arrays*, você não precisa escrever o tipo do dicionário se estiver inicializando-o com um literal de dicionário cujas chaves e valores tenham tipos consistentes. A inicialização de `aeroportos` poderia ter sido escrita de forma mais concisa da seguinte maneira:
+
+```swift
+var aeroportos = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+```
+
+Como todas as chaves no literal são do mesmo tipo entre si, e da mesma forma todos os valores são do mesmo tipo entre si, o Swift pode inferir que `[String: String]` é o tipo correto a ser usado para o dicionário `aeroportos`.
