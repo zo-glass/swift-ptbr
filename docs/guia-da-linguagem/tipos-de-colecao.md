@@ -523,3 +523,81 @@ var aeroportos = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 ```
 
 Como todas as chaves no literal são do mesmo tipo entre si, e da mesma forma todos os valores são do mesmo tipo entre si, o Swift pode inferir que `[String: String]` é o tipo correto a ser usado para o dicionário `aeroportos`.
+
+### Acessando e Modificando um Dicionário
+
+Você acessa e modifica um dicionário por meio de seus métodos e propriedades ou utilizando a sintaxe de subscrito.
+
+Assim como em um *array*, você descobre o número de itens em um `Dictionary` verificando sua propriedade de somente leitura `count`:
+
+```swift
+print("O dicionário de aeroportos contém \(aeroportos.count) itens.")
+// Imprime "O dicionário de aeroportos contém 2 itens."
+```
+
+Utilize a propriedade booleana `isEmpty` como atalho para verificar se a propriedade `count` é igual a `0`:
+
+```swift
+if aeroportos.isEmpty {
+    print("O dicionário de aeroportos está vazio.")
+} else {
+    print("O dicionário de aeroportos não está vazio.")
+}
+// Imprime "O dicionário de aeroportos não está vazio."
+```
+
+Você pode adicionar um novo item a um dicionário com a sintaxe de subscrito. Utilize uma nova chave do tipo apropriado como índice do subscrito e atribua um novo valor do tipo apropriado:
+
+```swift
+aeroportos["LHR"] = "Londres"
+// Agora o dicionário de aeroportos contém 3 itens
+```
+
+Você também pode usar a sintaxe de subscrito para alterar o valor associado a uma chave específica:
+
+```swift
+aeroportos["LHR"] = "London Heathrow"
+// O valor para "LHR" foi alterado para "London Heathrow"
+```
+
+Como alternativa à subscrita, utilize o método `updateValue(_:forKey:)` de um dicionário para definir ou atualizar o valor de uma chave específica. Assim como nos exemplos de subscrita acima, o método `updateValue(_:forKey:)` define um valor para uma chave se ela não existir, ou atualiza o valor se a chave já existir. No entanto, ao contrário de uma subscrita, o método `updateValue(_:forKey:)` retorna o valor antigo após realizar a atualização. Isso permite verificar se uma atualização ocorreu.
+
+O método `updateValue(_:forKey:)` retorna um valor opcional do tipo de valor do dicionário. Por exemplo, para um dicionário que armazena valores do tipo `String`, o método retorna um valor do tipo `String?`, ou seja, "String opcional". Esse valor opcional contém o valor antigo para aquela chave, se existia antes da atualização, ou `nil` se nenhum valor existia:
+
+```swift
+if let valorAntigo = aeroportos.updateValue("Aeroporto de Dublin", forKey: "DUB") {
+    print("O valor antigo para DUB era \(valorAntigo).")
+}
+// Imprime "O valor antigo para DUB era Dublin."
+```
+
+Você também pode usar a sintaxe de subscrito para recuperar um valor do dicionário para uma chave específica. Como é possível solicitar uma chave para a qual não existe valor, o subscrito de um dicionário retorna um valor opcional do tipo de valor do dicionário. Se o dicionário contiver um valor para a chave solicitada, o subscrito retorna um valor opcional contendo o valor existente para essa chave. Caso contrário, o subscrito retorna `nil`:
+
+```swift
+if let nomeDoAeroporto = aeroportos["DUB"] {
+    print("O nome do aeroporto é \(nomeDoAeroporto).")
+} else {
+    print("Esse aeroporto não está no dicionário de aeroportos.")
+}
+// Imprime "O nome do aeroporto é Aeroporto de Dublin."
+```
+
+Você pode usar a sintaxe de subscrito para remover um par chave-valor de um dicionário atribuindo um valor de `nil` para essa chave:
+
+```swift
+aeroportos["APL"] = "Apple Internacional"
+// "Apple Internacional" não é o aeroporto real para APL, então remova-o
+aeroportos["APL"] = nil
+// APL foi removido do dicionário
+```
+
+Alternativamente, remova um par chave-valor de um dicionário com o método `removeValue(forKey:)`. Este método remove o par chave-valor se ele existir e retorna o valor removido, ou retorna `nil` se nenhum valor existia:
+
+```swift
+if let valorRemovido = aeroportos.removeValue(forKey: "DUB") {
+    print("O nome do aeroporto removido é \(valorRemovido).")
+} else {
+    print("O dicionário de aeroportos não contém um valor para DUB.")
+}
+// Imprime "O nome do aeroporto removido é Aeroporto de Dublin."
+```
