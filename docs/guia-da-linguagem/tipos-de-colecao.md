@@ -601,3 +601,45 @@ if let valorRemovido = aeroportos.removeValue(forKey: "DUB") {
 }
 // Imprime "O nome do aeroporto removido é Aeroporto de Dublin."
 ```
+
+### Iterando sobre um Dicionário
+
+Você pode iterar sobre os pares chave-valor em um dicionário com um *loop* `for-in`. Cada item no dicionário é retornado como uma tupla `(key, value)`, e você pode decompor os membros da tupla em constantes ou variáveis temporárias como parte da iteração:
+
+```swift
+for (codigoAeroporto, nomeAeroporto) in aeroportos {
+    print("\(codigoAeroporto): \(nomeAeroporto)")
+}
+// LHR: London Heathrow
+// YYZ: Toronto Pearson
+```
+
+Para obter mais informações sobre o *loop* `for-in`, consulte [Loops For-In](./controle-de-fluxo.md/#loops-for-in).
+
+Você também pode recuperar uma coleção iterável das chaves ou valores de um dicionário acessando suas propriedades `keys` e `values`:
+
+```swift
+for codigoAeroporto in aeroportos.keys {
+    print("Código do Aeroporto: \(codigoAeroporto)")
+}
+// Código do Aeroporto: LHR
+// Código do Aeroporto: YYZ
+
+for nomeAeroporto in aeroportos.values {
+    print("Nome do Aeroporto: \(nomeAeroporto)")
+}
+// Nome do Aeroporto: London Heathrow
+// Nome do Aeroporto: Toronto Pearson
+```
+
+Se você precisa usar as chaves ou valores de um dicionário com uma API que aceita uma instância de `Array`, inicialize um novo *array* com a propriedade `keys` ou `values`:
+
+```swift
+let codigosAeroportos = [String](aeroportos.keys)
+// codigosAeroportos é ["LHR", "YYZ"]
+
+let nomesAeroportos = [String](aeroportos.values)
+// nomesAeroportos é ["London Heathrow", "Toronto Pearson"]
+```
+
+O tipo `Dictionary` do Swift não possui uma ordem definida. Para iterar sobre as chaves ou valores de um dicionário em uma ordem específica, use o método `sorted()` em sua propriedade `keys` ou `values`.
