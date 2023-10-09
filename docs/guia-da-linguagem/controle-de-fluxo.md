@@ -10,6 +10,21 @@ A instrução `switch` do Swift é consideravelmente mais poderosa do que sua co
 
 ## Loops For-In
 
+Você usa o *loop* `for-in` para iterar sobre uma sequência, como itens em um *array*, intervalos de números ou caracteres em uma *string*.
+
+Este exemplo usa um *loop* `for-in` para iterar sobre os itens em um *array*:
+
+```swift
+let nomes = ["Anna", "Alex", "Brian", "Jack"]
+for nome in nomes {
+    print("Olá, \(nome)!")
+}
+// Olá, Anna!
+// Olá, Alex!
+// Olá, Brian!
+// Olá, Jack!
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
