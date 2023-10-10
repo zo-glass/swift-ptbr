@@ -25,6 +25,18 @@ for nome in nomes {
 // Olá, Jack!
 ```
 
+Você também pode iterar sobre um dicionário para acessar seus pares de chave e valor. Cada item no dicionário é retornado como uma tupla `(key, value)` quando o dicionário é iterado, e você pode decompor os membros da tupla `(key, value)` como constantes explicitamente nomeadas para uso dentro do corpo do *loop* `for-in`. No exemplo de código abaixo, as chaves do dicionário são decompostas em uma constante chamada `nomeDoAnimal`, e os valores do dicionário são decompostos em uma constante chamada `contagemDePernas`.
+
+```swift
+let numeroDePernas = ["aranha": 8, "formiga": 6, "gato": 4]
+for (nomeDoAnimal, contagemDePernas) in numeroDePernas {
+    print("\(nomeDoAnimal)s têm \(contagemDePernas) pernas")
+}
+// gatos têm 4 pernas
+// formigas têm 6 pernas
+// aranhas têm 8 pernas
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
