@@ -52,6 +52,23 @@ for indice in 1...5 {
 // 5 vezes 5 é 25
 ```
 
+A sequência sendo iterada é um intervalo de números de `1` a `5`, inclusivos, conforme indicado pelo uso do operador de intervalo fechado (`...`). O valor do `indice` é definido como o primeiro número no intervalo (`1`), e as declarações dentro do *loop* são executadas. Neste caso, o *loop* contém apenas uma declaração, que imprime uma entrada da tabuada do cinco para o valor atual do `indice`. Após a execução da declaração, o valor do `índice` é atualizado para conter o segundo valor no intervalo (`2`), e a função `print(_:separator:terminator:)` é chamada novamente. Esse processo continua até o final do intervalo ser alcançado.
+
+No exemplo acima, o `indice` é uma constante cujo valor é automaticamente definido no início de cada iteração do *loop*. Como tal, o `indice` não precisa ser declarado antes de ser usado. Ele é implicitamente declarado apenas por sua inclusão na declaração do *loop*, sem a necessidade de uma palavra-chave de declaração `let`.
+
+Se você não precisa de cada valor de uma sequência, pode ignorar os valores usando um sublinhado no lugar de um nome de variável.
+
+```swift
+let base = 3
+let potencia = 10
+var resposta = 1
+for _ in 1...potencia {
+    resposta *= base
+}
+print("\(base) elevado à potência de \(potencia) é \(resposta)")
+// Imprime "3 elevado à potência de 10 é 59049"
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
