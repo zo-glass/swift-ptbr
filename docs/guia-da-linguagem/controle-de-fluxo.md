@@ -37,6 +37,21 @@ for (nomeDoAnimal, contagemDePernas) in numeroDePernas {
 // aranhas têm 8 pernas
 ```
 
+O conteúdo de um `Dictionary` é inerentemente desordenado, e iterar sobre eles não garante a ordem em que serão recuperados. Em particular, a ordem em que você insere itens em um `Dictionary` não define a ordem em que são iterados. Para obter mais informações sobre *arrays* e dicionários, consulte [Tipos de Coleção](./tipos-de-colecao.md).
+
+Você também pode usar *loops* `for-in` com intervalos numéricos. Este exemplo imprime as primeiras entradas na tabuada do cinco:
+
+```swift
+for indice in 1...5 {
+    print("\(indice) vezes 5 é \(indice * 5)")
+}
+// 1 vezes 5 é 5
+// 2 vezes 5 é 10
+// 3 vezes 5 é 15
+// 4 vezes 5 é 20
+// 5 vezes 5 é 25
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
