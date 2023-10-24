@@ -69,6 +69,17 @@ print("\(base) elevado à potência de \(potencia) é \(resposta)")
 // Imprime "3 elevado à potência de 10 é 59049"
 ```
 
+O exemplo acima calcula o valor de um número elevado à potência de outro (neste caso, `3` elevado à `10`). Ele multiplica um valor inicial de `1` (ou seja, `3` elevado à potência de `0`) por `3`, dez vezes, usando um intervalo fechado que começa em `1` e termina em `10`. Para esse cálculo, os valores individuais do contador a cada passagem pelo *loop* são desnecessários - o código simplesmente executa o *loop* o número correto de vezes. O caractere sublinhado (`_`) usado no lugar de uma variável de *loop* faz com que os valores individuais sejam ignorados e não fornece acesso ao valor atual durante cada iteração do *loop*.
+
+Em algumas situações, você pode não querer usar intervalos fechados, que incluem ambos os pontos finais. Considere desenhar as marcações de minutos em um mostrador de relógio. Você deseja desenhar `60` marcações de minutos, começando com o minuto `0`. Use o operador de intervalo semiaberto (`..<`) para incluir o limite inferior, mas não o superior. Para obter mais informações sobre intervalos, consulte [Operadores de Intervalo](./operadores-basicos.md/#operadores-de-intervalo).
+
+```swift
+let minutos = 60
+for marcacao in 0..<minutos {
+    // renderizar a marcação de minuto (60 vezes)
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
