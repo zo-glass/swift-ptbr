@@ -80,6 +80,15 @@ for marcacao in 0..<minutos {
 }
 ```
 
+Alguns usuários podem preferir menos marcas em sua UI (interface de usuário). Eles podem preferir uma marca a cada `5` minutos, em vez disso. Use a função `stride(from:to:by:)` para pular as marcas indesejadas.
+
+```swift
+let intervaloDeMinutos = 5
+for marcacao in stride(from: 0, to: minutos, by: intervaloDeMinutos) {
+    // renderize a marca de tempo a cada 5 minutos (0, 5, 10, 15 ... 45, 50, 55)
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
