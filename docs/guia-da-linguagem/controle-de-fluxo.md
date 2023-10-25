@@ -89,6 +89,17 @@ for marcacao in stride(from: 0, to: minutos, by: intervaloDeMinutos) {
 }
 ```
 
+Intervalos fechados também estão disponíveis, usando `stride(from:through:by:)` em vez disso:
+
+```swift
+let horas = 12
+let intervaloDeHoras = 3
+
+for marcacao in stride(from: 3, through: horas, by: intervaloDeHoras) {
+    // Renderize a marca de tempo a cada 3 horas (3, 6, 9, 12)
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
