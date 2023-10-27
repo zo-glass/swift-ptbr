@@ -100,6 +100,8 @@ for marcacao in stride(from: 3, through: horas, by: intervaloDeHoras) {
 }
 ```
 
+Os exemplos acima usam um *loop* `for-in` para iterar em intervalos, *arrays*, dicionários e *strings*. No entanto, você pode usar essa sintaxe para iterar em qualquer coleção, incluindo suas próprias classes e tipos de coleção, contanto que esses tipos estejam em conformidade com o protocolo [Sequence](https://developer.apple.com/documentation/swift/sequence).
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
