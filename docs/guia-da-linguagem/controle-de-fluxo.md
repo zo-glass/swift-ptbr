@@ -109,6 +109,18 @@ Um *loop* `while` executa um conjunto de instruções até que uma condição se
 - O `while` avalia sua condição no início de cada passagem pelo *loop*.
 - O `repeat-while` avalia sua condição no final de cada passagem pelo *loop*.
 
+### While
+
+Um *loop* `while` começa avaliando uma única condição. Se a condição for `true`, um conjunto de instruções é repetido até que a condição se torne `false`.
+
+Aqui está a forma geral de um *loop* `while`:
+
+```swift
+while <#condition#> {
+   <#statements#>
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
