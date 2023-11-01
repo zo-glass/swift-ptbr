@@ -121,6 +121,25 @@ while <#condition#> {
 }
 ```
 
+Este exemplo joga um jogo simples de *Snakes and Ladders* (também conhecido como *Chutes and Ladders*):
+
+![snakesAndLadders](https://docs.swift.org/swift-book/images/snakesAndLadders~dark@2x.png)
+
+As regras do jogo são as seguintes:
+
+- O tabuleiro possui 25 casas, e o objetivo é pousar na casa 25 ou além dela.
+- A casa de início do jogador é a "casa zero", que fica logo abaixo do canto inferior esquerdo do tabuleiro.
+- A cada turno, você rola um dado de seis faces e se move pelo número de casas indicado, seguindo o caminho horizontal indicado pela seta pontilhada acima.
+- Se o seu turno terminar na base de uma escada, você sobe por ela.
+- Se o seu turno terminar na cabeça de uma cobra, você desce por ela.
+
+O tabuleiro de jogo é representado por um *array* de valores `Int`. Seu tamanho é baseado em uma constante chamada `finalSquare`, que é usada para inicializar o *array* e também para verificar a condição de vitória mais tarde no exemplo. Como os jogadores começam fora do tabuleiro, na "casa zero", o tabuleiro é inicializado com 26 valores `Int` zeros, e não 25.
+
+```swift
+let casaFinal = 25
+var tabuleiro = [Int](repeating: 0, count: casaFinal + 1)
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
