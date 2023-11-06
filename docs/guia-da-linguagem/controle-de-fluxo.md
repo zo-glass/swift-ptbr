@@ -140,6 +140,13 @@ let casaFinal = 25
 var tabuleiro = [Int](repeating: 0, count: casaFinal + 1)
 ```
 
+Algumas casas são então designadas com valores mais específicos para as cobras e escadas. As casas com uma base de escada têm um número positivo para fazer você subir no tabuleiro, enquanto as casas com uma cabeça de cobra têm um número negativo para fazer você descer no tabuleiro.
+
+```swift
+tabuleiro[03] = +08; tabuleiro[06] = +11; tabuleiro[09] = +09; tabuleiro[10] = +02
+tabuleiro[14] = -10; tabuleiro[19] = -11; tabuleiro[22] = -02; tabuleiro[24] = -08
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
