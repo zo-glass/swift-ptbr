@@ -166,6 +166,14 @@ while casa < casaFinal {
 print("Fim do jogo!")
 ```
 
+O exemplo acima usa uma abordagem muito simples para a rolagem de dados. Em vez de gerar um número aleatório, ele começa com um valor de `resultadoDoDado` de `0`. A cada iteração do *loop while*, `resultadoDoDado` é incrementado em um e, em seguida, é verificado se ele se tornou muito grande. Sempre que esse valor se iguala a `7`, a rolagem de dados se tornou muito grande e é redefinida para um valor de `1`. O resultado é uma sequência de valores de `resultadoDoDado` que sempre são `1`, `2`, `3`, `4`, `5`, `6`, `1`, `2` e assim por diante.
+
+Depois de rolar o dado, o jogador avança o número de casas igual ao valor de `resultadoDoDado`. É possível que a rolagem do dado tenha movido o jogador além da casa 25, nesse caso, o jogo acaba. Para lidar com esse cenário, o código verifica se a `casa` é menor que a propriedade `count` do *array* `tabuleiro`. Se a `casa` for válida, o valor armazenado em `tabuleiro[casa]` é adicionado ao valor atual da `casa` para mover o jogador para cima ou para baixo em escadas ou cobras.
+
+> **Nota**
+>
+> Se essa verificação não for realizada, `tabuleiro[casa]` poderá tentar acessar um valor fora dos limites do *array* `tabuleiro`, o que desencadearia um erro em tempo de execução.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
