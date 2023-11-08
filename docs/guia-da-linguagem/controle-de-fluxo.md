@@ -147,6 +147,25 @@ tabuleiro[03] = +08; tabuleiro[06] = +11; tabuleiro[09] = +09; tabuleiro[10] = +
 tabuleiro[14] = -10; tabuleiro[19] = -11; tabuleiro[22] = -02; tabuleiro[24] = -08
 ```
 
+A casa 3 contém a base de uma escada que o move para a casa 11. Para representar isso, `tabuleiro[03]` é igual a `+08`, o que é equivalente a um valor inteiro de `8` (a diferença entre `3` e `11`). Para alinhar os valores e instruções, o operador unário de mais (`+i`) é explicitamente usado com o operador unário de menos (`-i`) e os números menores que `10` são preenchidos com zeros. (Nenhuma dessas técnicas de estilo é estritamente necessária, mas levam a um código mais organizado.)
+
+```swift
+var casa = 0
+var resultadoDoDado = 0
+while casa < casaFinal {
+    // lançar o dado
+    resultadoDoDado += 1
+    if resultadoDoDado == 7 { resultadoDoDado = 1 }
+    // mover-se pela quantidade obtida no dado
+    casa += resultadoDoDado
+    if casa < tabuleiro.count {
+        // se ainda estivermos no tabuleiro, mover-se para cima ou para baixo por uma cobra ou uma escada
+        casa += tabuleiro[casa]
+    }
+}
+print("Fim do jogo!")
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
