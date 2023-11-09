@@ -174,6 +174,10 @@ Depois de rolar o dado, o jogador avança o número de casas igual ao valor de `
 >
 > Se essa verificação não for realizada, `tabuleiro[casa]` poderá tentar acessar um valor fora dos limites do *array* `tabuleiro`, o que desencadearia um erro em tempo de execução.
 
+A execução atual do *loop* `while` então termina, e a condição do *loop* é verificada para ver se o *loop* deve ser executado novamente. Se o jogador tiver avançado ou além da casa `25`, a condição do *loop* avalia para `false` e o jogo termina.
+
+Um *loop* `while` é apropriado neste caso, porque o comprimento do jogo não está claro no início do *loop* `while`. Em vez disso, o *loop* é executado até que uma condição específica seja satisfeita.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
