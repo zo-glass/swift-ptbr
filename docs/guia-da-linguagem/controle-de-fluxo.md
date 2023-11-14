@@ -194,6 +194,17 @@ repeat {
 } while <#condition#>
 ```
 
+Aqui está o exemplo de *Snakes and Ladders* novamente, escrito como um *loop* `repeat-while` em vez de um *loop* `while`. Os valores de `casaFinal`, `tabuleiro`, `casa` e `resultadoDoDado` são inicializados exatamente da mesma forma que em um *loop* `while`.
+
+```swift
+let casaFinal = 25
+var tabuleiro = [Int](repeating: 0, count: casaFinal + 1)
+tabuleiro[03] = +08; tabuleiro[06] = +11; tabuleiro[09] = +09; tabuleiro[10] = +02
+tabuleiro[14] = -10; tabuleiro[19] = -11; tabuleiro[22] = -02; tabuleiro[24] = -08
+var casa = 0
+var resultadoDoDado = 0
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
