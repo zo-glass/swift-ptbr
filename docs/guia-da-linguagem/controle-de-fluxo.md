@@ -178,6 +178,22 @@ A execução atual do *loop* `while` então termina, e a condição do *loop* é
 
 Um *loop* `while` é apropriado neste caso, porque o comprimento do jogo não está claro no início do *loop* `while`. Em vez disso, o *loop* é executado até que uma condição específica seja satisfeita.
 
+### Repeat-While
+
+A outra variação do *loop* `while`, conhecida como o *loop* `repeat-while`, realiza uma única passagem pelo bloco do *loop* primeiro, antes de considerar a condição do *loop*. Em seguida, continua a repetir o *loop* até que a condição seja falsa.
+
+> **Nota**
+>
+> O *loop* `repeat-while` em Swift é análogo a um *loop* `do-while` em outras linguagens.
+
+Aqui está a forma geral de um *loop* `repeat-while`:
+
+```swift
+repeat {
+   <#statements#>
+} while <#condition#>
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
