@@ -205,6 +205,23 @@ var casa = 0
 var resultadoDoDado = 0
 ```
 
+Nesta versão do jogo, a primeira ação no *loop* é verificar se há uma escada ou uma cobra. Não há escada no tabuleiro que leve o jogador diretamente para a casa 25, então não é possível vencer o jogo subindo por uma escada. Portanto, é seguro verificar se há uma cobra ou uma escada como a primeira ação no *loop*.
+
+No início do jogo, o jogador está na "casa zero". `board[0]` sempre é igual a `0` e não tem efeito.
+
+```swift
+repeat {
+    // mover para cima ou para baixo por uma cobra ou escada
+    casa += tabuleiro[casa]
+    // rolar o dado
+    resultadoDoDado += 1
+    if resultadoDoDado == 7 { resultadoDoDado = 1 }
+    // mover pela quantidade rolada
+    casa += resultadoDoDado
+} while casa < casaFinal
+print("Fim do jogo!")
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
