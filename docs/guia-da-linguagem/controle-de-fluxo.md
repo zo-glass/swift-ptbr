@@ -222,6 +222,10 @@ repeat {
 print("Fim do jogo!")
 ```
 
+Após o código verificar cobras e escadas, o dado é lançado e o jogador avança um número de casas equivalente ao `resultadoDoDado`. A execução atual do *loop* então termina.
+
+A condição do *loop* (`while casa < casaFinal`) é a mesma de antes, mas desta vez não é avaliada até o final da primeira passagem pelo *loop*. A estrutura do *loop* `repeat`-`while` é mais adequada a este jogo do que o *loop* `while` na versão anterior. No *loop* `repeat`-`while` acima, `casa += tabuleiro[casa]` é sempre executado imediatamente após a condição do *loop* `while` confirmar que `casa` ainda está no tabuleiro. Esse comportamento elimina a necessidade da verificação dos limites do *array* vista na versão do jogo com o *loop* `while` descrito anteriormente.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
