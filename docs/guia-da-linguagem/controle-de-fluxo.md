@@ -232,6 +232,18 @@ A condição do *loop* (`while casa < casaFinal`) é a mesma de antes, mas desta
 
 O Swift oferece duas maneiras de adicionar ramos condicionais ao seu código: a instrução `if` e a instrução `switch`. Normalmente, você usa a instrução `if` para avaliar condições simples com apenas algumas possíveis saídas. A instrução `switch` é mais adequada para condições mais complexas com múltiplas permutações possíveis e é útil em situações onde a correspondência de padrões pode ajudar a selecionar um ramo de código apropriado para executar.
 
+### If
+
+Em sua forma mais simples, a instrução `if` possui uma única condição `if`. Ela executa um conjunto de instruções somente se essa condição for verdadeira.
+
+```swift
+var temperaturaEmFahrenheit = 30
+if temperaturaEmFahrenheit <= 32 {
+    print("Está muito frio. Considere usar um cachecol.")
+}
+// Imprime "Está muito frio. Considere usar um cachecol."
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
