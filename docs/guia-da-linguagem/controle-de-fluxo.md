@@ -244,6 +244,20 @@ if temperaturaEmFahrenheit <= 32 {
 // Imprime "Está muito frio. Considere usar um cachecol."
 ```
 
+O exemplo acima verifica se a temperatura é menor ou igual a 32 graus Fahrenheit (o ponto de congelamento da água). Se for, uma mensagem é impressa. Caso contrário, nenhuma mensagem é impressa, e a execução do código continua após o fechamento do bloco `if`.
+
+A instrução `if` pode fornecer um conjunto alternativo de instruções, conhecido como cláusula `else`, para situações em que a condição do `if` é `false`. Essas instruções são indicadas pela palavra-chave `else`.
+
+```swift
+let temperaturaEmFahrenheit = 40
+if temperaturaEmFahrenheit <= 32 {
+    print("Está muito frio. Considere usar um cachecol.")
+} else {
+    print("Não está tão frio. Use uma camiseta.")
+}
+// Imprime "Não está tão frio. Use uma camiseta."
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
