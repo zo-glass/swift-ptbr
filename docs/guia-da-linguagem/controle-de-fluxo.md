@@ -258,6 +258,22 @@ if temperaturaEmFahrenheit <= 32 {
 // Imprime "Não está tão frio. Use uma camiseta."
 ```
 
+Um desses dois ramos é sempre executado. Como a temperatura aumentou para `40` graus Fahrenheit, não está mais frio o suficiente para aconselhar o uso de cachecol, então o ramo `else` é acionado em vez disso.
+
+Você pode encadear múltiplas instruções `if` para considerar cláusulas adicionais.
+
+```swift
+let temperaturaEmFahrenheit = 90
+if temperaturaEmFahrenheit <= 32 {
+    print("Está muito frio. Considere usar um cachecol.")
+} else if temperaturaEmFahrenheit >= 86 {
+    print("Está realmente quente. Não se esqueça de usar protetor solar.")
+} else {
+    print("Não está tão frio. Use uma camiseta.")
+}
+// Imprime "Está realmente quente. Não se esqueça de usar protetor solar."
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
