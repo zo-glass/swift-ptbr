@@ -287,6 +287,26 @@ if temperaturaEmFahrenheit <= 32 {
 }
 ```
 
+Porque a temperatura não está fria o suficiente para acionar a condição `if` ou quente o suficiente para acionar a condição `else if`, nenhuma mensagem é impressa.
+
+Swift fornece uma grafia abreviada do `if` que você pode usar ao definir valores. Por exemplo, considere o seguinte código:
+
+```swift
+let temperaturaEmCelsius = 25
+var conselhoMeteorologico: String
+
+if temperaturaEmCelsius <= 0 {
+    conselhoMeteorologico = "Está muito frio. Considere usar um cachecol."
+} else if temperaturaEmCelsius >= 30 {
+    conselhoMeteorologico = "Está realmente quente. Não se esqueça de usar protetor solar."
+} else {
+    conselhoMeteorologico = "Não está tão frio. Use uma camiseta."
+}
+
+print(conselhoMeteorologico)
+// Imprime "Não está tão frio. Use uma camiseta."
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
