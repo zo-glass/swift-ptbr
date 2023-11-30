@@ -274,6 +274,19 @@ if temperaturaEmFahrenheit <= 32 {
 // Imprime "Está realmente quente. Não se esqueça de usar protetor solar."
 ```
 
+Aqui, foi adicionada uma instrução `if` adicional para responder a temperaturas particularmente altas. A cláusula `else` final permanece e imprime uma resposta para quaisquer temperaturas que não sejam muito altas ou muito baixas.
+
+Entretanto, a cláusula `else` final é opcional e pode ser excluída se o conjunto de condições não precisar ser completo.
+
+```swift
+var temperaturaEmFahrenheit = 72
+if temperaturaEmFahrenheit <= 32 {
+    print("Está muito frio. Considere usar um cachecol.")
+} else if temperaturaEmFahrenheit >= 86 {
+    print("Está realmente quente. Não se esqueça de usar protetor solar.")
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
