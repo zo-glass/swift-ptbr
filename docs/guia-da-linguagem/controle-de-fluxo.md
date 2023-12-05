@@ -326,6 +326,20 @@ print(conselhoMeteorologico)
 // Imprime "Não está tão frio. Use uma camiseta."
 ```
 
+Nesta versão da expressão `if`, cada ramo contém um único valor. Se a condição de um ramo for verdadeira, então o valor desse ramo é usado como o valor para toda a expressão `if` na atribuição de `conselhoMeteorologico`. Cada ramo `if` possui um correspondente ramo `else if` ou `else`, garantindo que um dos ramos sempre seja correspondido e que a expressão `if` sempre produza um valor, independentemente de quais condições sejam verdadeiras.
+
+Devido à sintaxe da atribuição começar fora da expressão `if`, não há necessidade de repetir `conselhoMeteorologico =` dentro de cada ramo. Em vez disso, cada ramo da expressão `if` produz um dos três possíveis valores para `conselhoMeteorologico`, e a atribuição usa esse valor.
+
+Todos os ramos de uma expressão `if` precisam conter valores do mesmo tipo. Como o Swift verifica o tipo de cada ramo separadamente, valores como `nil` que podem ser usados com mais de um tipo impedem o Swift de determinar automaticamente o tipo da expressão `if`. Em vez disso, é necessário especificar o tipo explicitamente - por exemplo:
+
+```swift
+let avisoDeCongelamento: String? = if temperaturaEmCelsius <= 0 {
+    "Está abaixo de zero. Cuidado com o gelo!"
+} else {
+    nil
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
