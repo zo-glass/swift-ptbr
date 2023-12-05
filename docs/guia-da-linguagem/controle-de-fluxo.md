@@ -307,6 +307,25 @@ print(conselhoMeteorologico)
 // Imprime "Não está tão frio. Use uma camiseta."
 ```
 
+Aqui, cada um dos ramos define um valor para a constante `conselhoMeteorologico`, que é impressa após a instrução `if`.
+
+Utilizando a sintaxe alternativa, conhecida como expressão `if`, você pode escrever este código de forma mais concisa:
+
+```swift
+let conselhoMeteorologico: String
+
+if temperaturaEmCelsius <= 0 {
+    conselhoMeteorologico = "Está muito frio. Considere usar cachecol."
+} else if temperaturaEmCelsius >= 30 {
+    conselhoMeteorologico = "Está realmente quente. Não se esqueça de usar protetor solar."
+} else {
+    conselhoMeteorologico = "Não está tão frio. Use uma camiseta."
+}
+
+print(conselhoMeteorologico)
+// Imprime "Não está tão frio. Use uma camiseta."
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
