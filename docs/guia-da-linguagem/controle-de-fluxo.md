@@ -340,6 +340,18 @@ let avisoDeCongelamento: String? = if temperaturaEmCelsius <= 0 {
 }
 ```
 
+No código acima, um dos ramos da expressão `if` possui um valor de *string* e o outro ramo possui um valor `nil`. O valor `nil` pode ser usado como valor para qualquer tipo opcional, então você precisa explicitamente escrever que `avisoDeCongelamento` é uma *string* opcional, conforme descrito em [Type Annotations](./o-basico.md/#type-annotations).
+
+Uma forma alternativa de fornecer essa informação de tipo é fornecer um tipo explícito para `nil`, em vez de fornecer um tipo explícito para `avisoDeCongelamento`:
+
+```swift
+let avisoDeCongelamento = if temperaturaEmCelsius <= 0 {
+    "Está abaixo de zero. Cuidado com o gelo!"
+} else {
+    nil as String?
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
