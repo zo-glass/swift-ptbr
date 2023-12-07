@@ -352,6 +352,16 @@ let avisoDeCongelamento = if temperaturaEmCelsius <= 0 {
 }
 ```
 
+Uma expressão `if` pode reagir a falhas inesperadas lançando um erro ou chamando uma função como `fatalError(_:file:line:)` que nunca retorna. Por exemplo:
+
+```swift
+let conselhoMeteorologico = if temperaturaEmCelsius > 100 {
+    throw ErroTemperatura.ebulicao
+} else {
+    "É uma temperatura razoável."
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
