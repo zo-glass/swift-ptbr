@@ -362,6 +362,10 @@ let conselhoMeteorologico = if temperaturaEmCelsius > 100 {
 }
 ```
 
+Neste exemplo, a expressão `if` verifica se a temperatura prevista está mais quente do que 100°C - o ponto de ebulição da água. Uma temperatura tão alta faz com que a expressão `if` lance um erro de `.ebulicao` em vez de retornar um resumo textual. Mesmo que essa expressão `if` possa gerar um erro, você não escreve um `try` antes dela. Para informações sobre como lidar com erros, consulte o [Tratamento de Erros](./tratamento-de-erros.md).
+
+Além de usar expressões `if` no lado direito de uma atribuição, como mostrado nos exemplos acima, você também pode usá-las como o valor retornado por uma função ou *closure*.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
