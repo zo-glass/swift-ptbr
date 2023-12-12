@@ -366,6 +366,24 @@ Neste exemplo, a expressão `if` verifica se a temperatura prevista está mais q
 
 Além de usar expressões `if` no lado direito de uma atribuição, como mostrado nos exemplos acima, você também pode usá-las como o valor retornado por uma função ou *closure*.
 
+### Switch
+
+Uma declaração `switch` considera um valor e o compara com vários padrões correspondentes possíveis. Em seguida, executa um bloco de código apropriado, com base no primeiro padrão que corresponde com sucesso. Uma declaração `switch` oferece uma alternativa à declaração `if` para responder a múltiplos estados potenciais.
+
+Em sua forma mais simples, uma declaração `switch` compara um valor com um ou mais valores do mesmo tipo.
+
+```swift
+switch <#some value to consider#> {
+case <#value 1#>:
+    <#respond to value 1#>
+case <#value 2#>,
+    <#value 3#>:
+    <#respond to value 2 or 3#>
+default:
+    <#otherwise, do something else#>
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
