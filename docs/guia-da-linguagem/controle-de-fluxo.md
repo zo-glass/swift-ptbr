@@ -384,6 +384,27 @@ default:
 }
 ```
 
+Cada declaração `switch` consiste em vários casos possíveis, cada um dos quais começa com a palavra-chave `case`. Além de comparar valores específicos, o Swift oferece várias maneiras para cada caso especificar padrões de correspondência mais complexos. Essas opções são descritas mais adiante neste capítulo.
+
+Assim como o corpo de uma declaração `if`, cada `case` é um ramo separado de execução de código. A declaração `switch` determina qual ramo deve ser selecionado. Esse procedimento é conhecido como *switching* no valor que está sendo considerado.
+
+Toda declaração `switch` deve ser exaustiva. Ou seja, todo valor possível do tipo sendo considerado deve ser correspondido por um dos casos `switch`. Se não for apropriado fornecer um caso para cada valor possível, você pode definir um caso padrão para cobrir quaisquer valores que não sejam abordados explicitamente. Esse caso padrão é indicado pela palavra-chave `default` e sempre deve aparecer por último.
+
+Este exemplo usa uma declaração `switch` para considerar um único caractere minúsculo chamado `algumCaractere`:
+
+```swift
+let algumCaractere: Character = "z"
+switch algumCaractere {
+case "a":
+    print("A primeira letra do alfabeto latino")
+case "z":
+    print("A última letra do alfabeto latino")
+default:
+    print("Algum outro caractere")
+}
+// Imprime "A última letra do alfabeto latino"
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
