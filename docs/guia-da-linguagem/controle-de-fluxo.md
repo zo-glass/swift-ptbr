@@ -405,6 +405,25 @@ default:
 // Imprime "A última letra do alfabeto latino"
 ```
 
+O primeiro caso da instrução `switch` corresponde à primeira letra do alfabeto inglês, `a`, e o segundo caso corresponde à última letra, `z`. Como o `switch` precisa ter um caso para cada caractere possível, não apenas para cada caractere alfabético, esta instrução `switch` utiliza um caso `default` para corresponder a todos os caracteres que não são `a` e `z`. Essa disposição garante que a instrução `switch` seja abrangente.
+
+Assim como as instruções `if`, as instruções `switch` também têm uma forma de expressão:
+
+```swift
+let outroCaractere: Character = "a"
+let mensagem = switch outroCaractere {
+    case "a":
+        "A primeira letra do alfabeto latino"
+    case "z":
+        "A última letra do alfabeto latino"
+    default:
+        "Algum outro caractere"
+}
+
+print(message)
+// Imprime "A primeira letra do alfabeto latino"
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
