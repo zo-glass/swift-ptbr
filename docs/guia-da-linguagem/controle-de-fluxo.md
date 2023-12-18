@@ -424,6 +424,10 @@ print(message)
 // Imprime "A primeira letra do alfabeto latino"
 ```
 
+Neste exemplo, cada caso na expressão `switch` contém o valor de `mensagem` a ser usada quando esse caso corresponde a `outroCaractere`. Como o `switch` é sempre exaustivo, há sempre um valor a atribuir.
+
+Assim como nas expressões `if`, você pode lançar um erro ou chamar uma função como `fatalError(_:file:line:)` que nunca retorna, em vez de fornecer um valor para um caso específico. Você pode usar expressões `switch` no lado direito de uma atribuição, como mostrado no exemplo acima, e como valor que uma função ou *closure* retorna.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
