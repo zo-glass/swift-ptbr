@@ -428,6 +428,18 @@ Neste exemplo, cada caso na expressão `switch` contém o valor de `mensagem` a 
 
 Assim como nas expressões `if`, você pode lançar um erro ou chamar uma função como `fatalError(_:file:line:)` que nunca retorna, em vez de fornecer um valor para um caso específico. Você pode usar expressões `switch` no lado direito de uma atribuição, como mostrado no exemplo acima, e como valor que uma função ou *closure* retorna.
 
+## Declarações de Transferência de Controle
+
+Declarações de transferência de controle alteram a ordem na qual seu código é executado, transferindo o controle de uma parte do código para outra. Swift possui cinco declarações de transferência de controle:
+
+- `continue`
+- `break`
+- `fallthrough`
+- `return`
+- `throw`
+
+As declarações `continue`, `break` e `fallthrough` são descritas abaixo. A declaração `return` é descrita em [Funções](./funcoes.md), e a declaração `throw` é descrita em [Propagação de Erros usando Throwing Functions](./tratamento-de-erros.md/#propagação-de-erros-usando-throwing-functions).
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
