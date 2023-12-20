@@ -440,6 +440,29 @@ Declarações de transferência de controle alteram a ordem na qual seu código 
 
 As declarações `continue`, `break` e `fallthrough` são descritas abaixo. A declaração `return` é descrita em [Funções](./funcoes.md), e a declaração `throw` é descrita em [Propagação de Erros usando Throwing Functions](./tratamento-de-erros.md/#propagação-de-erros-usando-throwing-functions).
 
+### Continue
+
+A instrução `continue` indica a um *loop* que pare o que está fazendo e comece novamente no início da próxima iteração através do *loop*. Ela diz "Terminei a iteração atual do *loop*" sem sair completamente do *loop*.
+
+O exemplo a seguir remove todas as vogais e espaços de uma *string* em minúsculas para criar uma frase enigmática:
+
+```swift
+let entradaEnigma = "grandes mentes pensam igual"
+var saidaEnigma = ""
+let caracteresParaRemover: [Character] = ["a", "e", "i", "o", "u", " "]
+
+for caractere in entradaEnigma {
+    if caracteresParaRemover.contains(caractere) {
+        continue
+    }
+    saidaEnigma.append(caractere)
+}
+
+print(saidaEnigma) // Imprime "grndsmntspnsmgl"
+```
+
+O código acima utiliza a instrução `continue` sempre que encontra uma vogal ou um espaço, fazendo com que a iteração atual do *loop* termine imediatamente e pule diretamente para o início da próxima iteração.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
