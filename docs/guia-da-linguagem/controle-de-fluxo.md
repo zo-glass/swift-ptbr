@@ -463,6 +463,10 @@ print(saidaEnigma) // Imprime "grndsmntspnsmgl"
 
 O código acima utiliza a instrução `continue` sempre que encontra uma vogal ou um espaço, fazendo com que a iteração atual do *loop* termine imediatamente e pule diretamente para o início da próxima iteração.
 
+### Break
+
+A declaração `break` encerra imediatamente a execução de toda uma declaração de fluxo de controle. A declaração `break` pode ser usada dentro de um `switch` ou declaração de *loop* quando você deseja encerrar a execução do `switch` ou declaração de *loop* mais cedo do que seria o caso de outra forma.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
