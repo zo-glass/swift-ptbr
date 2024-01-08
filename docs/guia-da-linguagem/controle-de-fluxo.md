@@ -467,6 +467,10 @@ O código acima utiliza a instrução `continue` sempre que encontra uma vogal o
 
 A declaração `break` encerra imediatamente a execução de toda uma declaração de fluxo de controle. A declaração `break` pode ser usada dentro de um `switch` ou declaração de *loop* quando você deseja encerrar a execução do `switch` ou declaração de *loop* mais cedo do que seria o caso de outra forma.
 
+#### Break em uma Declaração de Loop
+
+Quando usado dentro de uma declaração de *loop*, `break` encerra imediatamente a execução do *loop* e transfere o controle para o código após a chave de fechamento do *loop* (`}`). Nenhum código adicional da iteração atual do *loop* é executado, e nenhuma iteração adicional do *loop* é iniciada.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
