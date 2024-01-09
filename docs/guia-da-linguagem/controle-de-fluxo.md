@@ -471,6 +471,47 @@ A declaração `break` encerra imediatamente a execução de toda uma declaraç�
 
 Quando usado dentro de uma declaração de *loop*, `break` encerra imediatamente a execução do *loop* e transfere o controle para o código após a chave de fechamento do *loop* (`}`). Nenhum código adicional da iteração atual do *loop* é executado, e nenhuma iteração adicional do *loop* é iniciada.
 
+#### Break em uma Declaração Switch
+
+Quando usado dentro de uma declaração `switch`, `break` faz com que a declaração `switch` encerre sua execução imediatamente e transfira o controle para o código após o fechamento da chave (`}`) da declaração `switch`.
+
+Esse comportamento pode ser utilizado para corresponder e ignorar um ou mais casos em uma declaração `switch`. Como a declaração `switch` do Swift é exaustiva e não permite casos vazios, às vezes é necessário corresponder e explicitamente ignorar um caso para deixar suas intenções claras. Isso é feito escrevendo a declaração `break` como o corpo inteiro do caso que você deseja ignorar. Quando esse caso é correspondido pela declaração `switch`, a declaração `break` dentro do caso encerra imediatamente a execução da declaração `switch`.
+
+> **Nota**
+>
+> Um caso `switch` que contém apenas um comentário é reportado como um erro de compilação. Comentários não são declarações e não fazem com que um caso `switch` seja ignorado. Sempre utilize uma declaração `break` para ignorar um caso `switch`.
+
+O exemplo a seguir faz um `switch` em um valor `Character` e determina se ele representa um símbolo numérico em um dos quatro idiomas. Para brevidade, múltiplos valores são tratados em um único caso `switch`.
+
+```swift
+let simboloNumerico: Character = "三"  // Símbolo chinês para o número 3
+var possivelValorInteiro: Int?
+switch simboloNumerico {
+case "1", "١", "一", "๑":
+    possivelValorInteiro = 1
+case "2", "٢", "二", "๒":
+    possivelValorInteiro = 2
+case "3", "٣", "三", "๓":
+    possivelValorInteiro = 3
+case "4", "٤", "四", "๔":
+    possivelValorInteiro = 4
+default:
+    break
+}
+if let valorInteiro = possivelValorInteiro {
+    print("O valor inteiro de \(simboloNumerico) é \(valorInteiro).")
+} else {
+    print("Não foi possível encontrar um valor inteiro para \(simboloNumerico).")
+}
+// Imprime "O valor inteiro de 三 é 3."
+```
+
+Este exemplo verifica o `simboloNumerico` para determinar se é um símbolo latino, árabe, chinês ou tailandês para os números de `1` a `4`. Se uma correspondência for encontrada, um dos casos da declaração `switch` define uma variável `Int?` opcional chamada `possivelValorInteiro` para um valor inteiro apropriado.
+
+Após a conclusão da execução da declaração `switch`, o exemplo utiliza o *optional binding* para determinar se um valor foi encontrado. A variável `possivelValorInteiro` possui um valor inicial implícito de `nil` por ser um tipo opcional, portanto, o *optional binding* terá sucesso apenas se `possivelValorInteiro` foi definido como um valor real por um dos primeiros quatro casos da declaração `switch`.
+
+Por não ser prático listar todos os possíveis valores de `Character` no exemplo acima, um caso `default` trata quaisquer caracteres que não sejam correspondidos. Este caso `default` não precisa executar nenhuma ação e, portanto, é escrito com uma única declaração `break` como seu corpo. Assim que o caso `default` é correspondido, a declaração `break` encerra a execução da declaração `switch`, e a execução do código continua a partir da declaração `if let`.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
