@@ -512,6 +512,36 @@ Após a conclusão da execução da declaração `switch`, o exemplo utiliza o *
 
 Por não ser prático listar todos os possíveis valores de `Character` no exemplo acima, um caso `default` trata quaisquer caracteres que não sejam correspondidos. Este caso `default` não precisa executar nenhuma ação e, portanto, é escrito com uma única declaração `break` como seu corpo. Assim que o caso `default` é correspondido, a declaração `break` encerra a execução da declaração `switch`, e a execução do código continua a partir da declaração `if let`.
 
+### Fallthrough
+
+Em Swift, declarações `switch` não caem pelo final de cada caso e passam para o próximo. Ou seja, a declaração `switch` completa sua execução assim que o primeiro caso correspondente é concluído. Em contraste, em C, é necessário inserir uma declaração explícita de `break` ao final de cada caso `switch` para evitar a passagem automática para o próximo caso. Evitar a passagem automática padrão significa que as declarações `switch` em Swift são muito mais concisas e previsíveis do que suas contrapartes em C, e, portanto, evitam a execução por engano de múltiplos casos `switch`.
+
+Se você precisa do comportamento de passagem automática no estilo C, pode optar por esse comportamento caso a caso com a palavra-chave `fallthrough`. O exemplo abaixo usa `fallthrough` para criar uma descrição textual de um número.
+
+```swift
+let inteiroParaDescrever = 5
+var descricao = "O número \(inteiroParaDescrever) é"
+switch inteiroParaDescrever {
+case 2, 3, 5, 7, 11, 13, 17, 19:
+    descricao += " um número primo, e também"
+    fallthrough
+default:
+    descricao += " um inteiro."
+}
+print(descricao)
+// Imprime "O número 5 é um número primo, e também um inteiro."
+```
+
+Este exemplo declara uma nova variável `String` chamada `descricao` e atribui a ela um valor inicial. A função então considera o valor de `inteiroParaDescrever` usando uma declaração `switch`. Se o valor de `inteiroParaDescrever` for um dos números primos na lista, a função acrescenta texto ao final de `descricao`, para indicar que o número é primo. Em seguida, usa a palavra-chave `fallthrough` para "cair" no caso `default` também. O caso `default` adiciona algum texto extra ao final da descrição, e a declaração `switch` está completa.
+
+A menos que o valor de `inteiroParaDescrever` esteja na lista de números primos conhecidos, ele não é correspondido pelo primeiro caso `switch` de forma alguma. Como não há outros casos específicos, `inteiroParaDescrever` é correspondido pelo caso `default`.
+
+Depois que a declaração `switch` termina de executar, a descrição do número é impressa usando a função `print(_:separator:terminator:)`. Neste exemplo, o número `5` é corretamente identificado como um número primo.
+
+> **Nota**
+>
+> A palavra-chave `fallthrough` não verifica as condições do caso de `switch` em que causa a execução de cair. A palavra-chave `fallthrough` simplesmente faz com que a execução do código se mova diretamente para as instruções dentro do próximo caso (ou caso `default`), como no comportamento padrão da instrução `switch` em C.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
