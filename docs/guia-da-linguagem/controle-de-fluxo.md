@@ -542,6 +542,20 @@ Depois que a declaração `switch` termina de executar, a descrição do número
 >
 > A palavra-chave `fallthrough` não verifica as condições do caso de `switch` em que causa a execução de cair. A palavra-chave `fallthrough` simplesmente faz com que a execução do código se mova diretamente para as instruções dentro do próximo caso (ou caso `default`), como no comportamento padrão da instrução `switch` em C.
 
+### Declarações Rotuladas
+
+Em Swift, é possível aninhar *loops* e declarações condicionais dentro de outros *loops* e declarações condicionais para criar estruturas complexas de fluxo de controle. No entanto, tanto *loops* quanto declarações condicionais podem utilizar a declaração `break` para encerrar prematuramente sua execução. Portanto, às vezes é útil ser explícito sobre qual *loop* ou declaração condicional você deseja que a declaração `break` termine. Da mesma forma, se você tiver vários *loops* aninhados, pode ser útil ser explícito sobre qual *loop* a declaração `continue` deve afetar.
+
+Para alcançar esses objetivos, é possível marcar uma declaração de *loop* ou declaração condicional com um rótulo de declaração. Com uma declaração condicional, você pode usar um rótulo de declaração com a declaração `break` para encerrar a execução da declaração rotulada. Com uma declaração de *loop*, é possível usar um rótulo de declaração com a declaração `break` ou `continue` para encerrar ou continuar a execução da declaração rotulada.
+
+Uma declaração rotulada é indicada ao colocar um rótulo na mesma linha que a palavra-chave introdutória da declaração, seguido por dois pontos. Aqui está um exemplo dessa sintaxe para um *loop* `while`, embora o princípio seja o mesmo para todos os *loops* e declarações `switch`:
+
+```swift
+<#label name#>: while <#condition#> {
+   <#statements#>
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
