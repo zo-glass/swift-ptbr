@@ -556,6 +556,27 @@ Uma declaração rotulada é indicada ao colocar um rótulo na mesma linha que a
 }
 ```
 
+O seguinte exemplo utiliza as declarações `break` e `continue` com um *loop* `while` rotulado para uma versão adaptada do jogo *Snakes and Ladders* que você viu anteriormente neste capítulo. Desta vez, o jogo possui uma regra extra:
+
+- Para vencer, você deve pousar exatamente na casa 25.
+
+Se uma jogada de dado específica o levar além da casa 25, você deve jogar novamente até obter o número exato necessário para pousar na casa 25.
+
+O tabuleiro do jogo é o mesmo que antes.
+
+![snakesAndLadders](https://docs.swift.org/swift-book/images/snakesAndLadders~dark@2x.png)
+
+Os valores de `casaFinal`, `tabuleiro`, `casa` e `resultadoDoDado` são inicializados da mesma forma que anteriormente:
+
+```swift
+let casaFinal = 25
+var tabuleiro = [Int](repeating: 0, count: casaFinal + 1)
+tabuleiro[03] = +08; tabuleiro[06] = +11; tabuleiro[09] = +09; tabuleiro[10] = +02
+tabuleiro[14] = -10; tabuleiro[19] = -11; tabuleiro[22] = -02; tabuleiro[24] = -08
+var casa = 0
+var resultadoDoDado = 0
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
