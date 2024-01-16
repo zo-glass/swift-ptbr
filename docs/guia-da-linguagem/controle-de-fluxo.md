@@ -577,6 +577,30 @@ var casa = 0
 var resultadoDoDado = 0
 ```
 
+Esta versão do jogo utiliza um *loop* `while` e uma declaração `switch` para implementar a lógica do jogo. O *loop* `while` possui um rótulo de declaração chamado `loopDoJogo` para indicar que é o *loop* principal do jogo `Snakes and Ladders`.
+
+A condição do *loop* `while` é `while casa != casaFinal`, para refletir que é necessário pousar exatamente no quadrado 25.
+
+```swift
+loopDoJogo: while casa != casaFinal {
+    resultadoDoDado += 1
+    if resultadoDoDado == 7 { resultadoDoDado = 1 }
+    switch casa + resultadoDoDado {
+    case casaFinal:
+        // resultadoDoDado nos levará ao quadrado final, então o jogo acabou
+        break loopDoJogo
+    case let novaCasa where novaCasa > casaFinal:
+        // resultadoDoDado nos levará além do quadrado final, então role novamente
+        continue loopDoJogo
+    default:
+        // esta é uma jogada válida, então descubra o seu efeito
+        casa += resultadoDoDado
+        casa += tabuleiro[casa]
+    }
+}
+print("Fim do jogo!")
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
