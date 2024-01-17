@@ -601,6 +601,18 @@ loopDoJogo: while casa != casaFinal {
 print("Fim do jogo!")
 ```
 
+O dado é lançado no início de cada *loop*. Em vez de mover imediatamente o jogador, o *loop* utiliza uma declaração `switch` para considerar o resultado do movimento e determinar se o movimento é permitido:
+
+- Se o resultado do dado mover o jogador para a última casa, o jogo acaba. A declaração `break loopDoJogo` transfere o controle para a primeira linha de código fora do *loop* `while`, encerrando o jogo.
+- Se o resultado do dado mover o jogador além da última casa, o movimento é inválido e o jogador precisa lançar o dado novamente. A declaração `continue loopDoJogo` encerra a iteração atual do *loop* `while` e inicia a próxima iteração do *loop*.
+- Em todos os outros casos, o resultado do dado representa um movimento válido. O jogador avança pelo número de casas indicado por `resultadoDoDado`, e a lógica do jogo verifica a presença de cobras e escadas. O *loop* então termina, e o controle retorna à condição do `while` para decidir se é necessário mais uma rodada.
+
+> **Nota**
+>
+> Se a declaração `break` acima não utilizasse o rótulo `loopDoJogo`, ela interromperia a declaração `switch`, e não a declaração `while`. Usar o rótulo `loopDoJogo` torna claro qual declaração de controle deve ser encerrada.
+>
+> Não é estritamente necessário usar o rótulo `loopDoJogo` ao chamar `continue loopDoJogo` para pular para a próxima iteração do *loop*. Há apenas um *loop* no jogo, e, portanto, não há ambiguidade sobre qual *loop* a declaração continue afetará. No entanto, não há problema em usar o rótulo `loopDoJogo` com a declaração `continue`. Fazê-lo é consistente com o uso do rótulo junto com a declaração `break` e ajuda a tornar a lógica do jogo mais clara para ser lida e compreendida.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
