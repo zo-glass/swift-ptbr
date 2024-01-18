@@ -613,6 +613,34 @@ O dado é lançado no início de cada *loop*. Em vez de mover imediatamente o jo
 >
 > Não é estritamente necessário usar o rótulo `loopDoJogo` ao chamar `continue loopDoJogo` para pular para a próxima iteração do *loop*. Há apenas um *loop* no jogo, e, portanto, não há ambiguidade sobre qual *loop* a declaração continue afetará. No entanto, não há problema em usar o rótulo `loopDoJogo` com a declaração `continue`. Fazê-lo é consistente com o uso do rótulo junto com a declaração `break` e ajuda a tornar a lógica do jogo mais clara para ser lida e compreendida.
 
+## Saída Antecipada
+
+Uma declaração `guard`, assim como uma declaração `if`, executa declarações dependendo do valor booleano de uma expressão. Você utiliza uma declaração `guard` para exigir que uma condição seja verdadeira para que o código após a declaração `guard` seja executado. Ao contrário de uma declaração `if`, uma declaração `guard` sempre possui uma cláusula `else` — o código dentro da cláusula `else` é executado se a condição não for verdadeira.
+
+```swift
+func saudar(pessoa: [String: String]) {
+    guard let nome = pessoa["nome"] else {
+        return
+    }
+
+    print("Olá \(nome)!")
+
+    guard let localizacao = pessoa["localizacao"] else {
+        print("Espero que o clima esteja agradável perto de você.")
+        return
+    }
+
+    print("Espero que o clima esteja agradável em \(localizacao).")
+}
+
+saudar(pessoa: ["nome": "John"])
+// Imprime "Olá John!"
+// Imprime "Espero que o clima esteja agradável perto de você."
+saudar(pessoa: ["nome": "Jane", "localizacao": "Cupertino"])
+// Imprime "Olá Jane!"
+// Imprime "Espero que o clima esteja agradável em Cupertino."
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
