@@ -641,6 +641,12 @@ saudar(pessoa: ["nome": "Jane", "localizacao": "Cupertino"])
 // Imprime "Espero que o clima esteja agradável em Cupertino."
 ```
 
+Se a condição da declaração `guard` for atendida, a execução do código continua após o fechamento da chave da declaração `guard`. Quaisquer variáveis ou constantes que foram atribuídas valores usando uma `optional binding` como parte da condição estão disponíveis para o restante do bloco de código no qual a declaração `guard` aparece.
+
+Se essa condição não for atendida, o código dentro do ramo `else` é executado. Esse ramo deve transferir o controle para sair do bloco de código no qual a declaração `guard` aparece. Isso pode ser feito com uma declaração de transferência de controle, como `return`, `break`, `continue` ou `throw`, ou pode chamar uma função ou método que não retorna, como `fatalError(_:file:line:)`.
+
+O uso de uma declaração `guard` para requisitos melhora a legibilidade do seu código, em comparação com a realização da mesma verificação com uma declaração `if`. Isso permite que você escreva o código que é tipicamente executado sem envolvê-lo em um bloco `else`, e permite que você mantenha o código que lida com um requisito violado próximo ao próprio requisito.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
