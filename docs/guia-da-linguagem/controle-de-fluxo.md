@@ -647,6 +647,21 @@ Se essa condição não for atendida, o código dentro do ramo `else` é executa
 
 O uso de uma declaração `guard` para requisitos melhora a legibilidade do seu código, em comparação com a realização da mesma verificação com uma declaração `if`. Isso permite que você escreva o código que é tipicamente executado sem envolvê-lo em um bloco `else`, e permite que você mantenha o código que lida com um requisito violado próximo ao próprio requisito.
 
+## Ações Adiadas
+
+Ao contrário de construções de fluxo de controle como `if` e `while`, que permitem controlar se uma parte do seu código é executada ou quantas vezes ela é executada, `defer` controla quando um trecho de código é executado. Você utiliza um bloco `defer` para escrever código que será executado posteriormente, quando seu programa atingir o final do escopo atual. Por exemplo:
+
+```swift
+var pontuacao = 1
+if pontuacao < 10 {
+    defer {
+        print(pontuacao)
+    }
+    pontuacao += 5
+}
+// Imprime "6"
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
