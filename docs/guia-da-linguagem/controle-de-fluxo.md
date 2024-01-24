@@ -662,6 +662,23 @@ if pontuacao < 10 {
 // Imprime "6"
 ```
 
+No exemplo acima, o código dentro do bloco `defer` é executado antes de sair do corpo da declaração `if`. Primeiramente, o código na declaração `if` é executado, incrementando a `pontuacao` em cinco. Em seguida, antes de sair do escopo da declaração `if`, o código adiado é executado, imprimindo a `pontuacao`.
+
+O código dentro do bloco `defer` sempre é executado, independentemente de como o programa sai desse escopo. Isso inclui situações como uma saída antecipada de uma função, interrupção de um *loop* `for` ou lançamento de um erro. Esse comportamento torna o `defer` útil para operações em que é necessário garantir que um par de ações ocorra — como alocar e liberar manualmente memória, abrir e fechar descritores de arquivo de baixo nível e iniciar e encerrar transações em um banco de dados — porque você pode escrever ambas as ações próximas uma da outra no seu código. Por exemplo, o código a seguir concede temporariamente um bônus à pontuação, adicionando e subtraindo 100 dentro de um trecho de código:
+
+```swift
+var pontuacao = 3
+if pontuacao < 100 {
+    pontuacao += 100
+    defer {
+        pontuacao -= 100
+    }
+    // Outro código que usa a pontuação com o bônus vai aqui.
+    print(pontuacao)
+}
+// Imprime "103"
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
