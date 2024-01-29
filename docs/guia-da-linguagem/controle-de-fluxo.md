@@ -679,6 +679,22 @@ if pontuacao < 100 {
 // Imprime "103"
 ```
 
+Se você escrever mais de um bloco `defer` no mesmo escopo, o primeiro que você especificar será o último a ser executado.
+
+```swift
+if pontuacao < 10 {
+    defer {
+        print(pontuacao)
+    }
+    defer {
+        print("A pontuação é:")
+    }
+    pontuacao += 5
+}
+// Imprime "A pontuação é:"
+// Imprime "6"
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
