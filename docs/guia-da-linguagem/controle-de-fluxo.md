@@ -695,6 +695,8 @@ if pontuacao < 10 {
 // Imprime "6"
 ```
 
+Se o seu programa parar de ser executado — por exemplo, devido a um *runtime error* ou um *crash* — o código adiado não é executado. No entanto, o código adiado é executado depois que um erro é lançado; para obter informações sobre o uso de `defer` no tratamento de erros, consulte [Especificando Ações de Limpeza](./tratamento-de-erros.md#especificando-ações-de-limpeza).
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada

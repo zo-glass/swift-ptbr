@@ -8,6 +8,8 @@ sidebar_position: 17
 
 ### Propagação de Erros usando Throwing Functions
 
+## Especificando Ações de Limpeza
+
 ```swift
 // TODO: Translate
 ```
