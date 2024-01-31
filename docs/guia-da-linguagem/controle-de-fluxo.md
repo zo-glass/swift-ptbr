@@ -697,6 +697,22 @@ if pontuacao < 10 {
 
 Se o seu programa parar de ser executado — por exemplo, devido a um *runtime error* ou um *crash* — o código adiado não é executado. No entanto, o código adiado é executado depois que um erro é lançado; para obter informações sobre o uso de `defer` no tratamento de erros, consulte [Especificando Ações de Limpeza](./tratamento-de-erros.md#especificando-ações-de-limpeza).
 
+## Verificação da Disponibilidade de API
+
+O Swift possui suporte integrado para verificar a disponibilidade de API, o que garante que você não utilize acidentalmente APIs que não estão disponíveis em um determinado destino de implantação.
+
+O compilador utiliza informações de disponibilidade no SDK para verificar se todas as APIs utilizadas em seu código estão disponíveis no destino de implantação especificado pelo seu projeto. O Swift relata um erro durante a compilação se você tentar usar uma API que não está disponível.
+
+Você utiliza uma condição de disponibilidade em uma declaração `if` ou `guard` para executar condicionalmente um bloco de código, dependendo se as APIs que você deseja usar estão disponíveis em *runtime*. O compilador utiliza as informações da condição de disponibilidade ao verificar se as APIs naquele bloco de código estão disponíveis.
+
+```swift
+if #available(iOS 10, macOS 10.12, *) {
+    // Utilize APIs do iOS 10 no iOS e utilize APIs do macOS 10.12 no macOS
+} else {
+    // Recue para APIs mais antigas do iOS e macOS
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
