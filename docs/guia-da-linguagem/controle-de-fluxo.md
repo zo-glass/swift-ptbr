@@ -713,6 +713,18 @@ if #available(iOS 10, macOS 10.12, *) {
 }
 ```
 
+A condição de disponibilidade acima especifica que, no iOS, o corpo da declaração `if` é executado apenas no iOS 10 e posterior; no macOS, apenas no macOS 10.12 e posterior. O último argumento, `*`, é obrigatório e especifica que em qualquer outra plataforma, o corpo do `if` é executado no mínimo na versão de implantação especificada pelo seu destino.
+
+Em sua forma geral, a condição de disponibilidade recebe uma lista de nomes de plataformas e versões. Você utiliza nomes de plataformas como `iOS`, `macOS`, `watchOS` e `tvOS` — para a lista completa, consulte [Atributos de Declaração](../referencia-da-linguagem/atributos.md#atributos-de-declaração). Além de especificar números de versão principais, como iOS 8 ou macOS 10.10, você pode especificar números de versão menores, como iOS 11.2.6 e macOS 10.13.3.
+
+```swift
+if #available(<#platform name#> <#version#>, <#...#>, *) {
+    <#statements to execute if the APIs are available#>
+} else {
+    <#fallback statements to execute if the APIs are unavailable#>
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
