@@ -725,6 +725,23 @@ if #available(<#platform name#> <#version#>, <#...#>, *) {
 }
 ```
 
+Quando você utiliza uma condição de disponibilidade com uma declaração `guard`, ela aprimora as informações de disponibilidade que são usadas para o restante do código dentro desse bloco de código.
+
+```swift
+@available(macOS 10.12, *)
+struct PreferenciaDeCor {
+    var melhorCor = "azul"
+}
+
+func escolherMelhorCor() -> String {
+    guard #available(macOS 10.12, *) else {
+       return "cinza"
+    }
+    let cores = PreferenciaDeCor()
+    return cores.melhorCor
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
