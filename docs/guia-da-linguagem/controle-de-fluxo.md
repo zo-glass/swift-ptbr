@@ -742,6 +742,22 @@ func escolherMelhorCor() -> String {
 }
 ```
 
+No exemplo acima, a estrutura `PreferenciaDeCor` requer macOS 10.12 ou posterior. A função `escolherMelhorCor()` começa com um *guard* de disponibilidade. Se a versão da plataforma for muito antiga para usar `PreferenciaDeCor`, ela retorna a um comportamento que está sempre disponível. Após a declaração *guard*, você pode usar APIs que requerem macOS 10.12 ou posterior.
+
+Além do `#available`, o Swift também suporta a verificação oposta usando uma condição de indisponibilidade. Por exemplo, as duas verificações a seguir fazem a mesma coisa:
+
+```swift
+if #available(iOS 10, *) {
+} else {
+    // Código de fallback
+}
+
+
+if #unavailable(iOS 10) {
+    // Código de fallback
+}
+```
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
