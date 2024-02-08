@@ -758,6 +758,8 @@ if #unavailable(iOS 10) {
 }
 ```
 
+Usar o formulário `#unavailable` ajuda a tornar seu código mais legível quando a verificação contém apenas código *fallback*.
+
 ## Estruture código com ramificações, loops e saídas antecipadas.
 
 ## Saída Antecipada
