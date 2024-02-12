@@ -54,7 +54,7 @@ for indice in 1...5 {
 // 5 vezes 5 é 25
 ```
 
-A sequência sendo iterada é um intervalo de números de `1` a `5`, inclusivos, conforme indicado pelo uso do operador de intervalo fechado (`...`). O valor do `indice` é definido como o primeiro número no intervalo (`1`), e as declarações dentro do *loop* são executadas. Neste caso, o *loop* contém apenas uma declaração, que imprime uma entrada da tabuada do cinco para o valor atual do `indice`. Após a execução da declaração, o valor do `índice` é atualizado para conter o segundo valor no intervalo (`2`), e a função `print(_:separator:terminator:)` é chamada novamente. Esse processo continua até o final do intervalo ser alcançado.
+A sequência sendo iterada é um intervalo de números de `1` a `5`, inclusivos, conforme indicado pelo uso do operador de intervalo fechado (`...`). O valor do `indice` é definido como o primeiro número no intervalo (`1`), e as declarações dentro do *loop* são executadas. Neste caso, o *loop* contém apenas uma instrução, que imprime uma entrada da tabuada do cinco para o valor atual do `indice`. Após a execução da instrução, o valor do `índice` é atualizado para conter o segundo valor no intervalo (`2`), e a função `print(_:separator:terminator:)` é chamada novamente. Esse processo continua até o final do intervalo ser alcançado.
 
 No exemplo acima, o `indice` é uma constante cujo valor é automaticamente definido no início de cada iteração do *loop*. Como tal, o `indice` não precisa ser declarado antes de ser usado. Ele é implicitamente declarado apenas por sua inclusão na declaração do *loop*, sem a necessidade de uma palavra-chave de declaração `let`.
 
@@ -370,9 +370,9 @@ Além de usar expressões `if` no lado direito de uma atribuição, como mostrad
 
 ### Switch
 
-Uma declaração `switch` considera um valor e o compara com vários padrões correspondentes possíveis. Em seguida, executa um bloco de código apropriado, com base no primeiro padrão que corresponde com sucesso. Uma declaração `switch` oferece uma alternativa à declaração `if` para responder a múltiplos estados potenciais.
+Uma instrução `switch` considera um valor e o compara com vários padrões correspondentes possíveis. Em seguida, executa um bloco de código apropriado, com base no primeiro padrão que corresponde com sucesso. Uma instrução `switch` oferece uma alternativa à instrução `if` para responder a múltiplos estados potenciais.
 
-Em sua forma mais simples, uma declaração `switch` compara um valor com um ou mais valores do mesmo tipo.
+Em sua forma mais simples, uma instrução `switch` compara um valor com um ou mais valores do mesmo tipo.
 
 ```swift
 switch <#some value to consider#> {
@@ -386,13 +386,13 @@ default:
 }
 ```
 
-Cada declaração `switch` consiste em vários casos possíveis, cada um dos quais começa com a palavra-chave `case`. Além de comparar valores específicos, o Swift oferece várias maneiras para cada caso especificar padrões de correspondência mais complexos. Essas opções são descritas mais adiante neste capítulo.
+Cada instrução `switch` consiste em vários casos possíveis, cada um dos quais começa com a palavra-chave `case`. Além de comparar valores específicos, o Swift oferece várias maneiras para cada caso especificar padrões de correspondência mais complexos. Essas opções são descritas mais adiante neste capítulo.
 
-Assim como o corpo de uma declaração `if`, cada `case` é um ramo separado de execução de código. A declaração `switch` determina qual ramo deve ser selecionado. Esse procedimento é conhecido como *switching* no valor que está sendo considerado.
+Assim como o corpo de uma instrução `if`, cada `case` é um ramo separado de execução de código. A instrução `switch` determina qual ramo deve ser selecionado. Esse procedimento é conhecido como *switching* no valor que está sendo considerado.
 
-Toda declaração `switch` deve ser exaustiva. Ou seja, todo valor possível do tipo sendo considerado deve ser correspondido por um dos casos `switch`. Se não for apropriado fornecer um caso para cada valor possível, você pode definir um caso padrão para cobrir quaisquer valores que não sejam abordados explicitamente. Esse caso padrão é indicado pela palavra-chave `default` e sempre deve aparecer por último.
+Toda instrução `switch` deve ser exaustiva. Ou seja, todo valor possível do tipo sendo considerado deve ser correspondido por um dos casos `switch`. Se não for apropriado fornecer um caso para cada valor possível, você pode definir um caso padrão para cobrir quaisquer valores que não sejam abordados explicitamente. Esse caso padrão é indicado pela palavra-chave `default` e sempre deve aparecer por último.
 
-Este exemplo usa uma declaração `switch` para considerar um único caractere minúsculo chamado `algumCaractere`:
+Este exemplo usa uma instrução `switch` para considerar um único caractere minúsculo chamado `algumCaractere`:
 
 ```swift
 let algumCaractere: Character = "z"
@@ -440,7 +440,7 @@ Declarações de transferência de controle alteram a ordem na qual seu código 
 - `return`
 - `throw`
 
-As declarações `continue`, `break` e `fallthrough` são descritas abaixo. A declaração `return` é descrita em [Funções](./funcoes.md), e a declaração `throw` é descrita em [Propagação de Erros usando Throwing Functions](./tratamento-de-erros.md/#propagação-de-erros-usando-throwing-functions).
+As declarações `continue`, `break` e `fallthrough` são descritas abaixo. A instrução `return` é descrita em [Funções](./funcoes.md), e a instrução `throw` é descrita em [Propagação de Erros usando Throwing Functions](./tratamento-de-erros.md/#propagação-de-erros-usando-throwing-functions).
 
 ### Continue
 
@@ -467,21 +467,21 @@ O código acima utiliza a instrução `continue` sempre que encontra uma vogal o
 
 ### Break
 
-A declaração `break` encerra imediatamente a execução de toda uma declaração de fluxo de controle. A declaração `break` pode ser usada dentro de um `switch` ou declaração de *loop* quando você deseja encerrar a execução do `switch` ou declaração de *loop* mais cedo do que seria o caso de outra forma.
+A instrução `break` encerra imediatamente a execução de toda uma instrução de fluxo de controle. A instrução `break` pode ser usada dentro de um `switch` ou instrução de *loop* quando você deseja encerrar a execução do `switch` ou instrução de *loop* mais cedo do que seria o caso de outra forma.
 
-#### Break em uma Declaração de Loop
+#### Break em uma instrução de Loop
 
-Quando usado dentro de uma declaração de *loop*, `break` encerra imediatamente a execução do *loop* e transfere o controle para o código após a chave de fechamento do *loop* (`}`). Nenhum código adicional da iteração atual do *loop* é executado, e nenhuma iteração adicional do *loop* é iniciada.
+Quando usado dentro de uma instrução de *loop*, `break` encerra imediatamente a execução do *loop* e transfere o controle para o código após a chave de fechamento do *loop* (`}`). Nenhum código adicional da iteração atual do *loop* é executado, e nenhuma iteração adicional do *loop* é iniciada.
 
-#### Break em uma Declaração Switch
+#### Break em uma instrução Switch
 
-Quando usado dentro de uma declaração `switch`, `break` faz com que a declaração `switch` encerre sua execução imediatamente e transfira o controle para o código após o fechamento da chave (`}`) da declaração `switch`.
+Quando usado dentro de uma instrução `switch`, `break` faz com que a instrução `switch` encerre sua execução imediatamente e transfira o controle para o código após o fechamento da chave (`}`) da instrução `switch`.
 
-Esse comportamento pode ser utilizado para corresponder e ignorar um ou mais casos em uma declaração `switch`. Como a declaração `switch` do Swift é exaustiva e não permite casos vazios, às vezes é necessário corresponder e explicitamente ignorar um caso para deixar suas intenções claras. Isso é feito escrevendo a declaração `break` como o corpo inteiro do caso que você deseja ignorar. Quando esse caso é correspondido pela declaração `switch`, a declaração `break` dentro do caso encerra imediatamente a execução da declaração `switch`.
+Esse comportamento pode ser utilizado para corresponder e ignorar um ou mais casos em uma instrução `switch`. Como a instrução `switch` do Swift é exaustiva e não permite casos vazios, às vezes é necessário corresponder e explicitamente ignorar um caso para deixar suas intenções claras. Isso é feito escrevendo a instrução `break` como o corpo inteiro do caso que você deseja ignorar. Quando esse caso é correspondido pela instrução `switch`, a instrução `break` dentro do caso encerra imediatamente a execução da instrução `switch`.
 
 > **Nota**
 >
-> Um caso `switch` que contém apenas um comentário é reportado como um erro de compilação. Comentários não são declarações e não fazem com que um caso `switch` seja ignorado. Sempre utilize uma declaração `break` para ignorar um caso `switch`.
+> Um caso `switch` que contém apenas um comentário é reportado como um erro de compilação. Comentários não são declarações e não fazem com que um caso `switch` seja ignorado. Sempre utilize uma instrução `break` para ignorar um caso `switch`.
 
 O exemplo a seguir faz um `switch` em um valor `Character` e determina se ele representa um símbolo numérico em um dos quatro idiomas. Para brevidade, múltiplos valores são tratados em um único caso `switch`.
 
@@ -508,15 +508,15 @@ if let valorInteiro = possivelValorInteiro {
 // Imprime "O valor inteiro de 三 é 3."
 ```
 
-Este exemplo verifica o `simboloNumerico` para determinar se é um símbolo latino, árabe, chinês ou tailandês para os números de `1` a `4`. Se uma correspondência for encontrada, um dos casos da declaração `switch` define uma variável `Int?` opcional chamada `possivelValorInteiro` para um valor inteiro apropriado.
+Este exemplo verifica o `simboloNumerico` para determinar se é um símbolo latino, árabe, chinês ou tailandês para os números de `1` a `4`. Se uma correspondência for encontrada, um dos casos da instrução `switch` define uma variável `Int?` opcional chamada `possivelValorInteiro` para um valor inteiro apropriado.
 
-Após a conclusão da execução da declaração `switch`, o exemplo utiliza o *optional binding* para determinar se um valor foi encontrado. A variável `possivelValorInteiro` possui um valor inicial implícito de `nil` por ser um tipo opcional, portanto, o *optional binding* terá sucesso apenas se `possivelValorInteiro` foi definido como um valor real por um dos primeiros quatro casos da declaração `switch`.
+Após a conclusão da execução da instrução `switch`, o exemplo utiliza o *optional binding* para determinar se um valor foi encontrado. A variável `possivelValorInteiro` possui um valor inicial implícito de `nil` por ser um tipo opcional, portanto, o *optional binding* terá sucesso apenas se `possivelValorInteiro` foi definido como um valor real por um dos primeiros quatro casos da instrução `switch`.
 
-Por não ser prático listar todos os possíveis valores de `Character` no exemplo acima, um caso `default` trata quaisquer caracteres que não sejam correspondidos. Este caso `default` não precisa executar nenhuma ação e, portanto, é escrito com uma única declaração `break` como seu corpo. Assim que o caso `default` é correspondido, a declaração `break` encerra a execução da declaração `switch`, e a execução do código continua a partir da declaração `if let`.
+Por não ser prático listar todos os possíveis valores de `Character` no exemplo acima, um caso `default` trata quaisquer caracteres que não sejam correspondidos. Este caso `default` não precisa executar nenhuma ação e, portanto, é escrito com uma única instrução `break` como seu corpo. Assim que o caso `default` é correspondido, a instrução `break` encerra a execução da instrução `switch`, e a execução do código continua a partir da instrução `if let`.
 
 ### Fallthrough
 
-Em Swift, declarações `switch` não caem pelo final de cada caso e passam para o próximo. Ou seja, a declaração `switch` completa sua execução assim que o primeiro caso correspondente é concluído. Em contraste, em C, é necessário inserir uma declaração explícita de `break` ao final de cada caso `switch` para evitar a passagem automática para o próximo caso. Evitar a passagem automática padrão significa que as declarações `switch` em Swift são muito mais concisas e previsíveis do que suas contrapartes em C, e, portanto, evitam a execução por engano de múltiplos casos `switch`.
+Em Swift, declarações `switch` não caem pelo final de cada caso e passam para o próximo. Ou seja, a instrução `switch` completa sua execução assim que o primeiro caso correspondente é concluído. Em contraste, em C, é necessário inserir uma instrução explícita de `break` ao final de cada caso `switch` para evitar a passagem automática para o próximo caso. Evitar a passagem automática padrão significa que as declarações `switch` em Swift são muito mais concisas e previsíveis do que suas contrapartes em C, e, portanto, evitam a execução por engano de múltiplos casos `switch`.
 
 Se você precisa do comportamento de passagem automática no estilo C, pode optar por esse comportamento caso a caso com a palavra-chave `fallthrough`. O exemplo abaixo usa `fallthrough` para criar uma descrição textual de um número.
 
@@ -534,11 +534,11 @@ print(descricao)
 // Imprime "O número 5 é um número primo, e também um inteiro."
 ```
 
-Este exemplo declara uma nova variável `String` chamada `descricao` e atribui a ela um valor inicial. A função então considera o valor de `inteiroParaDescrever` usando uma declaração `switch`. Se o valor de `inteiroParaDescrever` for um dos números primos na lista, a função acrescenta texto ao final de `descricao`, para indicar que o número é primo. Em seguida, usa a palavra-chave `fallthrough` para "cair" no caso `default` também. O caso `default` adiciona algum texto extra ao final da descrição, e a declaração `switch` está completa.
+Este exemplo declara uma nova variável `String` chamada `descricao` e atribui a ela um valor inicial. A função então considera o valor de `inteiroParaDescrever` usando uma instrução `switch`. Se o valor de `inteiroParaDescrever` for um dos números primos na lista, a função acrescenta texto ao final de `descricao`, para indicar que o número é primo. Em seguida, usa a palavra-chave `fallthrough` para "cair" no caso `default` também. O caso `default` adiciona algum texto extra ao final da descrição, e a instrução `switch` está completa.
 
 A menos que o valor de `inteiroParaDescrever` esteja na lista de números primos conhecidos, ele não é correspondido pelo primeiro caso `switch` de forma alguma. Como não há outros casos específicos, `inteiroParaDescrever` é correspondido pelo caso `default`.
 
-Depois que a declaração `switch` termina de executar, a descrição do número é impressa usando a função `print(_:separator:terminator:)`. Neste exemplo, o número `5` é corretamente identificado como um número primo.
+Depois que a instrução `switch` termina de executar, a descrição do número é impressa usando a função `print(_:separator:terminator:)`. Neste exemplo, o número `5` é corretamente identificado como um número primo.
 
 > **Nota**
 >
@@ -546,11 +546,11 @@ Depois que a declaração `switch` termina de executar, a descrição do número
 
 ### Declarações Rotuladas
 
-Em Swift, é possível aninhar *loops* e declarações condicionais dentro de outros *loops* e declarações condicionais para criar estruturas complexas de fluxo de controle. No entanto, tanto *loops* quanto declarações condicionais podem utilizar a declaração `break` para encerrar prematuramente sua execução. Portanto, às vezes é útil ser explícito sobre qual *loop* ou declaração condicional você deseja que a declaração `break` termine. Da mesma forma, se você tiver vários *loops* aninhados, pode ser útil ser explícito sobre qual *loop* a declaração `continue` deve afetar.
+Em Swift, é possível aninhar *loops* e declarações condicionais dentro de outros *loops* e declarações condicionais para criar estruturas complexas de fluxo de controle. No entanto, tanto *loops* quanto declarações condicionais podem utilizar a instrução `break` para encerrar prematuramente sua execução. Portanto, às vezes é útil ser explícito sobre qual *loop* ou instrução condicional você deseja que a instrução `break` termine. Da mesma forma, se você tiver vários *loops* aninhados, pode ser útil ser explícito sobre qual *loop* a instrução `continue` deve afetar.
 
-Para alcançar esses objetivos, é possível marcar uma declaração de *loop* ou declaração condicional com um rótulo de declaração. Com uma declaração condicional, você pode usar um rótulo de declaração com a declaração `break` para encerrar a execução da declaração rotulada. Com uma declaração de *loop*, é possível usar um rótulo de declaração com a declaração `break` ou `continue` para encerrar ou continuar a execução da declaração rotulada.
+Para alcançar esses objetivos, é possível marcar uma instrução de *loop* ou instrução condicional com um rótulo de instrução. Com uma instrução condicional, você pode usar um rótulo de instrução com a instrução `break` para encerrar a execução da instrução rotulada. Com uma instrução de *loop*, é possível usar um rótulo de instrução com a instrução `break` ou `continue` para encerrar ou continuar a execução da instrução rotulada.
 
-Uma declaração rotulada é indicada ao colocar um rótulo na mesma linha que a palavra-chave introdutória da declaração, seguido por dois pontos. Aqui está um exemplo dessa sintaxe para um *loop* `while`, embora o princípio seja o mesmo para todos os *loops* e declarações `switch`:
+Uma instrução rotulada é indicada ao colocar um rótulo na mesma linha que a palavra-chave introdutória da instrução, seguido por dois pontos. Aqui está um exemplo dessa sintaxe para um *loop* `while`, embora o princípio seja o mesmo para todos os *loops* e declarações `switch`:
 
 ```swift
 <#label name#>: while <#condition#> {
@@ -579,7 +579,7 @@ var casa = 0
 var resultadoDoDado = 0
 ```
 
-Esta versão do jogo utiliza um *loop* `while` e uma declaração `switch` para implementar a lógica do jogo. O *loop* `while` possui um rótulo de declaração chamado `loopDoJogo` para indicar que é o *loop* principal do jogo `Snakes and Ladders`.
+Esta versão do jogo utiliza um *loop* `while` e uma instrução `switch` para implementar a lógica do jogo. O *loop* `while` possui um rótulo de instrução chamado `loopDoJogo` para indicar que é o *loop* principal do jogo `Snakes and Ladders`.
 
 A condição do *loop* `while` é `while casa != casaFinal`, para refletir que é necessário pousar exatamente no quadrado 25.
 
@@ -603,21 +603,21 @@ loopDoJogo: while casa != casaFinal {
 print("Fim do jogo!")
 ```
 
-O dado é lançado no início de cada *loop*. Em vez de mover imediatamente o jogador, o *loop* utiliza uma declaração `switch` para considerar o resultado do movimento e determinar se o movimento é permitido:
+O dado é lançado no início de cada *loop*. Em vez de mover imediatamente o jogador, o *loop* utiliza uma instrução `switch` para considerar o resultado do movimento e determinar se o movimento é permitido:
 
-- Se o resultado do dado mover o jogador para a última casa, o jogo acaba. A declaração `break loopDoJogo` transfere o controle para a primeira linha de código fora do *loop* `while`, encerrando o jogo.
-- Se o resultado do dado mover o jogador além da última casa, o movimento é inválido e o jogador precisa lançar o dado novamente. A declaração `continue loopDoJogo` encerra a iteração atual do *loop* `while` e inicia a próxima iteração do *loop*.
+- Se o resultado do dado mover o jogador para a última casa, o jogo acaba. A instrução `break loopDoJogo` transfere o controle para a primeira linha de código fora do *loop* `while`, encerrando o jogo.
+- Se o resultado do dado mover o jogador além da última casa, o movimento é inválido e o jogador precisa lançar o dado novamente. A instrução `continue loopDoJogo` encerra a iteração atual do *loop* `while` e inicia a próxima iteração do *loop*.
 - Em todos os outros casos, o resultado do dado representa um movimento válido. O jogador avança pelo número de casas indicado por `resultadoDoDado`, e a lógica do jogo verifica a presença de cobras e escadas. O *loop* então termina, e o controle retorna à condição do `while` para decidir se é necessário mais uma rodada.
 
 > **Nota**
 >
-> Se a declaração `break` acima não utilizasse o rótulo `loopDoJogo`, ela interromperia a declaração `switch`, e não a declaração `while`. Usar o rótulo `loopDoJogo` torna claro qual declaração de controle deve ser encerrada.
+> Se a instrução `break` acima não utilizasse o rótulo `loopDoJogo`, ela interromperia a instrução `switch`, e não a instrução `while`. Usar o rótulo `loopDoJogo` torna claro qual instrução de controle deve ser encerrada.
 >
-> Não é estritamente necessário usar o rótulo `loopDoJogo` ao chamar `continue loopDoJogo` para pular para a próxima iteração do *loop*. Há apenas um *loop* no jogo, e, portanto, não há ambiguidade sobre qual *loop* a declaração continue afetará. No entanto, não há problema em usar o rótulo `loopDoJogo` com a declaração `continue`. Fazê-lo é consistente com o uso do rótulo junto com a declaração `break` e ajuda a tornar a lógica do jogo mais clara para ser lida e compreendida.
+> Não é estritamente necessário usar o rótulo `loopDoJogo` ao chamar `continue loopDoJogo` para pular para a próxima iteração do *loop*. Há apenas um *loop* no jogo, e, portanto, não há ambiguidade sobre qual *loop* a instrução `continue` afetará. No entanto, não há problema em usar o rótulo `loopDoJogo` com a instrução `continue`. Fazê-lo é consistente com o uso do rótulo junto com a instrução `break` e ajuda a tornar a lógica do jogo mais clara para ser lida e compreendida.
 
 ## Saída Antecipada
 
-Uma declaração `guard`, assim como uma declaração `if`, executa declarações dependendo do valor booleano de uma expressão. Você utiliza uma declaração `guard` para exigir que uma condição seja verdadeira para que o código após a declaração `guard` seja executado. Ao contrário de uma declaração `if`, uma declaração `guard` sempre possui uma cláusula `else` — o código dentro da cláusula `else` é executado se a condição não for verdadeira.
+Uma instrução `guard`, assim como uma instrução `if`, executa declarações dependendo do valor booleano de uma expressão. Você utiliza uma instrução `guard` para exigir que uma condição seja verdadeira para que o código após a instrução `guard` seja executado. Ao contrário de uma instrução `if`, uma instrução `guard` sempre possui uma cláusula `else` — o código dentro da cláusula `else` é executado se a condição não for verdadeira.
 
 ```swift
 func saudar(pessoa: [String: String]) {
@@ -643,11 +643,11 @@ saudar(pessoa: ["nome": "Jane", "localizacao": "Cupertino"])
 // Imprime "Espero que o clima esteja agradável em Cupertino."
 ```
 
-Se a condição da declaração `guard` for atendida, a execução do código continua após o fechamento da chave da declaração `guard`. Quaisquer variáveis ou constantes que foram atribuídas valores usando uma `optional binding` como parte da condição estão disponíveis para o restante do bloco de código no qual a declaração `guard` aparece.
+Se a condição da instrução `guard` for atendida, a execução do código continua após o fechamento da chave da instrução `guard`. Quaisquer variáveis ou constantes que foram atribuídas valores usando uma `optional binding` como parte da condição estão disponíveis para o restante do bloco de código no qual a instrução `guard` aparece.
 
-Se essa condição não for atendida, o código dentro do ramo `else` é executado. Esse ramo deve transferir o controle para sair do bloco de código no qual a declaração `guard` aparece. Isso pode ser feito com uma declaração de transferência de controle, como `return`, `break`, `continue` ou `throw`, ou pode chamar uma função ou método que não retorna, como `fatalError(_:file:line:)`.
+Se essa condição não for atendida, o código dentro do ramo `else` é executado. Esse ramo deve transferir o controle para sair do bloco de código no qual a instrução `guard` aparece. Isso pode ser feito com uma instrução de transferência de controle, como `return`, `break`, `continue` ou `throw`, ou pode chamar uma função ou método que não retorna, como `fatalError(_:file:line:)`.
 
-O uso de uma declaração `guard` para requisitos melhora a legibilidade do seu código, em comparação com a realização da mesma verificação com uma declaração `if`. Isso permite que você escreva o código que é tipicamente executado sem envolvê-lo em um bloco `else`, e permite que você mantenha o código que lida com um requisito violado próximo ao próprio requisito.
+O uso de uma instrução `guard` para requisitos melhora a legibilidade do seu código, em comparação com a realização da mesma verificação com uma instrução `if`. Isso permite que você escreva o código que é tipicamente executado sem envolvê-lo em um bloco `else`, e permite que você mantenha o código que lida com um requisito violado próximo ao próprio requisito.
 
 ## Ações Adiadas
 
@@ -664,7 +664,7 @@ if pontuacao < 10 {
 // Imprime "6"
 ```
 
-No exemplo acima, o código dentro do bloco `defer` é executado antes de sair do corpo da declaração `if`. Primeiramente, o código na declaração `if` é executado, incrementando a `pontuacao` em cinco. Em seguida, antes de sair do escopo da declaração `if`, o código adiado é executado, imprimindo a `pontuacao`.
+No exemplo acima, o código dentro do bloco `defer` é executado antes de sair do corpo da instrução `if`. Primeiramente, o código na instrução `if` é executado, incrementando a `pontuacao` em cinco. Em seguida, antes de sair do escopo da instrução `if`, o código adiado é executado, imprimindo a `pontuacao`.
 
 O código dentro do bloco `defer` sempre é executado, independentemente de como o programa sai desse escopo. Isso inclui situações como uma saída antecipada de uma função, interrupção de um *loop* `for` ou lançamento de um erro. Esse comportamento torna o `defer` útil para operações em que é necessário garantir que um par de ações ocorra — como alocar e liberar manualmente memória, abrir e fechar descritores de arquivo de baixo nível e iniciar e encerrar transações em um banco de dados — porque você pode escrever ambas as ações próximas uma da outra no seu código. Por exemplo, o código a seguir concede temporariamente um bônus à pontuação, adicionando e subtraindo 100 dentro de um trecho de código:
 
@@ -705,7 +705,7 @@ O Swift possui suporte integrado para verificar a disponibilidade de API, o que 
 
 O compilador utiliza informações de disponibilidade no SDK para verificar se todas as APIs utilizadas em seu código estão disponíveis no destino de implantação especificado pelo seu projeto. O Swift relata um erro durante a compilação se você tentar usar uma API que não está disponível.
 
-Você utiliza uma condição de disponibilidade em uma declaração `if` ou `guard` para executar condicionalmente um bloco de código, dependendo se as APIs que você deseja usar estão disponíveis em *runtime*. O compilador utiliza as informações da condição de disponibilidade ao verificar se as APIs naquele bloco de código estão disponíveis.
+Você utiliza uma condição de disponibilidade em uma instrução `if` ou `guard` para executar condicionalmente um bloco de código, dependendo se as APIs que você deseja usar estão disponíveis em *runtime*. O compilador utiliza as informações da condição de disponibilidade ao verificar se as APIs naquele bloco de código estão disponíveis.
 
 ```swift
 if #available(iOS 10, macOS 10.12, *) {
@@ -715,7 +715,7 @@ if #available(iOS 10, macOS 10.12, *) {
 }
 ```
 
-A condição de disponibilidade acima especifica que, no iOS, o corpo da declaração `if` é executado apenas no iOS 10 e posterior; no macOS, apenas no macOS 10.12 e posterior. O último argumento, `*`, é obrigatório e especifica que em qualquer outra plataforma, o corpo do `if` é executado no mínimo na versão de implantação especificada pelo seu destino.
+A condição de disponibilidade acima especifica que, no iOS, o corpo da instrução `if` é executado apenas no iOS 10 e posterior; no macOS, apenas no macOS 10.12 e posterior. O último argumento, `*`, é obrigatório e especifica que em qualquer outra plataforma, o corpo do `if` é executado no mínimo na versão de implantação especificada pelo seu destino.
 
 Em sua forma geral, a condição de disponibilidade recebe uma lista de nomes de plataformas e versões. Você utiliza nomes de plataformas como `iOS`, `macOS`, `watchOS` e `tvOS` — para a lista completa, consulte [Atributos de Declaração](../referencia-da-linguagem/atributos.md#atributos-de-declaração). Além de especificar números de versão principais, como iOS 8 ou macOS 10.10, você pode especificar números de versão menores, como iOS 11.2.6 e macOS 10.13.3.
 
@@ -727,7 +727,7 @@ if #available(<#platform name#> <#version#>, <#...#>, *) {
 }
 ```
 
-Quando você utiliza uma condição de disponibilidade com uma declaração `guard`, ela aprimora as informações de disponibilidade que são usadas para o restante do código dentro desse bloco de código.
+Quando você utiliza uma condição de disponibilidade com uma instrução `guard`, ela aprimora as informações de disponibilidade que são usadas para o restante do código dentro desse bloco de código.
 
 ```swift
 @available(macOS 10.12, *)
@@ -744,7 +744,7 @@ func escolherMelhorCor() -> String {
 }
 ```
 
-No exemplo acima, a estrutura `PreferenciaDeCor` requer macOS 10.12 ou posterior. A função `escolherMelhorCor()` começa com um *guard* de disponibilidade. Se a versão da plataforma for muito antiga para usar `PreferenciaDeCor`, ela retorna a um comportamento que está sempre disponível. Após a declaração *guard*, você pode usar APIs que requerem macOS 10.12 ou posterior.
+No exemplo acima, a estrutura `PreferenciaDeCor` requer macOS 10.12 ou posterior. A função `escolherMelhorCor()` começa com um *guard* de disponibilidade. Se a versão da plataforma for muito antiga para usar `PreferenciaDeCor`, ela retorna a um comportamento que está sempre disponível. Após a instrução *guard*, você pode usar APIs que requerem macOS 10.12 ou posterior.
 
 Além do `#available`, o Swift também suporta a verificação oposta usando uma condição de indisponibilidade. Por exemplo, as duas verificações a seguir fazem a mesma coisa:
 
