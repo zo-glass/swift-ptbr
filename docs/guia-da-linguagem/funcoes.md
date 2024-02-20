@@ -12,6 +12,21 @@ A sintaxe unificada de funções do Swift é flexível o suficiente para express
 
 Cada função no Swift tem um tipo, composto pelos tipos de parâmetros da função e pelo tipo de retorno. Você pode usar esse tipo como qualquer outro tipo no Swift, o que facilita passar funções como parâmetros para outras funções e retornar funções de funções. As funções também podem ser escritas dentro de outras funções para encapsular funcionalidades úteis dentro de um escopo de função aninhado.
 
+## Definindo e Chamando Funções
+
+Ao definir uma função, você pode opcionalmente definir um ou mais valores nomeados e tipados que a função recebe como entrada, conhecidos como parâmetros. Você também pode opcionalmente definir um tipo de valor que a função retornará como saída quando estiver concluída, conhecido como seu tipo de retorno.
+
+Cada função possui um nome, que descreve a tarefa que a função executa. Para usar uma função, você "chama" essa função pelo seu nome e passa valores de entrada (conhecidos como argumentos) que correspondem aos tipos dos parâmetros da função. Os argumentos de uma função sempre devem ser fornecidos na mesma ordem que a lista de parâmetros da função.
+
+A função no exemplo abaixo é chamada de `saudar(pessoa:)`, porque é isso que ela faz - ela recebe o nome de uma pessoa como entrada e retorna uma saudação para essa pessoa. Para realizar isso, você define um parâmetro de entrada - um valor `String` chamado `pessoa` - e um tipo de retorno `String`, que conterá uma saudação para essa pessoa:
+
+```swift
+func saudar(pessoa: String) -> String {
+    let saudacao = "Olá, " + pessoa + "!"
+    return saudacao
+}
+```
+
 ## Funções com vários valores de retorno
 
 ## Valores de Parâmetro Padrão
