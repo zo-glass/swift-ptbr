@@ -27,6 +27,17 @@ func saudar(pessoa: String) -> String {
 }
 ```
 
+Toda essa informação está consolidada na definição da função, que é prefixada com a palavra-chave `func`. Você indica o tipo de retorno da função com a seta de retorno `->` (um hífen seguido por um sinal de maior), seguido pelo nome do tipo a ser retornado.
+
+A definição descreve o que a função faz, o que ela espera receber e o que ela retorna quando conclui sua execução. A definição facilita a chamada da função de forma inequívoca de outras partes do seu código:
+
+```swift
+print(saudar(pessoa: "Anna"))
+// Imprime "Olá, Anna!"
+print(saudar(pessoa: "Brian"))
+// Imprime "Olá, Brian!"
+```
+
 ## Funções com vários valores de retorno
 
 ## Valores de Parâmetro Padrão
