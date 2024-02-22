@@ -38,6 +38,14 @@ print(saudar(pessoa: "Brian"))
 // Imprime "Olá, Brian!"
 ```
 
+Você chama a função `saudar(pessoa:)` passando a ela um valor de `String` após o rótulo do argumento `pessoa`, como `saudar(pessoa: "Anna")`. Como a função retorna um valor de `String`, `saudar(pessoa:)` pode ser envolvida em uma chamada à função `print(_:separator:terminator:)` para imprimir essa *string* e ver seu valor de retorno, como mostrado acima.
+
+> **Nota**
+>
+> A função `print(_:separator:terminator:)` não possui um rótulo para seu primeiro argumento, e seus outros argumentos são opcionais, pois têm um valor padrão. Essas variações na sintaxe de função são discutidas abaixo em [Rótulos de Argumentos de Função e Nomes de Parâmetros](#rótulos-de-argumentos-de-função-e-nomes-de-parâmetros) e [Valores de Parâmetro Padrão](#valores-de-parâmetro-padrão).
+
 ## Funções com vários valores de retorno
+
+## Rótulos de Argumentos de Função e Nomes de Parâmetros
 
 ## Valores de Parâmetro Padrão
