@@ -44,6 +44,20 @@ Você chama a função `saudar(pessoa:)` passando a ela um valor de `String` ap�
 >
 > A função `print(_:separator:terminator:)` não possui um rótulo para seu primeiro argumento, e seus outros argumentos são opcionais, pois têm um valor padrão. Essas variações na sintaxe de função são discutidas abaixo em [Rótulos de Argumentos de Função e Nomes de Parâmetros](#rótulos-de-argumentos-de-função-e-nomes-de-parâmetros) e [Valores de Parâmetro Padrão](#valores-de-parâmetro-padrão).
 
+O corpo da função `saudar(pessoa:)` começa definindo uma nova constante do tipo `String` chamada `saudacao` e atribuindo a ela uma mensagem simples de saudação. Em seguida, essa saudação é passada para fora da função usando a palavra-chave `return`. Na linha de código que contém `return saudacao`, a função conclui sua execução e retorna o valor atual de `saudacao`.
+
+Você pode chamar a função `saudar(pessoa:)` várias vezes com valores de entrada diferentes. O exemplo acima mostra o que acontece quando é chamada com um valor de entrada `"Anna"` e um valor de entrada `"Brian"`. A função retorna uma saudação personalizada em cada caso.
+
+Para tornar o corpo desta função mais curto, é possível combinar a criação da mensagem e a declaração de retorno em uma única linha:
+
+```swift
+func saudarNovamente(pessoa: String) -> String {
+    return "Olá novamente, " + pessoa + "!"
+}
+print(saudarNovamente(pessoa: "Anna"))
+// Imprime "Olá novamente, Anna!"
+```
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
