@@ -58,6 +58,10 @@ print(saudarNovamente(pessoa: "Anna"))
 // Imprime "Olá novamente, Anna!"
 ```
 
+## Parâmetros e Valores de Retorno de Função
+
+Os parâmetros e valores de retorno de função são extremamente flexíveis em Swift. Você pode definir desde uma função de utilidade simples com um único parâmetro sem nome até uma função complexa com nomes expressivos para os parâmetros e diferentes opções de parâmetro.
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
