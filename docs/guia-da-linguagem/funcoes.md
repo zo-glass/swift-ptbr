@@ -62,6 +62,20 @@ print(saudarNovamente(pessoa: "Anna"))
 
 Os parâmetros e valores de retorno de função são extremamente flexíveis em Swift. Você pode definir desde uma função de utilidade simples com um único parâmetro sem nome até uma função complexa com nomes expressivos para os parâmetros e diferentes opções de parâmetro.
 
+### Funções Sem Parâmetros
+
+As funções não são obrigadas a definir parâmetros de entrada. Aqui está uma função sem parâmetros de entrada, que sempre retorna a mesma mensagem de `String` sempre que é chamada:
+
+```swift
+func digaOlaMundo() -> String {
+    return "olá, mundo"
+}
+print(digaOlaMundo())
+// Imprime "olá, mundo"
+```
+
+A definição da função ainda precisa de parênteses após o nome da função, mesmo que ela não receba nenhum parâmetro. O nome da função também é seguido por um par de parênteses vazios quando a função é chamada.
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
