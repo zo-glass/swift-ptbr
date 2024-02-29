@@ -76,6 +76,27 @@ print(digaOlaMundo())
 
 A definição da função ainda precisa de parênteses após o nome da função, mesmo que ela não receba nenhum parâmetro. O nome da função também é seguido por um par de parênteses vazios quando a função é chamada.
 
+### Funções com Múltiplos Parâmetros
+
+As funções podem ter múltiplos parâmetros de entrada, os quais são escritos dentro dos parênteses da função, separados por vírgulas.
+
+Esta função recebe o nome de uma pessoa e se ela já foi cumprimentada como entrada e retorna uma saudação apropriada para essa pessoa:
+
+```swift
+func saudar(pessoa: String, jaCumprimentada: Bool) -> String {
+    if jaCumprimentada {
+        return saudarNovamente(pessoa: pessoa)
+    } else {
+        return saudar(pessoa: pessoa)
+    }
+}
+
+print(saudar(pessoa: "Tim", jaCumprimentada: true))
+// Imprime "Olá novamente, Tim!"
+```
+
+Você chama a função `saudar(pessoa:jaCumprimentada:)` passando a ela tanto um valor de argumento `String` rotulado como `pessoa` quanto um valor de argumento `Bool` rotulado como `jaCumprimentada` entre parênteses, separados por vírgulas. Observe que esta função é distinta da função `saudar(pessoa:)` mostrada em uma seção anterior. Embora ambas as funções tenham nomes que começam com `saudar`, a função `saudar(pessoa:jaCumprimentada:)` recebe dois argumentos, enquanto a função `saudar(pessoa:)` recebe apenas um.
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
