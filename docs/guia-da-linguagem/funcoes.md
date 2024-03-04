@@ -97,6 +97,18 @@ print(saudar(pessoa: "Tim", jaCumprimentada: true))
 
 Você chama a função `saudar(pessoa:jaCumprimentada:)` passando a ela tanto um valor de argumento `String` rotulado como `pessoa` quanto um valor de argumento `Bool` rotulado como `jaCumprimentada` entre parênteses, separados por vírgulas. Observe que esta função é distinta da função `saudar(pessoa:)` mostrada em uma seção anterior. Embora ambas as funções tenham nomes que começam com `saudar`, a função `saudar(pessoa:jaCumprimentada:)` recebe dois argumentos, enquanto a função `saudar(pessoa:)` recebe apenas um.
 
+### Funções Sem Valores de Retorno
+
+Não é necessário que as funções definam um tipo de retorno. Aqui está uma versão da função saudar(pessoa:), que imprime seu próprio valor de `String` em vez de retorná-lo:
+
+```swift
+func saudar(pessoa: String) {
+    print("Olá, \(pessoa)!")
+}
+saudar(pessoa: "Dave")
+// Imprime "Olá, Dave!"
+```
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
