@@ -109,6 +109,12 @@ saudar(pessoa: "Dave")
 // Imprime "Olá, Dave!"
 ```
 
+Porque não precisa retornar um valor, a definição da função não inclui a seta de retorno (`->`) nem um tipo de retorno.
+
+> **Nota**
+>
+> Estritamente falando, esta versão da função `saudar(pessoa:)` ainda retorna um valor, mesmo que nenhum valor de retorno seja definido. Funções sem um tipo de retorno definido retornam um valor especial do tipo `Void`. Isso é simplesmente uma tupla vazia, escrita como `()`.
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
