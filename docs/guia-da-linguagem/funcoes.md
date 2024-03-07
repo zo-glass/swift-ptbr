@@ -115,6 +115,25 @@ Porque não precisa retornar um valor, a definição da função não inclui a s
 >
 > Estritamente falando, esta versão da função `saudar(pessoa:)` ainda retorna um valor, mesmo que nenhum valor de retorno seja definido. Funções sem um tipo de retorno definido retornam um valor especial do tipo `Void`. Isso é simplesmente uma tupla vazia, escrita como `()`.
 
+O valor de retorno de uma função pode ser ignorado quando ela é chamada:
+
+```swift
+func imprimirEContar(string: String) -> Int {
+    print(string)
+    return string.count
+}
+
+func imprimirSemContar(string: String) {
+    let _ = imprimirEContar(string: string)
+}
+
+imprimirEContar(string: "Olá, mundo")
+// imprime "Olá, mundo" e retorna um valor de 12
+
+imprimirSemContar(string: "Olá, mundo")
+// imprime "Olá, mundo" mas não retorna um valor
+```
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
