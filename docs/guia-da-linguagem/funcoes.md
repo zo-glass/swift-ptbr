@@ -134,6 +134,12 @@ imprimirSemContar(string: "Olá, mundo")
 // imprime "Olá, mundo" mas não retorna um valor
 ```
 
+A primeira função, `imprimirEContar(string:)`, imprime uma string e, em seguida, retorna a contagem de caracteres dela como um `Int`. A segunda função, `imprimirSemContar(string:)`, chama a primeira função, mas ignora o valor retornado. Quando a segunda função é chamada, a mensagem ainda é impressa pela primeira função, mas o valor retornado não é utilizado.
+
+> **Nota**
+>
+> Valores de retorno podem ser ignorados, mas uma função que indica que retornará um valor deve sempre fazê-lo. Uma função com um tipo de retorno definido não pode permitir que o controle saia do final da função sem retornar um valor, e tentar fazê-lo resultará em um erro de compilação.
+
 ## Funções com vários valores de retorno
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
