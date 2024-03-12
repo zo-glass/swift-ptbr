@@ -140,7 +140,26 @@ A primeira função, `imprimirEContar(string:)`, imprime uma string e, em seguid
 >
 > Valores de retorno podem ser ignorados, mas uma função que indica que retornará um valor deve sempre fazê-lo. Uma função com um tipo de retorno definido não pode permitir que o controle saia do final da função sem retornar um valor, e tentar fazê-lo resultará em um erro de compilação.
 
-## Funções com vários valores de retorno
+## Funções com Múltiplos Valores de Retorno
+
+Você pode usar um tipo de tupla como o tipo de retorno para uma função para retornar múltiplos valores como parte de um valor de retorno composto.
+
+O exemplo abaixo define uma função chamada minMax(array:), que encontra os números menor e maior em um *array* de valores `Int`:
+
+```swift
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+    var atualMin = array[0]
+    var atualMax = array[0]
+    for valor in array[1..<array.count] {
+        if valor < atualMin {
+            atualMin = valor
+        } else if valor > atualMax {
+            atualMax = valor
+        }
+    }
+    return (atualMin, atualMax)
+}
+```
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
 

@@ -484,7 +484,7 @@ print("A mensagem de status é \(statusHttp200.descricao)")
 // Imprime "A mensagem de estado é OK"
 ```
 
-Tuplas são particularmente úteis como valores de retorno de funções. Uma função que tenta recuperar uma página da Web pode retornar o tipo de tupla `(Int, String)` para descrever o sucesso ou a falha da recuperação da página. Ao retornar uma tupla com dois valores distintos, cada um de um tipo diferente, a função fornece informações mais úteis sobre seu resultado do que se pudesse retornar apenas um único valor de um único tipo. Para obter mais informações, consulte [Funções com vários valores de retorno](./funcoes.md/#funções-com-vários-valores-de-retorno).
+Tuplas são particularmente úteis como valores de retorno de funções. Uma função que tenta recuperar uma página da Web pode retornar o tipo de tupla `(Int, String)` para descrever o sucesso ou a falha da recuperação da página. Ao retornar uma tupla com dois valores distintos, cada um de um tipo diferente, a função fornece informações mais úteis sobre seu resultado do que se pudesse retornar apenas um único valor de um único tipo. Para obter mais informações, consulte [Funções com Múltiplos Valores de Retorno](./funcoes.md/#funções-com-múltiplos-valores-de-retorno).
 
 > **Nota**
 >
