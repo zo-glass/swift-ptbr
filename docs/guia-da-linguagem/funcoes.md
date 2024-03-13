@@ -161,6 +161,18 @@ func minMax(array: [Int]) -> (min: Int, max: Int) {
 }
 ```
 
+A função `minMax(array:)` retorna uma tupla contendo dois valores `Int`. Esses valores são rotulados como `min` e `max` para que possam ser acessados pelo nome ao consultar o valor de retorno da função.
+
+O corpo da função `minMax(array:)` começa definindo duas variáveis de trabalho chamadas `atualMin` e `atualMax` com o valor do primeiro inteiro no *array*. A função então itera sobre os valores restantes no *array* e verifica cada valor para ver se é menor ou maior do que os valores de `atualMin` e `atualMax`, respectivamente. Por fim, os valores mínimos e máximos globais são retornados como uma tupla de dois valores `Int`.
+
+Como os valores dos membros da tupla são nomeados como parte do tipo de retorno da função, eles podem ser acessados com a sintaxe de ponto para recuperar os valores mínimos e máximos encontrados:
+
+```swift
+let limites = minMax(array: [8, -6, 2, 109, 3, 71])
+print("O mínimo é \(limites.min) e o máximo é \(limites.max)")
+// Imprime "O mínimo é -6 e o máximo é 109"
+```
+
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
 
 ## Valores de Parâmetro Padrão
