@@ -173,6 +173,8 @@ print("O mínimo é \(limites.min) e o máximo é \(limites.max)")
 // Imprime "O mínimo é -6 e o máximo é 109"
 ```
 
+Observe que os membros da tupla não precisam ser nomeados no momento em que a tupla é retornada da função, pois seus nomes já estão especificados como parte do tipo de retorno da função.
+
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
 
 ## Valores de Parâmetro Padrão
