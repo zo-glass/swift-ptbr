@@ -175,6 +175,24 @@ print("O mínimo é \(limites.min) e o máximo é \(limites.max)")
 
 Observe que os membros da tupla não precisam ser nomeados no momento em que a tupla é retornada da função, pois seus nomes já estão especificados como parte do tipo de retorno da função.
 
+### Funções com Retorno Implícito
+
+Se todo o corpo da função for uma única expressão, a função retorna implicitamente essa expressão. Por exemplo, ambas as funções abaixo têm o mesmo comportamento:
+
+```swift
+func saudacao(para pessoa: String) -> String {
+    "Olá, " + pessoa + "!"
+}
+print(saudacao(para: "Dave"))
+// Imprime "Olá, Dave!"
+
+func outraSaudacao(para pessoa: String) -> String {
+    return "Olá, " + pessoa + "!"
+}
+print(outraSaudacao(para: "Dave"))
+// Imprime "Olá, Dave!"
+```
+
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
 
 ## Valores de Parâmetro Padrão
