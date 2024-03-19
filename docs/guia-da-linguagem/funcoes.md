@@ -193,6 +193,14 @@ print(outraSaudacao(para: "Dave"))
 // Imprime "Olá, Dave!"
 ```
 
+A definição completa da função `saudacao(para:)` é a mensagem de saudação que ela retorna, o que significa que pode usar esta forma mais curta. A função `outraSaudacao(para:)` retorna a mesma mensagem de saudação, utilizando a palavra-chave `return` como em uma função mais longa. Qualquer função que você escreva com apenas uma linha de retorno pode omitir o `return`.
+
+Como você verá na [Declaração de Getter Abreviada](./propriedades.md/#declaração-de-getter-abreviada), os getters de propriedades também podem usar um retorno implícito.
+
+> **Nota**
+>
+> O código que você escreve como um valor de retorno implícito precisa retornar algum valor. Por exemplo, você não pode usar `print(13)` como um valor de retorno implícito. No entanto, você pode usar uma função que nunca retorna, como `fatalError("Oh no!")`, como um valor de retorno implícito, porque o Swift sabe que o retorno implícito não ocorre.
+
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
 
 ## Valores de Parâmetro Padrão
