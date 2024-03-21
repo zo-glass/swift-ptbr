@@ -203,4 +203,16 @@ Como você verá na [Declaração de Getter Abreviada](./propriedades.md/#declar
 
 ## Rótulos de Argumentos de Função e Nomes de Parâmetros
 
+Cada parâmetro de função possui tanto um rótulo de argumento quanto um nome de parâmetro. O rótulo de argumento é usado ao chamar a função; cada argumento é escrito na chamada da função com seu rótulo de argumento antes dele. O nome do parâmetro é usado na implementação da função. Por padrão, os parâmetros usam seu nome de parâmetro como seu rótulo de argumento.
+
+```swift
+func algumaFuncao(primeiroNomeDoParametro: Int, segundoNomeDoParametro: Int) {
+    // No corpo da função, primeiroNomeDoParametro e segundoNomeDoParametro
+    // referem-se aos valores dos argumentos para o primeiro e segundo parâmetros.
+}
+algumaFuncao(primeiroNomeDoParametro: 1, segundoNomeDoParametro: 2)
+```
+
+Todos os parâmetros devem ter nomes únicos. Embora seja possível para vários parâmetros terem o mesmo rótulo de argumento, rótulos de argumento únicos ajudam a tornar seu código mais legível.
+
 ## Valores de Parâmetro Padrão
