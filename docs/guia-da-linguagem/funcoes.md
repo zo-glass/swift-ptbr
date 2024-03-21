@@ -215,4 +215,27 @@ algumaFuncao(primeiroNomeDoParametro: 1, segundoNomeDoParametro: 2)
 
 Todos os parâmetros devem ter nomes únicos. Embora seja possível para vários parâmetros terem o mesmo rótulo de argumento, rótulos de argumento únicos ajudam a tornar seu código mais legível.
 
+### Especificando Rótulos de Argumento
+
+Você escreve um rótulo de argumento antes do nome do parâmetro, separado por um espaço:
+
+```swift
+func algumaFuncao(rotuloDeArgumento nomeDoParametro: Int) {
+    // No corpo da função, nomeDoParametro se refere ao valor do argumento
+    // para esse parâmetro.
+}
+```
+
+Aqui está uma variação da função `saudar(pessoa:)` que recebe o nome e a cidade natal de uma pessoa e retorna uma saudação:
+
+```swift
+func saudar(pessoa: String, de cidadeNatal: String) -> String {
+    return "Olá \(pessoa)! Que bom que você pode visitar de \(cidadeNatal)."
+}
+print(saudar(pessoa: "Bill", de: "Cupertino"))
+// Imprime "Olá Bill! Que bom que você pode visitar de Cupertino."
+```
+
+O uso de rótulos de argumento pode permitir que uma função seja chamada de maneira expressiva, semelhante a uma frase, ao mesmo tempo em que fornece um corpo de função que é legível e claro em sua intenção.
+
 ## Valores de Parâmetro Padrão
