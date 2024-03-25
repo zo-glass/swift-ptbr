@@ -238,4 +238,18 @@ print(saudar(pessoa: "Bill", de: "Cupertino"))
 
 O uso de rótulos de argumento pode permitir que uma função seja chamada de maneira expressiva, semelhante a uma frase, ao mesmo tempo em que fornece um corpo de função que é legível e claro em sua intenção.
 
+### Omitindo Rótulos de Argumento
+
+Se você não quiser um rótulo de argumento para um parâmetro, escreva um sublinhado (`_`) em vez de um rótulo de argumento explícito para esse parâmetro.
+
+```swift
+func algumaFuncao(_ primeiroNomeDoParametro: Int, segundoNomeDoParametro: Int) {
+    // No corpo da função, primeiroNomeDoParametro e segundoNomeDoParametro
+    // referem-se aos valores de argumento para o primeiro e segundo parâmetros.
+}
+algumaFuncao(1, segundoNomeDoParametro: 2)
+```
+
+Se um parâmetro tiver um rótulo de argumento, o argumento deve ser rotulado quando você chama a função.
+
 ## Valores de Parâmetro Padrão
