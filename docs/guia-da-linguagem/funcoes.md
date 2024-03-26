@@ -253,3 +253,16 @@ algumaFuncao(1, segundoNomeDoParametro: 2)
 Se um parâmetro tiver um rótulo de argumento, o argumento deve ser rotulado quando você chama a função.
 
 ## Valores de Parâmetro Padrão
+
+Você pode definir um valor padrão para qualquer parâmetro em uma função atribuindo um valor ao parâmetro após o tipo desse parâmetro. Se um valor padrão for definido, você pode omitir esse parâmetro ao chamar a função.
+
+```swift
+func algumaFuncao(parametroSemPadrao: Int, parametroComPadrao: Int = 12) {
+    // Se você omitir o segundo argumento ao chamar esta função, então
+    // o valor de parametroComPadrao é 12 dentro do corpo da função.
+}
+algumaFuncao(parametroSemPadrao: 3, parametroComPadrao: 6) // parametroComPadrao é 6
+algumaFuncao(parametroSemPadrao: 4) // parametroComPadrao é 12
+```
+
+Coloque os parâmetros que não têm valores padrão no início da lista de parâmetros de uma função, antes dos parâmetros que têm valores padrão. Parâmetros que não têm valores padrão geralmente são mais importantes para o significado da função - escrevê-los primeiro torna mais fácil reconhecer que a mesma função está sendo chamada, independentemente de quaisquer parâmetros padrão serem omitidos.
