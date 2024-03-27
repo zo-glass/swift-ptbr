@@ -266,3 +266,27 @@ algumaFuncao(parametroSemPadrao: 4) // parametroComPadrao é 12
 ```
 
 Coloque os parâmetros que não têm valores padrão no início da lista de parâmetros de uma função, antes dos parâmetros que têm valores padrão. Parâmetros que não têm valores padrão geralmente são mais importantes para o significado da função - escrevê-los primeiro torna mais fácil reconhecer que a mesma função está sendo chamada, independentemente de quaisquer parâmetros padrão serem omitidos.
+
+### Parâmetros Variádicos
+
+Um parâmetro variádico aceita zero ou mais valores de um tipo especificado. Você utiliza um parâmetro variádico para especificar que o parâmetro pode receber um número variável de valores de entrada quando a função é chamada. Escreva parâmetros variádicos inserindo três pontos (`...`) após o nome do tipo do parâmetro.
+
+Os valores passados a um parâmetro variádico são disponibilizados dentro do corpo da função como um *array* do tipo apropriado. Por exemplo, um parâmetro variádico com o nome de `numeros` e tipo `Double...` fica disponível dentro do corpo da função como um *array* constante chamado `numeros` do tipo `[Double]`.
+
+O exemplo abaixo calcula a média aritmética (também conhecida como média) para uma lista de números de qualquer comprimento:
+
+```swift
+func mediaAritmetica(_ numeros: Double...) -> Double {
+    var total: Double = 0
+    for numero in numeros {
+        total += numero
+    }
+    return total / Double(numeros.count)
+}
+mediaAritmetica(1, 2, 3, 4, 5)
+// retorna 3.0, que é a média aritmética desses cinco números
+mediaAritmetica(3, 8.25, 18.75)
+// retorna 10.0, que é a média aritmética desses três números
+```
+
+Uma função pode ter múltiplos parâmetros variádicos. O primeiro parâmetro que vem após um parâmetro variádico deve ter um rótulo de argumento. O rótulo de argumento torna inequívoco quais argumentos são passados para o parâmetro variádico e quais argumentos são passados para os parâmetros que vêm após o parâmetro variádico.
